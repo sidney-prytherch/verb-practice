@@ -92,6 +92,21 @@
   </section>
 
   <section>
+    <h2>Subjunctive</h2>
+    <label class="option layout" class:on={settings.subjunctive}>
+      <input type="checkbox" bind:checked={settings.subjunctive} />
+      <span>
+        <strong>Include the subjunctive</strong>
+        <span class="desc">
+          About half the clues use it, with the tenses and aspects above:
+          <em>that I walk</em> → <em>que eu ande</em> · <em>if I walked</em> →
+          <em>se eu andasse</em> · <em>when I walk</em> → <em>quando eu andar</em>
+        </span>
+      </span>
+    </label>
+  </section>
+
+  <section>
     <h2>Object pronouns</h2>
     <p class="help">Each appears in about half the clues for verbs that can take it.</p>
     <div class="options">

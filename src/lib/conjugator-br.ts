@@ -17,7 +17,7 @@
  */
 
 import { conjugate as conjugateCore, DEFAULT_SUBJECTS_BY_VARIANT } from "./conjugator-portuguese";
-import type { TenseAspectPair, ConjugationResult, ObjectOptions } from "./conjugator-portuguese";
+import type { TenseAspectPair, ConjugationResult, PortugueseOptions } from "./conjugator-portuguese";
 
 export type {
   Tense,
@@ -27,7 +27,10 @@ export type {
   ConjugationResult,
   ObjectPronoun,
   ObjectOptions,
+  Mood,
 } from "./conjugator-portuguese";
+
+export { SUBJUNCTIVE_CONJUNCTIONS } from "./conjugator-portuguese";
 
 export const DEFAULT_SUBJECTS = DEFAULT_SUBJECTS_BY_VARIANT.br;
 
@@ -35,9 +38,9 @@ export function conjugate(
   verb: string,
   tenseAspects: TenseAspectPair[],
   subjects: string[] = DEFAULT_SUBJECTS,
-  objects: ObjectOptions = {}
+  options: Omit<PortugueseOptions, "variant"> = {}
 ): ConjugationResult {
-  return conjugateCore(verb, tenseAspects, subjects, { ...objects, variant: "br" });
+  return conjugateCore(verb, tenseAspects, subjects, { ...options, variant: "br" });
 }
 
 export { conjugate as conjugateBrazilian };

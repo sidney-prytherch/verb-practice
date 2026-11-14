@@ -46,6 +46,14 @@
  *          -> eu vi ele, ele me viu, eu estou te vendo, eu tenho visto ela, eu disse pra ela,
  *             eu dei pra ela, ele me deu, eu deixei ele cair
  *    Objects can't be combined with reflexive verbs.
+ *  - Subjunctive ({ mood: "subjunctive" }), same tense/aspect grid:
+ *            simple                 continuous               perfect                perfectContinuous
+ *   present  presente (ande)        esteja andando           tenha andado           tenha estado andando
+ *   past     imperfeito (andasse)   estivesse andando        tivesse andado         tivesse estado andando
+ *   future   futuro (andar)         estiver andando          tiver andado           tiver estado andando
+ *    The conjunction is not included (see SUBJUNCTIVE_CONJUNCTIONS: que / se / quando).
+ *    European pronouns go before the verb in the subjunctive (que eu o veja, se eu me
+ *    levantasse, que eu lho dê), since it always follows que / se / quando.
  *  - Options: { variant: "br" | "pt" }. "br" (default) uses the gerund (estou andando),
  *    "amos" in the preterite and você/vocês in the default subjects; "pt" uses
  *    "a + infinitive" (estou a andar), "ámos" and tu/vocês in the default subjects.
@@ -59,9 +67,11 @@ import type {
   ConjugationResult,
   ObjectPronoun,
   ObjectOptions,
+  Mood,
 } from "./conjugator";
 
 export type {
+  Mood,
   Tense,
   Aspect,
   TenseAspectPair,
@@ -75,7 +85,20 @@ export type PortugueseVariant = "br" | "pt";
 
 export interface PortugueseOptions extends ObjectOptions {
   variant?: PortugueseVariant;
+  /** "subjunctive" gives the subjunctive forms (default "indicative") */
+  mood?: Mood;
 }
+
+/**
+ * Conjunctions that usually introduce each subjunctive tense. The conjugator does not
+ * add them; they are here for building phrases: "que eu ande", "se eu andasse",
+ * "quando eu andar".
+ */
+export const SUBJUNCTIVE_CONJUNCTIONS: Record<Tense, string> = {
+  present: "que",
+  past: "se",
+  future: "quando",
+};
 
 export const DEFAULT_SUBJECTS_BY_VARIANT: Record<PortugueseVariant, string[]> = {
   br: ["eu", "você", "ele", "ela", "nós", "vocês", "eles", "elas"],
@@ -105,6 +128,8 @@ interface Irregular {
 
 interface VerbForms {
   infinitive: string;
+  /** subjunctive: presente (ande), imperfeito (andasse), futuro (andar) */
+  subjunctive: Record<Tense, Forms>;
   present: Forms;
   preterite: Forms;
   future: Forms;
@@ -292,7 +317,7 @@ const E_TO_I_EU = new Set([
   "desmentir", "servir", "repetir", "divertir", "despir", "ferir", "competir",
   "refletir", "sugerir", "digerir", "preferir", "aderir", "advertir", "seguir",
   "conseguir", "perseguir", "prosseguir", "agredir", "progredir", "regredir",
-  "transgredir", "prevenir",
+  "transgredir", "prevenir", "gerir", "conferir", "referir", "transferir", "inferir", "interferir"
 ]);
 
 /** Other irregular "eu" forms in the present. */
@@ -425,6 +450,68 @@ function regularParticiple(verb: string, cls: Conjugation, stem: string): string
   return stem + (cls === "ar" ? "ado" : "ido");
 }
 
+/* ------------------------------------------------------------------ */
+/* Subjunctive                                                         */
+/* ------------------------------------------------------------------ */
+
+/** Present subjunctives that can't be built from the "eu" form. */
+const PRESENT_SUBJUNCTIVE_IRREGULAR: Record<string, Forms> = {
+  ser: ["seja", "sejas", "seja", "sejamos", "sejais", "sejam"],
+  estar: ["esteja", "estejas", "esteja", "estejamos", "estejais", "estejam"],
+  ir: ["vá", "vás", "vá", "vamos", "vades", "vão"],
+  dar: ["dê", "dês", "dê", "demos", "deis", "deem"],
+  haver: ["haja", "hajas", "haja", "hajamos", "hajais", "hajam"],
+  saber: ["saiba", "saibas", "saiba", "saibamos", "saibais", "saibam"],
+  querer: ["queira", "queiras", "queira", "queiramos", "queirais", "queiram"],
+  requerer: ["requeira", "requeiras", "requeira", "requeiramos", "requeirais", "requeiram"],
+};
+
+/**
+ * Presente do subjuntivo: the "eu" form minus -o, with the opposite vowel
+ * (falo -> fale, como -> coma, faço -> faça, tenho -> tenha).
+ */
+function presentSubjunctive(verb: string, present: Forms): Forms {
+  if (has(PRESENT_SUBJUNCTIVE_IRREGULAR, verb)) return PRESENT_SUBJUNCTIVE_IRREGULAR[verb];
+  const isAr = verb.endsWith("ar");
+  const first = present[0];
+  const strong = first.endsWith("o") ? first.slice(0, -1) : verb.slice(0, -2);
+  // -ar verbs: spelling keeps the sound (fico -> fique, pago -> pague, começo -> comece);
+  // nós/vós use the infinitive stem (passeie but passeemos, odeie but odiemos)
+  const fix = (stem: string) =>
+    isAr ? stem.replace(/c$/, "qu").replace(/g$/, "gu").replace(/ç$/, "c") : stem;
+  const weak = isAr ? verb.slice(0, -2) : strong;
+  const endings = isAr ? ["e", "es", "e", "emos", "eis", "em"] : ["a", "as", "a", "amos", "ais", "am"];
+  return endings.map((e, i) => fix(i === 3 || i === 4 ? weak : strong) + e) as Forms;
+}
+
+const PAST_SUBJ_ACCENT: Record<string, string> = { a: "á", i: "í", o: "ô", u: "ú" };
+
+/**
+ * Imperfeito and futuro do subjuntivo, both from the "eles" preterite minus -ram:
+ * andaram -> andasse / andar, fizeram -> fizesse / fizer, foram -> fosse / for.
+ */
+function pastSubjunctives(verb: string, preterite: Forms): { past: Forms; future: Forms } {
+  const stem = preterite[5].replace(/ram$/, "");
+  const last = stem[stem.length - 1];
+  // nós/vós carry an accent: andássemos, partíssemos, fôssemos, comêssemos (regular -er),
+  // fizéssemos (strong preterites)
+  const regularEr = verb.endsWith("er") && preterite[5] === verb.slice(0, -2) + "eram";
+  const accented =
+    stem.slice(0, -1) + (last === "e" ? (regularEr ? "ê" : "é") : PAST_SUBJ_ACCENT[last] ?? last);
+  // future: the hiatus accent (incluíram, caíram) stays only where the stress falls on it:
+  // incluir, incluíres, incluir, incluirmos, incluirdes, incluírem
+  const plain = stem.replace(/í$/, "i");
+  return {
+    past: [stem + "sse", stem + "sses", stem + "sse", accented + "ssemos", accented + "sseis", stem + "ssem"],
+    future: [plain + "r", stem + "res", plain + "r", plain + "rmos", plain + "rdes", stem + "rem"],
+  };
+}
+
+function subjunctiveForms(verb: string, present: Forms, preterite: Forms): Record<Tense, Forms> {
+  const { past, future } = pastSubjunctives(verb, preterite);
+  return { present: presentSubjunctive(verb, present), past, future };
+}
+
 function analyse(verb: string, variant: PortugueseVariant): VerbForms {
   const irregular = resolveIrregular(verb);
 
@@ -441,6 +528,7 @@ function analyse(verb: string, variant: PortugueseVariant): VerbForms {
     const futureStem = irregular.future ?? verb;
     return {
       infinitive: verb,
+      subjunctive: subjunctiveForms(verb, irregular.present, irregular.preterite),
       present: irregular.present,
       preterite: irregular.preterite,
       future: FUTURE_ENDINGS.map((e) => futureStem + e) as Forms,
@@ -455,10 +543,13 @@ function analyse(verb: string, variant: PortugueseVariant): VerbForms {
   }
 
   const stem = verb.slice(0, -2);
+  const present = regularPresent(verb, cls, stem);
+  const preterite = regularPreterite(verb, cls, stem, variant);
   return {
     infinitive: verb,
-    present: regularPresent(verb, cls, stem),
-    preterite: regularPreterite(verb, cls, stem, variant),
+    subjunctive: subjunctiveForms(verb, present, preterite),
+    present,
+    preterite,
     future: FUTURE_ENDINGS.map((e) => verb + e) as Forms,
     futureStem: verb,
     gerund: stem + (cls === "ar" ? "ando" : cls === "er" ? "endo" : "indo"),
@@ -502,6 +593,18 @@ const TER: Record<Tense, Forms> = {
   present: ["tenho", "tens", "tem", "temos", "tendes", "têm"],
   past: ["tinha", "tinhas", "tinha", "tínhamos", "tínheis", "tinham"],
   future: ["terei", "terás", "terá", "teremos", "tereis", "terão"],
+};
+
+const ESTAR_SUBJUNCTIVE: Record<Tense, Forms> = {
+  present: ["esteja", "estejas", "esteja", "estejamos", "estejais", "estejam"],
+  past: ["estivesse", "estivesses", "estivesse", "estivéssemos", "estivésseis", "estivessem"],
+  future: ["estiver", "estiveres", "estiver", "estivermos", "estiverdes", "estiverem"],
+};
+
+const TER_SUBJUNCTIVE: Record<Tense, Forms> = {
+  present: ["tenha", "tenhas", "tenha", "tenhamos", "tenhais", "tenham"],
+  past: ["tivesse", "tivesses", "tivesse", "tivéssemos", "tivésseis", "tivessem"],
+  future: ["tiver", "tiveres", "tiver", "tivermos", "tiverdes", "tiverem"],
 };
 
 /* ------------------------------------------------------------------ */
@@ -656,10 +759,16 @@ function buildPredicate(
   person: Person,
   variant: PortugueseVariant,
   reflexive: boolean,
-  objects: ObjectParts = { clitic: null, tonic: "", after: "" }
+  objects: ObjectParts = { clitic: null, tonic: "", after: "" },
+  mood: Mood = "indicative"
 ): string {
   let clitic = reflexive ? CLITICS[person] : objects.clitic;
   const european = variant === "pt";
+  const subjunctive = mood === "subjunctive";
+  const estar = subjunctive ? ESTAR_SUBJUNCTIVE : ESTAR;
+  const ter = subjunctive ? TER_SUBJUNCTIVE : TER;
+  // after que / se / quando, European pronouns also go before the verb
+  const proclitic = !european || subjunctive;
 
   // "ir buscar": the pronoun belongs to the second verb: eu fui buscá-lo, estou a ir buscá-lo
   if (european && clitic && !reflexive && forms.infinitive === "ir" && /^\S+(ar|er|ir|ôr|or)$/.test(particle)) {
@@ -677,26 +786,28 @@ function buildPredicate(
 
   switch (aspect) {
     case "simple": {
-      const form =
-        tense === "present"
-          ? forms.present[person]
-          : tense === "past"
-          ? forms.preterite[person]
-          : forms.future[person];
+      const form = subjunctive
+        ? forms.subjunctive[tense][person]
+        : tense === "present"
+        ? forms.present[person]
+        : tense === "past"
+        ? forms.preterite[person]
+        : forms.future[person];
       if (!clitic) words = form;
-      else if (!european) words = `${clitic} ${form}`;
+      else if (proclitic) words = `${clitic} ${form}`;
       else if (tense === "future") {
         words = mesoclitic(forms.futureStem, clitic, FUTURE_ENDINGS[person]);
       } else words = attach(form, clitic);
       break;
     }
     case "continuous":
-      words = `${ESTAR[tense][person]} ${progressive}`;
+      words = `${estar[tense][person]} ${progressive}`;
       break;
     case "perfect": {
-      const aux = TER[tense][person];
+      const aux = ter[tense][person];
       if (!clitic) words = `${aux} ${forms.participle}`;
       else if (!european) words = `${aux} ${clitic} ${forms.participle}`;
+      else if (subjunctive) words = `${clitic} ${aux} ${forms.participle}`; // que eu o tenha visto
       else {
         const host =
           tense === "future"
@@ -707,7 +818,7 @@ function buildPredicate(
       break;
     }
     case "perfectContinuous":
-      words = `${TER[tense][person]} estado ${progressive}`;
+      words = `${ter[tense][person]} estado ${progressive}`;
       break;
   }
 
@@ -736,8 +847,8 @@ function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
  * @param subjects      Optional subjects. Defaults depend on the variant (see
  *                      DEFAULT_SUBJECTS_BY_VARIANT). English pronouns (I, you, he, ...) are
  *                      also understood.
- * @param options       { variant: "br" | "pt" } (default "br"), plus optional
- *                      { object, indirectObject } pronouns.
+ * @param options       { variant: "br" | "pt" } (default "br"), { mood: "subjunctive" },
+ *                      plus optional { object, indirectObject } pronouns.
  */
 export function conjugate(
   verb: string,
@@ -781,7 +892,7 @@ export function conjugate(
 
     const results = subjectList.map(
       (subject) =>
-        `${subject} ${buildPredicate(forms, particle, tense, aspect, personOf(subject), variant, reflexive, objects)}`
+        `${subject} ${buildPredicate(forms, particle, tense, aspect, personOf(subject), variant, reflexive, objects, options.mood)}`
     );
 
     // Group under the tense, preserving first-seen order.

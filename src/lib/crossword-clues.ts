@@ -21,16 +21,28 @@
  *
  * Notes in brackets are added wherever the pronoun would otherwise be ambiguous
  * (Portuguese o = him or it; English it = o or a).
+ *
+ * With the subjunctive on, about half the clues use it, with its usual conjunction.
+ * English hints say "(subjunctive)" so the mood is never in doubt:
+ *
+ *   hint "that I walk (subjunctive)"    -> answer "que eu ande"
+ *   hint "if (we) had walked (subjunctive)" -> answer "se tivéssemos andado"
+ *   hint "quando eu andar"              -> answer "when I walk"
  */
 
 import {
   conjugate as conjugateEn,
+  SUBJUNCTIVE_CONJUNCTIONS as EN_CONJUNCTIONS,
   type Tense,
   type Aspect,
+  type Mood,
   type ObjectOptions,
   type ObjectPronoun,
 } from "./conjugator";
-import { conjugate as conjugatePt } from "./conjugator-portuguese";
+import {
+  conjugate as conjugatePt,
+  SUBJUNCTIVE_CONJUNCTIONS as PT_CONJUNCTIONS,
+} from "./conjugator-portuguese";
 import { toAnswer, type WordEntry } from "./crossword";
 import { VERBS, SUBJECTS, type Language, type VerbSense, type SubjectId, type SubjectInfo } from "./verbs";
 
@@ -59,6 +71,10 @@ export interface ClueOptions {
   indirectObjectPronouns?: boolean;
   /** chance of each kind of object pronoun when the verb allows it (default 0.5) */
   objectChance?: number;
+  /** include subjunctive clues (default false) */
+  subjunctive?: boolean;
+  /** chance of a clue being subjunctive when it's on (default 0.5) */
+  subjunctiveChance?: number;
   rnd?: () => number;
 }
 
@@ -84,12 +100,13 @@ function predicate(
   verb: string,
   pair: [Tense, Aspect],
   subject: string,
-  objects: ObjectOptions = {}
+  objects: ObjectOptions = {},
+  mood: Mood = "indicative"
 ): string {
   const result =
     lang === "en"
-      ? conjugateEn(verb, [pair], [subject], objects)
-      : conjugatePt(verb, [pair], [subject], { variant: lang === "pt-br" ? "br" : "pt", ...objects });
+      ? conjugateEn(verb, [pair], [subject], { ...objects, mood })
+      : conjugatePt(verb, [pair], [subject], { variant: lang === "pt-br" ? "br" : "pt", ...objects, mood });
   const [tense, aspect] = pair;
   const form = result.conjugations[0][tense]![0][aspect]![0];
   return form.slice(subject.length + 1);
@@ -223,6 +240,8 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     objectPronouns = true,
     indirectObjectPronouns = true,
     objectChance = 0.5,
+    subjunctive = false,
+    subjunctiveChance = 0.5,
     rnd = Math.random,
   } = opts;
 
@@ -279,10 +298,16 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
       }
     }
 
-    const drop = rnd() < dropSubjectChance;
+    const mood: Mood = subjunctive && rnd() < subjunctiveChance ? "subjunctive" : "indicative";
+    // English can't drop the subject after that / if / when ("that laugh")
+    const drop = rnd() < dropSubjectChance && !(mood === "subjunctive" && answerLang === "en");
+    // subjunctive phrases start with their conjunction: que eu ande / that I walk
+    const conjunction = (lang: Language) =>
+      mood === "subjunctive" ? (lang === "en" ? EN_CONJUNCTIONS : PT_CONJUNCTIONS)[pair[0]] + " " : "";
 
     const subjectFor = (lang: Language) => (lang === "en" ? subject.en : subject[lang]);
-    const conj = (lang: Language, o: ObjectOptions) => predicate(lang, sense[lang], pair, subjectFor(lang), o);
+    const conj = (lang: Language, o: ObjectOptions) =>
+      predicate(lang, sense[lang], pair, subjectFor(lang), o, mood);
 
     let hintPred: string;
     let answerPred: string;
@@ -316,8 +341,10 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     }
 
     const answerSubject = answerLang === "en" ? subject.en : subject[answerLang];
-    const word = drop ? answerPred : `${answerSubject} ${answerPred}`;
-    let hint = `${subjectText(subject, hintLang, drop)} ${hintPred}${objectNote}`;
+    const word = conjunction(answerLang) + (drop ? answerPred : `${answerSubject} ${answerPred}`);
+    let hint = `${conjunction(hintLang)}${subjectText(subject, hintLang, drop)} ${hintPred}${objectNote}`;
+    // English barely marks the subjunctive ("when I walk" looks indicative), so say it
+    if (mood === "subjunctive" && hintLang === "en") hint += " (subjunctive)";
 
     // nothing to translate (e.g. Brazil and Portugal spell it the same)
     if (toAnswer(hintPred) === toAnswer(answerPred)) continue;
@@ -337,7 +364,7 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
       languageOrigin: answerLang,
       hintLanguageOrigin: hintLang,
       partOfSpeech: "verb",
-      verbTense: `${pair[0]} ${pair[1]}`,
+      verbTense: `${mood === "subjunctive" ? "subjunctive " : ""}${pair[0]} ${pair[1]}`,
       ...enumerate(word),
     });
   }

@@ -21,10 +21,28 @@
  *
  * When the object is the subject's own person (I ... me), the reflexive form is used:
  * "I saw myself".
+ *
+ * Subjunctive ({ mood: "subjunctive" }), matching the Portuguese tenses:
+ *   present  "(that) he walk", "(that) he be walking", "(that) he have walked"
+ *   past     "(if) he walked", "(if) I were", "(if) he were walking", "(if) he had walked"
+ *   future   "(when) he walks", "(when) he is walking", "(when) he has walked"
+ * The conjunction is not included (see SUBJUNCTIVE_CONJUNCTIONS).
  */
 
 export type Tense = "past" | "present" | "future";
 export type Aspect = "simple" | "continuous" | "perfect" | "perfectContinuous";
+export type Mood = "indicative" | "subjunctive";
+
+/**
+ * Conjunctions that usually introduce each subjunctive tense. The conjugator does not
+ * add them; they are here for building phrases: "that he walk", "if I walked",
+ * "when I walk".
+ */
+export const SUBJUNCTIVE_CONJUNCTIONS: Record<Tense, string> = {
+  present: "that",
+  past: "if",
+  future: "when",
+};
 
 export type TenseAspectPair =
   | [Tense, Aspect]
@@ -60,6 +78,11 @@ export type ObjectPronoun =
 export const OBJECT_PRONOUNS: ObjectPronoun[] = [
   "me", "you", "him", "her", "it-m", "it-f", "us", "you-pl", "them-m", "them-f",
 ];
+
+export interface ConjugateOptions extends ObjectOptions {
+  /** "subjunctive" gives the subjunctive forms (default "indicative") */
+  mood?: Mood;
+}
 
 export interface ObjectOptions {
   /** direct object: "I saw *it*" */
@@ -392,11 +415,35 @@ function buildPredicate(
   tense: Tense,
   aspect: Aspect,
   person: Person,
-  objects: { beforeParticle: string; after: string } = { beforeParticle: "", after: "" }
+  objects: { beforeParticle: string; after: string } = { beforeParticle: "", after: "" },
+  mood: Mood = "indicative"
 ): string {
   const ing = toIng(base);
   const { past, participle } = pastForms(base);
-  let words: string;
+  let words = "";
+
+  if (mood === "subjunctive" && tense !== "future") {
+    // present: the bare form for every person (that he walk, that he be walking)
+    // past: past forms, with "were" for be (if I were, if he were walking, if he had walked)
+    const present = tense === "present";
+    switch (aspect) {
+      case "simple":
+        words = present ? base : base === "be" ? "were" : past;
+        break;
+      case "continuous":
+        words = `${present ? "be" : "were"} ${ing}`;
+        break;
+      case "perfect":
+        words = `${present ? "have" : "had"} ${participle}`;
+        break;
+      case "perfectContinuous":
+        words = `${present ? "have" : "had"} been ${ing}`;
+        break;
+    }
+    return [words, objects.beforeParticle, particle, objects.after].filter(Boolean).join(" ");
+  }
+  // future subjunctive: English uses the present after "when" (when he walks)
+  if (mood === "subjunctive") tense = "present";
 
   switch (aspect) {
     case "simple":
@@ -446,14 +493,16 @@ function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
  * @param verb          Base-form verb. Phrasal verbs work too ("give up").
  * @param tenseAspects  Pairs such as ["past", "continuous"].
  * @param subjects      Optional list of subjects. Defaults to I, you, he, she, it, we, they.
- * @param objects       Optional object pronouns: { object, indirectObject }.
+ * @param options       Optional object pronouns { object, indirectObject } and
+ *                      { mood: "subjunctive" }.
  */
 export function conjugate(
   verb: string,
   tenseAspects: TenseAspectPair[],
   subjects: string[] = DEFAULT_SUBJECTS,
-  objects: ObjectOptions = {}
+  options: ConjugateOptions = {}
 ): ConjugationResult {
+  const objects = options;
   const cleaned = verb.trim().toLowerCase();
   if (!cleaned) throw new Error("A verb is required.");
 
@@ -468,7 +517,7 @@ export function conjugate(
 
     const forms = subjects.map(
       (subject) =>
-        `${subject} ${buildPredicate(base, particle, tense, aspect, personOf(subject), objectPhrase(objects, subject, base))}`
+        `${subject} ${buildPredicate(base, particle, tense, aspect, personOf(subject), objectPhrase(objects, subject, base), options.mood)}`
     );
 
     // Group under the tense, preserving first-seen order.

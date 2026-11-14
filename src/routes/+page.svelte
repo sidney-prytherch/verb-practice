@@ -172,6 +172,7 @@
           verbs: enabledVerbs,
           objectPronouns: settings.objectPronouns,
           indirectObjectPronouns: settings.indirectObjectPronouns,
+          subjunctive: settings.subjunctive,
           pairs: chosen,
           maxLength: size,
           count: 800
@@ -373,7 +374,9 @@
     <p class="summary">
       {settings.size}×{settings.size} · {LAYOUTS.find((l) => l.id === settings.layout)?.name} ·
       {settings.languages.map((l) => LANGUAGE_TAGS[l]).join(', ') || 'no languages'} ·
-      {settings.tenses.length} tenses × {settings.aspects.length} aspects ·
+      {settings.tenses.length} tenses × {settings.aspects.length} aspects{settings.subjunctive
+        ? ' + subjunctive'
+        : ''} ·
       {settings.subjects.length} subjects · {enabledVerbs.length} verbs ·
       <a href={resolve('/settings')}>change</a>
     </p>
