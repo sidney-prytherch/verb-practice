@@ -10,6 +10,17 @@
  *   //     { present: [{ perfect: ["I have walked", "he has walked"] }] },
  *   //   ],
  *   // }
+ *
+ * Object pronouns (optional 4th argument):
+ *   conjugate("give", [["past", "simple"]], ["I"], { object: "it-m", indirectObject: "her" });
+ *   // "I gave it to her"
+ *   conjugate("see", [["present", "perfect"]], ["we"], { object: "them-f" });
+ *   // "we have seen them"
+ *   conjugate("tell", [["past", "simple"]], ["he"], { indirectObject: "me" });
+ *   // "he told me"   (verbs without a bare indirect object use "to": "he said to me")
+ *
+ * When the object is the subject's own person (I ... me), the reflexive form is used:
+ * "I saw myself".
  */
 
 export type Tense = "past" | "present" | "future";
@@ -29,6 +40,79 @@ export interface ConjugationResult {
 }
 
 export const DEFAULT_SUBJECTS = ["I", "you", "he", "she", "it", "we", "they"];
+
+/**
+ * Object pronouns, shared with the Portuguese conjugators. "it" and "them" carry a
+ * gender because Portuguese needs one (o/a, os/as); English ignores it.
+ */
+export type ObjectPronoun =
+  | "me"
+  | "you"
+  | "him"
+  | "her"
+  | "it-m"
+  | "it-f"
+  | "us"
+  | "you-pl"
+  | "them-m"
+  | "them-f";
+
+export const OBJECT_PRONOUNS: ObjectPronoun[] = [
+  "me", "you", "him", "her", "it-m", "it-f", "us", "you-pl", "them-m", "them-f",
+];
+
+export interface ObjectOptions {
+  /** direct object: "I saw *it*" */
+  object?: ObjectPronoun;
+  /** indirect object: "I gave it *to her*" (alone: "I told *her*") */
+  indirectObject?: ObjectPronoun;
+}
+
+const EN_OBJECT: Record<ObjectPronoun, string> = {
+  me: "me",
+  you: "you",
+  him: "him",
+  her: "her",
+  "it-m": "it",
+  "it-f": "it",
+  us: "us",
+  "you-pl": "you",
+  "them-m": "them",
+  "them-f": "them",
+};
+
+/** Object pronoun, or the reflexive form when it refers back to the subject. */
+function objectWord(pronoun: ObjectPronoun, subject: string): string {
+  const s = subject.trim().toLowerCase();
+  if (pronoun === "me" && s === "i") return "myself";
+  if (pronoun === "us" && s === "we") return "ourselves";
+  if (pronoun === "you" && s === "you") return "yourself";
+  if (pronoun === "you-pl" && s === "you") return "yourselves";
+  return EN_OBJECT[pronoun];
+}
+
+/**
+ * Verbs that take a bare indirect object on its own: "I told her", "I gave him".
+ * Others need "to": "I said to her", "I explained to them".
+ */
+const BARE_INDIRECT = new Set(["give", "tell", "show", "teach", "pay", "offer", "promise", "ask", "hand", "owe"]);
+
+/** Words that follow the verb: "it", "it to her", or "her" / "to her" (indirect object alone). */
+function objectPhrase(objects: ObjectOptions, subject: string, base = ""): { beforeParticle: string; after: string } {
+  const { object, indirectObject } = objects;
+  if (object && indirectObject) {
+    return {
+      beforeParticle: objectWord(object, subject),
+      after: `to ${objectWord(indirectObject, subject)}`,
+    };
+  }
+  if (object) return { beforeParticle: objectWord(object, subject), after: "" };
+  if (indirectObject) {
+    const word = objectWord(indirectObject, subject);
+    return BARE_INDIRECT.has(base) ? { beforeParticle: word, after: "" } : { beforeParticle: "", after: `to ${word}` };
+  }
+  return { beforeParticle: "", after: "" };
+}
 
 const TENSES: Tense[] = ["past", "present", "future"];
 const ASPECTS: Aspect[] = ["simple", "continuous", "perfect", "perfectContinuous"];
@@ -307,7 +391,8 @@ function buildPredicate(
   particle: string,
   tense: Tense,
   aspect: Aspect,
-  person: Person
+  person: Person,
+  objects: { beforeParticle: string; after: string } = { beforeParticle: "", after: "" }
 ): string {
   const ing = toIng(base);
   const { past, participle } = pastForms(base);
@@ -340,7 +425,8 @@ function buildPredicate(
       break;
   }
 
-  return particle ? `${words} ${particle}` : words;
+  // object pronouns go between the verb and a particle: "gave it up", "gave it to her"
+  return [words, objects.beforeParticle, particle, objects.after].filter(Boolean).join(" ");
 }
 
 function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
@@ -360,11 +446,13 @@ function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
  * @param verb          Base-form verb. Phrasal verbs work too ("give up").
  * @param tenseAspects  Pairs such as ["past", "continuous"].
  * @param subjects      Optional list of subjects. Defaults to I, you, he, she, it, we, they.
+ * @param objects       Optional object pronouns: { object, indirectObject }.
  */
 export function conjugate(
   verb: string,
   tenseAspects: TenseAspectPair[],
-  subjects: string[] = DEFAULT_SUBJECTS
+  subjects: string[] = DEFAULT_SUBJECTS,
+  objects: ObjectOptions = {}
 ): ConjugationResult {
   const cleaned = verb.trim().toLowerCase();
   if (!cleaned) throw new Error("A verb is required.");
@@ -380,7 +468,7 @@ export function conjugate(
 
     const forms = subjects.map(
       (subject) =>
-        `${subject} ${buildPredicate(base, particle, tense, aspect, personOf(subject))}`
+        `${subject} ${buildPredicate(base, particle, tense, aspect, personOf(subject), objectPhrase(objects, subject, base))}`
     );
 
     // Group under the tense, preserving first-seen order.

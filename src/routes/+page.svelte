@@ -170,6 +170,8 @@
           languages: settings.languages,
           subjects: settings.subjects,
           verbs: enabledVerbs,
+          objectPronouns: settings.objectPronouns,
+          indirectObjectPronouns: settings.indirectObjectPronouns,
           pairs: chosen,
           maxLength: size,
           count: 800

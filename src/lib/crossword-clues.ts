@@ -12,9 +12,24 @@
  *
  *   hint "(I) walked"     -> answer "andei"
  *   hint "(ele) andou"    -> answer "walked"
+ *
+ * Verbs that take objects sometimes get object pronouns:
+ *
+ *   hint "I gave it to her"  -> answer "eu dei-lho" / "eu dei pra ela"
+ *   hint "eu vi-o (him)"     -> answer "I saw him"
+ *   hint "I told her"        -> answer "eu disse-lhe" / "eu disse pra ela"
+ *
+ * Notes in brackets are added wherever the pronoun would otherwise be ambiguous
+ * (Portuguese o = him or it; English it = o or a).
  */
 
-import { conjugate as conjugateEn, type Tense, type Aspect } from "./conjugator";
+import {
+  conjugate as conjugateEn,
+  type Tense,
+  type Aspect,
+  type ObjectOptions,
+  type ObjectPronoun,
+} from "./conjugator";
 import { conjugate as conjugatePt } from "./conjugator-portuguese";
 import { toAnswer, type WordEntry } from "./crossword";
 import { VERBS, SUBJECTS, type Language, type VerbSense, type SubjectId, type SubjectInfo } from "./verbs";
@@ -38,6 +53,12 @@ export interface ClueOptions {
   count?: number;
   /** chance of dropping the subject from the answer (default 0.5) */
   dropSubjectChance?: number;
+  /** use direct object pronouns with verbs that take them (default true) */
+  objectPronouns?: boolean;
+  /** use indirect object pronouns with verbs that take them (default true) */
+  indirectObjectPronouns?: boolean;
+  /** chance of each kind of object pronoun when the verb allows it (default 0.5) */
+  objectChance?: number;
   rnd?: () => number;
 }
 
@@ -58,11 +79,17 @@ export function languagePairs(languages: Language[]): [Language, Language][] {
 }
 
 /** Conjugates for one subject and returns the predicate (without the subject). */
-function predicate(lang: Language, verb: string, pair: [Tense, Aspect], subject: string): string {
+function predicate(
+  lang: Language,
+  verb: string,
+  pair: [Tense, Aspect],
+  subject: string,
+  objects: ObjectOptions = {}
+): string {
   const result =
     lang === "en"
-      ? conjugateEn(verb, [pair], [subject])
-      : conjugatePt(verb, [pair], [subject], { variant: lang === "pt-br" ? "br" : "pt" });
+      ? conjugateEn(verb, [pair], [subject], objects)
+      : conjugatePt(verb, [pair], [subject], { variant: lang === "pt-br" ? "br" : "pt", ...objects });
   const [tense, aspect] = pair;
   const form = result.conjugations[0][tense]![0][aspect]![0];
   return form.slice(subject.length + 1);
@@ -91,6 +118,91 @@ function ambiguityMaps(verbs: VerbSense[], pairs: [Language, Language][]) {
   return maps;
 }
 
+/* ---------------- object pronouns ---------------- */
+
+/** Things: I bought *it*. Also the direct object when there is an indirect one: I gave *it* to her. */
+const THING_OPTIONS: ObjectPronoun[] = ["it-m", "it-f", "them-m", "them-f"];
+/** People. ("you" plural is left out: its Portuguese pronoun varies too much.) */
+const PERSON_OPTIONS: ObjectPronoun[] = ["me", "you", "him", "her", "us", "them-m", "them-f"];
+
+/**
+ * Senses whose direct object is naturally a person (I saw *him*, I helped *her*).
+ * Every other verb only gets it/them, which avoids clues like "I published her".
+ */
+const PERSON_OBJECT = new Set(
+  `see#0 know#1 find#0 find#1 call#0 leave#1 let#0 help#0 hear#0 hear#1 meet#0 meet#1 love#0 love#1
+  hate#0 hate#1 visit#0 invite#0 follow#0 follow#1 watch#1 watch#2 kill#0 protect#0 support#0 support#1
+  understand#0 understand#1 recognize#0 remember#2 forget#0 lose#0 beat#0 beat#2 attack#0 avoid#0
+  ignore#0 judge#0 face#0 face#1 hurt#0 scare#0 surprise#0 persuade#0 persuade#1 warn#0 inform#0
+  introduce#0 welcome#0 welcome#1 take#1 bring#0 wake#1 catch#0 catch#1 hold#0 push#0 pull#0 kick#0
+  bite#0 hide#0 save#0 choose#0 select#1 accept#0 prefer#0 treat#0 train#0 lead#0 lead#1 receive#0
+  get#4 expect#0 imagine#0 raise#2 observe#0 notice#0 examine#0 release#0 control#0 wash#0 tie#1
+  compare#0 influence#0 satisfy#0 serve#0 drop#1 keep#1 want#0`.split(/\s+/)
+);
+/**
+ * Senses whose "it" is abstract (say it, know it, explain it). Everyday Brazilian
+ * leaves such an "it" out rather than saying "ele", so these only get it/them
+ * together with an indirect object (where Brazilian drops it anyway).
+ */
+const ABSTRACT_OBJECT = new Set(
+  `know#0 say#0 tell#0 tell#1 understand#0 understand#1 realize#0 decide#1 explain#0
+  mention#0 suggest#0 suggest#1 report#0 describe#0 reveal#0 deny#0 prove#0 promise#0 whisper#0
+  sing#0 admit#0 imagine#0 consider#0 notice#0 express#0 guess#0 repeat#0 discuss#0 deserve#0
+  expect#0 remember#2 forget#0 ignore#0 regret#0 prefer#0 accept#0 recognize#0 hear#0 feel#0`.split(/\s+/)
+);
+
+/** Senses where "to her" works without an "it": I told her, I explained to them. */
+const INDIRECT_ALONE = new Set(
+  `say#0 tell#1 show#0 write#0 explain#0 pay#0 teach#0 sing#0 whisper#0 suggest#0 suggest#1
+  mention#0 describe#0 reveal#0 report#0 lend#0 promise#0 prove#0 sell#0 deliver#0`.split(/\s+/)
+);
+
+/** ...and verbs whose object can only be a person. */
+const PERSON_ONLY = new Set("invite#0 persuade#0 persuade#1 warn#0 inform#0 meet#0 introduce#0 help#0".split(" "));
+
+/** Object pronoun that would mean the subject itself (I ... me): avoided, that's a reflexive. */
+const OWN_OBJECT: Partial<Record<SubjectId, ObjectPronoun>> = { i: "me", we: "us", you: "you" };
+
+const EN_WORD: Record<ObjectPronoun, string> = {
+  me: "me", you: "you", him: "him", her: "her", "it-m": "it", "it-f": "it",
+  us: "us", "you-pl": "you", "them-m": "them", "them-f": "them",
+};
+
+/** English words for a set of objects, used as a note: "it to her", "him", "to her". */
+function englishObjects(o: ObjectOptions): string {
+  if (o.object && o.indirectObject) return `${EN_WORD[o.object]} to ${EN_WORD[o.indirectObject]}`;
+  if (o.object) return EN_WORD[o.object];
+  return `to ${EN_WORD[o.indirectObject!]}`;
+}
+
+const gender = (p: ObjectPronoun) => (p.endsWith("-f") ? "f." : "m.");
+
+/**
+ * Adds gender notes to "it"/"them" in an English hint, since Portuguese needs it:
+ * "gave it to her" -> "gave it (m.) to her".
+ */
+function markGender(text: string, o: ObjectOptions, answerLang: Language): string {
+  const marks: ObjectPronoun[] = [];
+  // it/them: o/a (Portugal), ele/ela (Brazil). Brazil leaves out a thing that is given
+  // to someone ("eu dei pra ela"), so no gender is needed then.
+  const thingDropped = answerLang === "pt-br" && !!o.indirectObject;
+  if (o.object && /^(it|them)-/.test(o.object) && !thingDropped) marks.push(o.object);
+  // "(to) them" only needs a gender in Brazil, where it becomes "pra eles" / "pra elas"
+  if (o.indirectObject?.startsWith("them-") && answerLang === "pt-br") marks.push(o.indirectObject);
+  let from = 0;
+  for (const m of marks) {
+    const word = EN_WORD[m];
+    const re = new RegExp(`\\b${word}\\b`, "g");
+    re.lastIndex = from;
+    const hit = re.exec(text);
+    if (!hit) continue;
+    const note = ` (${gender(m)})`;
+    text = text.slice(0, hit.index + word.length) + note + text.slice(hit.index + word.length);
+    from = hit.index + word.length + note.length;
+  }
+  return text;
+}
+
 function subjectText(subject: SubjectInfo, lang: Language, bracketed: boolean): string {
   if (lang !== "en") return bracketed ? `(${subject[lang]})` : subject[lang];
   if (bracketed) return `(${subject.en}${subject.note ? ", " + subject.note : ""})`;
@@ -108,6 +220,9 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     minLength = 3,
     count = 300,
     dropSubjectChance = 0.5,
+    objectPronouns = true,
+    indirectObjectPronouns = true,
+    objectChance = 0.5,
     rnd = Math.random,
   } = opts;
 
@@ -128,20 +243,81 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     const pair = pick(pairs);
     const subject = pick(subjectList);
     const [hintLang, answerLang] = pick(langPairs);
+
+    // object pronouns, for verbs that take them: each kind about half the time
+    let objects: ObjectOptions = {};
+    let objectSets: { direct: ObjectPronoun[] | null; indirect: ObjectPronoun[] | null } | null = null;
+    if (!sense.reflexive) {
+      const own = OWN_OBJECT[subject.id];
+      const people = PERSON_OPTIONS.filter((p) => p !== own);
+      // direct objects on their own: people only for verbs that take people, and
+      // no abstract "it" (see ABSTRACT_OBJECT)
+      const directAlone = PERSON_ONLY.has(sense.id)
+        ? people
+        : [
+            ...(PERSON_OBJECT.has(sense.id) ? people : []),
+            ...(ABSTRACT_OBJECT.has(sense.id) ? [] : THING_OPTIONS),
+          ];
+      const useDirect = objectPronouns && sense.directObject && rnd() < objectChance;
+      // "introduce" takes a person, not a thing, so it doesn't get an indirect object here
+      const useIndirect =
+        indirectObjectPronouns && sense.indirectObject && !PERSON_ONLY.has(sense.id) && rnd() < objectChance;
+
+      if (useDirect && useIndirect) {
+        // with an indirect object the direct one is a thing: I gave *it* to her
+        objectSets = { direct: THING_OPTIONS, indirect: people };
+      } else if (useDirect && directAlone.length) {
+        objectSets = { direct: directAlone, indirect: null };
+      } else if (useIndirect && INDIRECT_ALONE.has(sense.id)) {
+        objectSets = { direct: null, indirect: people };
+      }
+      if (objectSets) {
+        objects = {
+          object: objectSets.direct ? pick(objectSets.direct) : undefined,
+          indirectObject: objectSets.indirect ? pick(objectSets.indirect) : undefined,
+        };
+      }
+    }
+
     const drop = rnd() < dropSubjectChance;
+
+    const subjectFor = (lang: Language) => (lang === "en" ? subject.en : subject[lang]);
+    const conj = (lang: Language, o: ObjectOptions) => predicate(lang, sense[lang], pair, subjectFor(lang), o);
 
     let hintPred: string;
     let answerPred: string;
     try {
-      hintPred = predicate(hintLang, sense[hintLang], pair, hintLang === "en" ? subject.en : subject[hintLang]);
-      answerPred = predicate(answerLang, sense[answerLang], pair, answerLang === "en" ? subject.en : subject[answerLang]);
+      hintPred = conj(hintLang, objects);
+      answerPred = conj(answerLang, objects);
     } catch {
       continue;
     }
 
+    let objectNote = "";
+    if (objectSets && hintLang === "en") {
+      hintPred = markGender(hintPred, objects, answerLang);
+    } else if (objectSets) {
+      // does another choice of pronouns give the same hint but a different answer?
+      // (o = him or it, lhe = him or her...) then say which is meant
+      const directs: (ObjectPronoun | undefined)[] = objectSets.direct ?? [undefined];
+      const indirects: (ObjectPronoun | undefined)[] = objectSets.indirect ?? [undefined];
+      const alternatives: ObjectOptions[] = directs.flatMap((d) =>
+        indirects.map((i) => ({ object: d, indirectObject: i }))
+      );
+      const clash = alternatives.some((alt) => {
+        if (alt.object === objects.object && alt.indirectObject === objects.indirectObject) return false;
+        try {
+          return conj(hintLang, alt) === hintPred && toAnswer(conj(answerLang, alt)) !== toAnswer(answerPred);
+        } catch {
+          return false;
+        }
+      });
+      if (clash) objectNote = ` (${englishObjects(objects)})`;
+    }
+
     const answerSubject = answerLang === "en" ? subject.en : subject[answerLang];
     const word = drop ? answerPred : `${answerSubject} ${answerPred}`;
-    let hint = `${subjectText(subject, hintLang, drop)} ${hintPred}`;
+    let hint = `${subjectText(subject, hintLang, drop)} ${hintPred}${objectNote}`;
 
     // nothing to translate (e.g. Brazil and Portugal spell it the same)
     if (toAnswer(hintPred) === toAnswer(answerPred)) continue;

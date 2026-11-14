@@ -92,6 +92,33 @@
   </section>
 
   <section>
+    <h2>Object pronouns</h2>
+    <p class="help">Each appears in about half the clues for verbs that can take it.</p>
+    <div class="options">
+      <label class="option layout" class:on={settings.objectPronouns}>
+        <input type="checkbox" bind:checked={settings.objectPronouns} />
+        <span>
+          <strong>Direct object pronouns</strong>
+          <span class="desc">
+            <em>I saw him</em> → <em>eu vi ele</em> (BR) · <em>eu vi-o</em> (PT)
+          </span>
+        </span>
+      </label>
+      <label class="option layout" class:on={settings.indirectObjectPronouns}>
+        <input type="checkbox" bind:checked={settings.indirectObjectPronouns} />
+        <span>
+          <strong>Indirect object pronouns</strong>
+          <span class="desc">
+            <em>I told her</em> → <em>eu disse pra ela</em> (BR) · <em>eu disse-lhe</em> (PT).
+            With both on: <em>I gave it to her</em> → <em>eu dei pra ela</em> ·
+            <em>eu dei-lho</em>
+          </span>
+        </span>
+      </label>
+    </div>
+  </section>
+
+  <section>
     <h2>Crossword layout</h2>
     <div class="options layouts">
       {#each LAYOUTS as l}

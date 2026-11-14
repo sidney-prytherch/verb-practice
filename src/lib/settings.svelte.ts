@@ -43,6 +43,10 @@ export interface Settings {
   size: GridSize;
   tenses: Tense[];
   aspects: Aspect[];
+  /** add direct object pronouns (I saw *him*) to verbs that take them, about half the time */
+  objectPronouns: boolean;
+  /** add indirect object pronouns (I told *her*, I gave it *to her*), about half the time */
+  indirectObjectPronouns: boolean;
   languages: Language[];
   subjects: SubjectId[];
   /** ids of verbs switched off in the dictionary (new verbs are on by default) */
@@ -57,6 +61,8 @@ export function defaultSettings(): Settings {
     size: 13,
     tenses: [...TENSES],
     aspects: ["simple", "continuous"],
+    objectPronouns: true,
+    indirectObjectPronouns: true,
     languages: ["en", "pt-br"],
     subjects: SUBJECTS.map((s) => s.id),
     disabledVerbs: [],
@@ -75,6 +81,11 @@ function load(): Settings {
       size: SIZES.includes(saved.size as GridSize) ? (saved.size as GridSize) : defaults.size,
       tenses: Array.isArray(saved.tenses) ? TENSES.filter((t) => saved.tenses!.includes(t)) : defaults.tenses,
       aspects: Array.isArray(saved.aspects) ? ASPECTS.filter((a) => saved.aspects!.includes(a)) : defaults.aspects,
+      objectPronouns: typeof saved.objectPronouns === "boolean" ? saved.objectPronouns : defaults.objectPronouns,
+      indirectObjectPronouns:
+        typeof saved.indirectObjectPronouns === "boolean"
+          ? saved.indirectObjectPronouns
+          : defaults.indirectObjectPronouns,
       languages: Array.isArray(saved.languages)
         ? LANGUAGES.filter((l) => saved.languages!.includes(l))
         : defaults.languages,

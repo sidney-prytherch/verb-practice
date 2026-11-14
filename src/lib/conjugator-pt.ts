@@ -13,7 +13,7 @@
  */
 
 import { conjugate as conjugateCore, DEFAULT_SUBJECTS_BY_VARIANT } from "./conjugator-portuguese";
-import type { TenseAspectPair, ConjugationResult } from "./conjugator-portuguese";
+import type { TenseAspectPair, ConjugationResult, ObjectOptions } from "./conjugator-portuguese";
 
 export type {
   Tense,
@@ -21,6 +21,8 @@ export type {
   TenseAspectPair,
   TenseConjugations,
   ConjugationResult,
+  ObjectPronoun,
+  ObjectOptions,
 } from "./conjugator-portuguese";
 
 export const DEFAULT_SUBJECTS = DEFAULT_SUBJECTS_BY_VARIANT.pt;
@@ -28,9 +30,10 @@ export const DEFAULT_SUBJECTS = DEFAULT_SUBJECTS_BY_VARIANT.pt;
 export function conjugate(
   verb: string,
   tenseAspects: TenseAspectPair[],
-  subjects: string[] = DEFAULT_SUBJECTS
+  subjects: string[] = DEFAULT_SUBJECTS,
+  objects: ObjectOptions = {}
 ): ConjugationResult {
-  return conjugateCore(verb, tenseAspects, subjects, { variant: "pt" });
+  return conjugateCore(verb, tenseAspects, subjects, { ...objects, variant: "pt" });
 }
 
 export { conjugate as conjugateEuropean };

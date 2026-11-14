@@ -36,6 +36,16 @@
  *      pt: after it, hyphenated -> eu levanto-me, nós levantámo-nos, eu estou a levantar-me,
  *                                  eu tenho-me levantado, and mesoclisis in the simple
  *                                  future -> eu levantar-me-ei
+ *  - Object pronouns: { object, indirectObject } (see ObjectPronoun in conjugator.ts).
+ *      pt: after the verb, merged when both are present, endings adjusted before o/a
+ *          -> eu vi-o, eu dei-lho, nós vimo-lo, eles deram-no, eu fi-lo, estou a comprá-lo,
+ *             tenho-o visto, and mesoclisis in the future -> eu dá-lo-ei, eu dar-lho-ei
+ *      br: everyday speech. me/te/nos before the main verb; him/her/it/them as ele/ela/eles/
+ *          elas after it; "to him/her/them" as "pra ele/ela/eles"; a thing given to someone
+ *          is left out ("it")
+ *          -> eu vi ele, ele me viu, eu estou te vendo, eu tenho visto ela, eu disse pra ela,
+ *             eu dei pra ela, ele me deu, eu deixei ele cair
+ *    Objects can't be combined with reflexive verbs.
  *  - Options: { variant: "br" | "pt" }. "br" (default) uses the gerund (estou andando),
  *    "amos" in the preterite and você/vocês in the default subjects; "pt" uses
  *    "a + infinitive" (estou a andar), "ámos" and tu/vocês in the default subjects.
@@ -47,13 +57,23 @@ import type {
   TenseAspectPair,
   TenseConjugations,
   ConjugationResult,
+  ObjectPronoun,
+  ObjectOptions,
 } from "./conjugator";
 
-export type { Tense, Aspect, TenseAspectPair, TenseConjugations, ConjugationResult };
+export type {
+  Tense,
+  Aspect,
+  TenseAspectPair,
+  TenseConjugations,
+  ConjugationResult,
+  ObjectPronoun,
+  ObjectOptions,
+};
 
 export type PortugueseVariant = "br" | "pt";
 
-export interface PortugueseOptions {
+export interface PortugueseOptions extends ObjectOptions {
   variant?: PortugueseVariant;
 }
 
@@ -491,15 +511,141 @@ const TER: Record<Tense, Forms> = {
 /** Reflexive pronouns by person: eu, tu, ele, nós, vós, eles. */
 const CLITICS: Forms = ["me", "te", "se", "nos", "vos", "se"];
 
-/** European enclisis: verb-pronoun. "nós" drops the final s: levantamos + nos -> levantamo-nos. */
-function enclitic(form: string, clitic: string): string {
-  const host = clitic === "nos" && form.endsWith("s") ? form.slice(0, -1) : form;
+/* ---------------- object pronouns ---------------- */
+
+/* European Portuguese: clitic pronouns (written and spoken). */
+const EP_DIRECT: Record<ObjectPronoun, string> = {
+  me: "me", you: "te", him: "o", her: "a", "it-m": "o", "it-f": "a", us: "nos", "you-pl": "vos", "them-m": "os", "them-f": "as",
+};
+const EP_INDIRECT: Record<ObjectPronoun, string> = {
+  me: "me", you: "te", him: "lhe", her: "lhe", "it-m": "lhe", "it-f": "lhe", us: "nos", "you-pl": "vos", "them-m": "lhes", "them-f": "lhes",
+};
+
+/** Stressed pronouns: after "a" in Portugal (a mim, a ela), after the verb / "pra" in Brazil. */
+const TONIC: Record<PortugueseVariant, Record<ObjectPronoun, string>> = {
+  br: { me: "mim", you: "você", him: "ele", her: "ela", "it-m": "ele", "it-f": "ela", us: "nós", "you-pl": "vocês", "them-m": "eles", "them-f": "elas" },
+  pt: { me: "mim", you: "ti", him: "ele", her: "ela", "it-m": "ele", "it-f": "ela", us: "nós", "you-pl": "vocês", "them-m": "eles", "them-f": "elas" },
+};
+
+/** Brazilian everyday speech keeps clitics only for me / te / nos (ele me viu, eu te disse). */
+const BR_CLITIC: Partial<Record<ObjectPronoun, string>> = { me: "me", you: "te", us: "nos" };
+
+/** European contractions of indirect + direct: lhe + o = lho, me + a = ma, nos + os = no-los. */
+const CONTRACTION_BASE: Record<string, string> = {
+  me: "m",
+  te: "t",
+  lhe: "lh",
+  lhes: "lh",
+  nos: "no-l",
+  vos: "vo-l",
+};
+
+const isThirdPersonDirect = (clitic: string) => /^(o|a|os|as)$/.test(clitic);
+const isThing = (p: ObjectPronoun) => p.startsWith("it-") || p.startsWith("them-");
+
+interface ObjectParts {
+  /** the clitic that attaches to the verb (may be a contraction like "lho") */
+  clitic: string | null;
+  /** Brazil: stressed direct object right after the verb: eu vi *ele* */
+  tonic: string;
+  /** words at the end, e.g. "a ela" / "pra ela" */
+  after: string;
+}
+
+function objectParts(objects: ObjectOptions, variant: PortugueseVariant): ObjectParts {
+  const { object, indirectObject } = objects;
+  const none: ObjectParts = { clitic: null, tonic: "", after: "" };
+
+  if (variant === "br") {
+    // Everyday Brazilian Portuguese:
+    //   eu vi ele · ele me viu · eu disse pra ela · eu dei pra ela (the "it" is left out)
+    const direct = (p: ObjectPronoun): ObjectParts =>
+      BR_CLITIC[p] ? { ...none, clitic: BR_CLITIC[p]! } : { ...none, tonic: TONIC.br[p] };
+    const indirect = (p: ObjectPronoun): ObjectParts =>
+      BR_CLITIC[p] ? { ...none, clitic: BR_CLITIC[p]! } : { ...none, after: `pra ${TONIC.br[p]}` };
+
+    if (object && indirectObject) {
+      // a thing given to someone is usually not said again: eu dei pra ela, ele me deu
+      if (isThing(object)) return indirect(indirectObject);
+      // a person: ele me apresentou pra ela, eu apresentei ele pra ela
+      return { ...direct(object), after: `pra ${TONIC.br[indirectObject]}` };
+    }
+    if (object) return direct(object);
+    if (indirectObject) return indirect(indirectObject);
+    return none;
+  }
+
+  // European Portuguese
+  if (object && indirectObject) {
+    const d = EP_DIRECT[object];
+    const i = EP_INDIRECT[indirectObject];
+    // merged: dei-lho, deu-mas, deram-no-lo
+    if (isThirdPersonDirect(d) && CONTRACTION_BASE[i]) {
+      return { ...none, clitic: CONTRACTION_BASE[i] + d };
+    }
+    // otherwise the indirect object becomes "a + pronoun": apresentou-me a ela
+    return { ...none, clitic: d, after: `a ${TONIC.pt[indirectObject]}` };
+  }
+  if (object) return { ...none, clitic: EP_DIRECT[object] };
+  if (indirectObject) return { ...none, clitic: EP_INDIRECT[indirectObject] };
+  return none;
+}
+
+/* ---------------- European enclisis ---------------- */
+
+const ACCENTED = /[áéíóúâêôãõà]/;
+const STRESS: Record<string, string> = { a: "á", e: "ê", o: "ô" };
+
+/** Adds the written accent a word needs once its final consonant is dropped. */
+function stressFinal(base: string, dropped: string, original: string): string {
+  const last = base[base.length - 1];
+  if (!/[aeiou]/.test(last ?? "") || ACCENTED.test(last)) return base;
+  const syllables = (base.match(/[aeiouáéíóúâêôãõ]+/g) ?? []).length;
+  // infinitives / future stems (-r) and forms in -z are stressed on the last syllable;
+  // forms in -s only when they are a single syllable (dás, vês, pus)
+  const stressed = dropped === "r" || dropped === "z" || syllables <= 1;
+  if (!stressed || ACCENTED.test(original.slice(0, -1).slice(-2))) return base;
+  if (STRESS[last]) return base.slice(0, -1) + STRESS[last];
+  // i/u after a vowel needs an accent to stay a separate syllable: sair -> saí-lo
+  // (but not after gu/qu, where the u is silent: conseguir -> consegui-lo)
+  if (
+    (last === "i" || last === "u") &&
+    dropped === "r" &&
+    /[aeiou]/.test(base[base.length - 2] ?? "") &&
+    !/[gq]u.$/.test(base)
+  ) {
+    return base.slice(0, -1) + (last === "i" ? "í" : "ú");
+  }
+  return base;
+}
+
+/**
+ * Attaches a clitic after a verb form, European style:
+ *   viu + o -> viu-o       fiz + o -> fi-lo       comprar + o -> comprá-lo
+ *   deram + o -> deram-no  põe + o -> põe-no      levantamos + nos -> levantamo-nos
+ */
+function attach(host: string, clitic: string): string {
+  if (isThirdPersonDirect(clitic)) {
+    // quer (and requer) keep an old -e before o/a: ele quere-o
+    if (host === "quer" || host === "requer") return `${host}e-${clitic}`;
+    if (/(m|ão|õe|ãe)$/.test(host)) return `${host}-n${clitic}`;
+    const dropped = host[host.length - 1];
+    if (dropped === "r" || dropped === "s" || dropped === "z") {
+      let base = host.slice(0, -1);
+      if (base.endsWith("n")) base = base.slice(0, -1) + "m"; // tens + o -> tem-lo
+      return `${stressFinal(base, dropped, host)}-l${clitic}`;
+    }
+  }
+  // nós forms lose their final s before nos: levantamos + nos -> levantamo-nos
+  if ((clitic === "nos" || clitic.startsWith("no-")) && host.endsWith("mos")) {
+    return `${host.slice(0, -1)}-${clitic}`;
+  }
   return `${host}-${clitic}`;
 }
 
-/** European mesoclisis in the simple future: levantar-me-ei, dir-se-á, pôr-nos-emos. */
+/** European mesoclisis in the simple future: levantar-me-ei, dá-lo-ei, dir-lho-ei. */
 function mesoclitic(stem: string, clitic: string, ending: string): string {
-  return `${stem === "por" ? "pôr" : stem}-${clitic}-${ending}`;
+  return `${attach(stem === "por" ? "pôr" : stem, clitic)}-${ending}`;
 }
 
 function buildPredicate(
@@ -509,15 +655,22 @@ function buildPredicate(
   aspect: Aspect,
   person: Person,
   variant: PortugueseVariant,
-  reflexive: boolean
+  reflexive: boolean,
+  objects: ObjectParts = { clitic: null, tonic: "", after: "" }
 ): string {
-  const clitic = reflexive ? CLITICS[person] : null;
+  let clitic = reflexive ? CLITICS[person] : objects.clitic;
   const european = variant === "pt";
 
-  // Progressive form; the reflexive pronoun is built in:
-  //   pt: a levantar-me     br: me levantando
+  // "ir buscar": the pronoun belongs to the second verb: eu fui buscá-lo, estou a ir buscá-lo
+  if (european && clitic && !reflexive && forms.infinitive === "ir" && /^\S+(ar|er|ir|ôr|or)$/.test(particle)) {
+    particle = attach(particle, clitic);
+    clitic = null;
+  }
+  // Progressive form, with the pronoun built in:
+  //   pt: a levantar-me, a vê-lo     br: me levantando, te vendo
+  // (Brazilian clitics always sit just before the main verb: eu tenho me levantado)
   let progressive: string;
-  if (european) progressive = `a ${forms.infinitive}${clitic ? "-" + clitic : ""}`;
+  if (european) progressive = clitic ? `a ${attach(forms.infinitive, clitic)}` : `a ${forms.infinitive}`;
   else progressive = clitic ? `${clitic} ${forms.gerund}` : forms.gerund;
 
   let words: string;
@@ -534,7 +687,7 @@ function buildPredicate(
       else if (!european) words = `${clitic} ${form}`;
       else if (tense === "future") {
         words = mesoclitic(forms.futureStem, clitic, FUTURE_ENDINGS[person]);
-      } else words = enclitic(form, clitic);
+      } else words = attach(form, clitic);
       break;
     }
     case "continuous":
@@ -548,7 +701,7 @@ function buildPredicate(
         const host =
           tense === "future"
             ? mesoclitic("ter", clitic, FUTURE_ENDINGS[person])
-            : enclitic(aux, clitic);
+            : attach(aux, clitic);
         words = `${host} ${forms.participle}`;
       }
       break;
@@ -558,7 +711,8 @@ function buildPredicate(
       break;
   }
 
-  return particle ? `${words} ${particle}` : words;
+  // eu deixei ele cair · eu disse pra ela
+  return [words, objects.tonic, particle, objects.after].filter(Boolean).join(" ");
 }
 
 function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
@@ -582,7 +736,8 @@ function normalizePair(pair: TenseAspectPair): [Tense, Aspect] {
  * @param subjects      Optional subjects. Defaults depend on the variant (see
  *                      DEFAULT_SUBJECTS_BY_VARIANT). English pronouns (I, you, he, ...) are
  *                      also understood.
- * @param options       { variant: "br" | "pt" }, defaults to "br".
+ * @param options       { variant: "br" | "pt" } (default "br"), plus optional
+ *                      { object, indirectObject } pronouns.
  */
 export function conjugate(
   verb: string,
@@ -615,6 +770,10 @@ export function conjugate(
   const infinitive = head === "por" ? "pôr" : head;
 
   const forms = analyse(infinitive, variant);
+  const objects = objectParts(options, variant);
+  if (reflexive && objects.clitic) {
+    throw new Error(`Object pronouns can't be used with the reflexive verb "${verb}".`);
+  }
   const conjugations: TenseConjugations[] = [];
 
   for (const pair of tenseAspects) {
@@ -622,7 +781,7 @@ export function conjugate(
 
     const results = subjectList.map(
       (subject) =>
-        `${subject} ${buildPredicate(forms, particle, tense, aspect, personOf(subject), variant, reflexive)}`
+        `${subject} ${buildPredicate(forms, particle, tense, aspect, personOf(subject), variant, reflexive, objects)}`
     );
 
     // Group under the tense, preserving first-seen order.

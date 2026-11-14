@@ -29,6 +29,8 @@ interface RawSense {
   sense: string | null;
   "common-index": number;
   reflexive: boolean;
+  "direct-object": boolean;
+  "indirect-object": boolean;
 }
 
 export interface VerbSense {
@@ -42,6 +44,10 @@ export interface VerbSense {
   commonIndex: number;
   /** reflexive in Portuguese (-se) in either variant */
   reflexive: boolean;
+  /** takes a direct object pronoun in both languages: I saw it / eu vi-o */
+  directObject: boolean;
+  /** also takes an indirect object pronoun: I gave it to her / eu dei-lho */
+  indirectObject: boolean;
 }
 
 export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, RawSense[]>).flatMap(
@@ -54,6 +60,8 @@ export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, Raw
       sense: s.sense,
       commonIndex: s["common-index"],
       reflexive: !!s.reflexive,
+      directObject: !!s["direct-object"],
+      indirectObject: !!s["indirect-object"],
     }))
 );
 
