@@ -8,23 +8,10 @@
   } from '#lib/crossword.ts';
   import { buildCrosswordEntries, languagePairs } from '#lib/crossword-clues.ts';
   import { settings, LAYOUTS } from '#lib/settings.svelte.ts';
+  import { session, type Mark } from '#lib/crossword-session.ts';
   import { resolve } from '$app/paths';
   import { VERBS, LANGUAGE_TAGS, type Language } from '#lib/verbs.ts';
 
-  const tenses: Tense[] = ['past', 'present', 'future'];
-  const aspects: Aspect[] = ['simple', 'continuous', 'perfect', 'perfectContinuous'];
-
-  /* ---------------- crossword options ---------------- */
-  const aspectLabels: Record<Aspect, string> = {
-    simple: 'simple',
-    continuous: 'continuous',
-    perfect: 'perfect',
-    perfectContinuous: 'perfect continuous'
-  };
-
-  let size = $state(13);
-  let pickedTenses = $state<Tense[]>(['past', 'present', 'future']);
-  let pickedAspects = $state<Aspect[]>(['simple', 'continuous']);
   let lenientAccents = $state(false);
 
   /* settings from the Settings and Dictionary pages */
@@ -37,27 +24,37 @@
       ? 'Choose at least two languages in Settings.'
       : settings.subjects.length === 0
         ? 'Choose at least one subject in Settings.'
-        : enabledVerbs.length === 0
-          ? 'Turn on at least one verb in the Dictionary.'
-          : ''
+        : settings.tenses.length === 0 || settings.aspects.length === 0
+          ? 'Choose at least one tense and one aspect in Settings.'
+          : enabledVerbs.length === 0
+            ? 'Turn on at least one verb in the Dictionary.'
+            : ''
   );
 
   /* ---------------- crossword state ---------------- */
   type Dir = 'across' | 'down';
-  type Mark = '' | 'ok' | 'bad';
 
-  let puzzle = $state<CrosswordResult | null>(null);
-  let guesses = $state<string[][]>([]);
-  let marks = $state<Mark[][]>([]);
-  let active = $state<{ r: number; c: number } | null>(null);
-  let dir = $state<Dir>('across');
+  // start from the puzzle in progress (if any) so it survives visits to other pages
+  let puzzle = $state<CrosswordResult | null>(session.puzzle);
+  let guesses = $state<string[][]>(session.guesses);
+  let marks = $state<Mark[][]>(session.marks);
+  let active = $state<{ r: number; c: number } | null>(session.active);
+  let dir = $state<Dir>(session.dir);
   let generating = $state(false);
   let message = $state('');
   let gridEl: HTMLDivElement | undefined = $state();
-  /** options panel: open until the first puzzle is made */
-  let optionsOpen = $state(true);
   /** phones show one clue at a time; this reveals the full list */
-  let showAllClues = $state(false);
+  let showAllClues = $state(session.showAllClues);
+
+  // keep the session up to date (guesses/marks are shared proxies, so edits carry over too)
+  $effect(() => {
+    session.puzzle = puzzle;
+    session.guesses = guesses;
+    session.marks = marks;
+    session.active = active;
+    session.dir = dir;
+    session.showAllClues = showAllClues;
+  });
 
   const key = (r: number, c: number) => `${r},${c}`;
 
@@ -156,7 +153,10 @@
   /* ---------------- actions ---------------- */
   function create() {
     if (generating) return;
-    const chosen = pickedTenses.flatMap((t) => pickedAspects.map((a) => [t, a] as [Tense, Aspect]));
+    const size = settings.size;
+    const chosen = settings.tenses.flatMap((t) =>
+      settings.aspects.map((a) => [t, a] as [Tense, Aspect])
+    );
     if (chosen.length === 0) {
       message = 'Pick at least one tense and one aspect.';
       return;
@@ -181,7 +181,6 @@
           puzzle = null;
         } else {
           puzzle = p;
-          optionsOpen = false;
           showAllClues = false;
           guesses = p.grid.map((row) => row.map(() => ''));
           marks = p.grid.map((row) => row.map(() => '' as Mark));
@@ -355,9 +354,6 @@
     return `${LANGUAGE_TAGS[w.hintLanguageOrigin as Language]} → ${LANGUAGE_TAGS[w.languageOrigin as Language]}`;
   }
 
-  function toggle<T>(list: T[], item: T): T[] {
-    return list.includes(item) ? list.filter((x) => x !== item) : [...list, item];
-  }
 </script>
 
 <main class:has-puzzle={!!puzzle}>
@@ -372,53 +368,14 @@
     <button class="primary" onclick={create} disabled={generating || !!setupProblem}>
       {generating ? 'Generating…' : puzzle ? 'New crossword' : 'Create'}
     </button>
-    <button class="plain" aria-expanded={optionsOpen} onclick={() => (optionsOpen = !optionsOpen)}>
-      Options {optionsOpen ? '▴' : '▾'}
-    </button>
-  </div>
-
-  {#if optionsOpen}
-  <section class="options">
-    <label>
-      Grid
-      <select bind:value={size}>
-        {#each [9, 11, 13, 15] as n}<option value={n}>{n}×{n}</option>{/each}
-      </select>
-    </label>
-    <fieldset>
-      <legend>Tenses</legend>
-      {#each tenses as t}
-        <label class="check">
-          <input
-            type="checkbox"
-            checked={pickedTenses.includes(t)}
-            onchange={() => (pickedTenses = toggle(pickedTenses, t))}
-          />
-          {t}
-        </label>
-      {/each}
-    </fieldset>
-    <fieldset>
-      <legend>Aspects</legend>
-      {#each aspects as a}
-        <label class="check">
-          <input
-            type="checkbox"
-            checked={pickedAspects.includes(a)}
-            onchange={() => (pickedAspects = toggle(pickedAspects, a))}
-          />
-          {aspectLabels[a]}
-        </label>
-      {/each}
-    </fieldset>
     <p class="summary">
-      {LAYOUTS.find((l) => l.id === settings.layout)?.name} ·
-      {settings.languages.map((l) => LANGUAGE_TAGS[l]).join(', ') || 'No languages'} ·
-      {settings.subjects.length} subjects · {enabledVerbs.length} verbs —
-      <a href={resolve('/settings')}>Settings</a>, <a href={resolve('/dictionary')}>Dictionary</a>
+      {settings.size}×{settings.size} · {LAYOUTS.find((l) => l.id === settings.layout)?.name} ·
+      {settings.languages.map((l) => LANGUAGE_TAGS[l]).join(', ') || 'no languages'} ·
+      {settings.tenses.length} tenses × {settings.aspects.length} aspects ·
+      {settings.subjects.length} subjects · {enabledVerbs.length} verbs ·
+      <a href={resolve('/settings')}>change</a>
     </p>
-  </section>
-  {/if}
+  </div>
 
   {#if setupProblem}<p class="message warn">{setupProblem}</p>{/if}
   {#if message}<p class="message">{message}</p>{/if}
@@ -572,31 +529,6 @@
     background: none;
     color: #2563eb;
   }
-  .options {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  .options > label {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.85rem;
-    gap: 0.25rem;
-  }
-  fieldset {
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 0.25rem 0.75rem 0.5rem;
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-  }
-  legend {
-    font-size: 0.8rem;
-    color: #666;
-  }
   .check {
     display: inline-flex;
     align-items: center;
@@ -628,10 +560,13 @@
   .warn {
     color: #b91c1c;
   }
+  .toolbar {
+    flex-wrap: wrap;
+  }
   .summary {
     font-size: 0.85rem;
     color: #555;
-    margin: -0.25rem 0 1rem;
+    margin: 0;
   }
   .summary a {
     color: #2563eb;
@@ -864,13 +799,6 @@
     .has-puzzle h1,
     .has-puzzle .lede {
       display: none;
-    }
-    .options {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    fieldset {
-      flex-wrap: wrap;
     }
     .board {
       gap: 1rem;

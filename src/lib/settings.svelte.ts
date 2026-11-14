@@ -6,6 +6,7 @@
  */
 
 import { LANGUAGES, SUBJECTS, type Language, type SubjectId } from "./verbs";
+import type { Tense, Aspect } from "./conjugator";
 
 export { SUBJECTS, type SubjectId, type SubjectInfo } from "./verbs";
 
@@ -25,8 +26,23 @@ export const LAYOUTS: { id: CrosswordLayout; name: string; description: string }
   },
 ];
 
+export const SIZES = [9, 11, 13, 15, 17] as const;
+export type GridSize = (typeof SIZES)[number];
+
+export const TENSES: Tense[] = ["past", "present", "future"];
+export const ASPECTS: Aspect[] = ["simple", "continuous", "perfect", "perfectContinuous"];
+export const ASPECT_LABELS: Record<Aspect, string> = {
+  simple: "simple",
+  continuous: "continuous",
+  perfect: "perfect",
+  perfectContinuous: "perfect continuous",
+};
+
 export interface Settings {
   layout: CrosswordLayout;
+  size: GridSize;
+  tenses: Tense[];
+  aspects: Aspect[];
   languages: Language[];
   subjects: SubjectId[];
   /** ids of verbs switched off in the dictionary (new verbs are on by default) */
@@ -38,6 +54,9 @@ const STORAGE_KEY = "verb-practice:settings";
 export function defaultSettings(): Settings {
   return {
     layout: "symmetric",
+    size: 13,
+    tenses: [...TENSES],
+    aspects: ["simple", "continuous"],
     languages: ["en", "pt-br"],
     subjects: SUBJECTS.map((s) => s.id),
     disabledVerbs: [],
@@ -53,6 +72,9 @@ function load(): Settings {
     const subjectIds = SUBJECTS.map((s) => s.id);
     return {
       layout: LAYOUTS.some((l) => l.id === saved.layout) ? (saved.layout as CrosswordLayout) : defaults.layout,
+      size: SIZES.includes(saved.size as GridSize) ? (saved.size as GridSize) : defaults.size,
+      tenses: Array.isArray(saved.tenses) ? TENSES.filter((t) => saved.tenses!.includes(t)) : defaults.tenses,
+      aspects: Array.isArray(saved.aspects) ? ASPECTS.filter((a) => saved.aspects!.includes(a)) : defaults.aspects,
       languages: Array.isArray(saved.languages)
         ? LANGUAGES.filter((l) => saved.languages!.includes(l))
         : defaults.languages,

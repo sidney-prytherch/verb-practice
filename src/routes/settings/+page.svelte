@@ -1,5 +1,15 @@
 <script lang="ts">
-  import { settings, resetSettings, toggleIn, SUBJECTS, LAYOUTS } from '#lib/settings.svelte.ts';
+  import {
+    settings,
+    resetSettings,
+    toggleIn,
+    SUBJECTS,
+    LAYOUTS,
+    SIZES,
+    TENSES,
+    ASPECTS,
+    ASPECT_LABELS
+  } from '#lib/settings.svelte.ts';
   import { LANGUAGES, LANGUAGE_NAMES, type Language } from '#lib/verbs.ts';
   import { languagePairs } from '#lib/crossword-clues.ts';
 
@@ -26,6 +36,60 @@
 
 <main>
   <h1>Settings</h1>
+
+  <section>
+    <h2>Grid size</h2>
+    <div class="options">
+      {#each SIZES as n}
+        <label class="option" class:on={settings.size === n}>
+          <input type="radio" name="size" value={n} bind:group={settings.size} />
+          {n}×{n}
+        </label>
+      {/each}
+    </div>
+  </section>
+
+  <section>
+    <h2>Tenses</h2>
+    <div class="options">
+      {#each TENSES as t}
+        <label class="option" class:on={settings.tenses.includes(t)}>
+          <input
+            type="checkbox"
+            checked={settings.tenses.includes(t)}
+            onchange={() => (settings.tenses = toggleIn(settings.tenses, t, TENSES))}
+          />
+          {t}
+        </label>
+      {/each}
+    </div>
+    {#if settings.tenses.length === 0}
+      <p class="warn">Choose at least one tense to make a crossword.</p>
+    {/if}
+  </section>
+
+  <section>
+    <h2>Aspects</h2>
+    <p class="help">
+      Simple: <em>I walked</em> · continuous: <em>I was walking</em> · perfect: <em>I had walked</em>
+      · perfect continuous: <em>I had been walking</em>
+    </p>
+    <div class="options">
+      {#each ASPECTS as a}
+        <label class="option" class:on={settings.aspects.includes(a)}>
+          <input
+            type="checkbox"
+            checked={settings.aspects.includes(a)}
+            onchange={() => (settings.aspects = toggleIn(settings.aspects, a, ASPECTS))}
+          />
+          {ASPECT_LABELS[a]}
+        </label>
+      {/each}
+    </div>
+    {#if settings.aspects.length === 0}
+      <p class="warn">Choose at least one aspect to make a crossword.</p>
+    {/if}
+  </section>
 
   <section>
     <h2>Crossword layout</h2>
