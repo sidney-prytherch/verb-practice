@@ -2,6 +2,7 @@
   import { settings } from '#lib/settings.svelte.ts';
   import {
     VERBS,
+    VERB_PRESETS,
     LANGUAGES,
     LANGUAGE_NAMES,
     LANGUAGE_TAGS,
@@ -61,6 +62,30 @@
       : [...settings.disabledVerbs, id];
   }
 
+  /* ---------------- presets ---------------- */
+  let presetChoice = $state('');
+  let presetMessage = $state('');
+  /** what the selection was before the last preset, for Undo */
+  let undoSnapshot = $state<string[] | null>(null);
+
+  function applyPreset(id: string) {
+    const preset = VERB_PRESETS.find((p) => p.id === id);
+    presetChoice = '';
+    if (!preset) return;
+    undoSnapshot = [...settings.disabledVerbs];
+    // turn everything off, then turn the preset's verbs back on
+    settings.disabledVerbs = VERBS.filter((v) => !preset.includes(v)).map((v) => v.id);
+    const on = VERBS.length - settings.disabledVerbs.length;
+    presetMessage = `${preset.name}: ${on} turned on.`;
+  }
+
+  function undoPreset() {
+    if (!undoSnapshot) return;
+    settings.disabledVerbs = undoSnapshot;
+    undoSnapshot = null;
+    presetMessage = 'Previous selection restored.';
+  }
+
   function setVisible(on: boolean) {
     const ids = new Set(visible.map((v) => v.id));
     const rest = settings.disabledVerbs.filter((id) => !ids.has(id));
@@ -75,6 +100,13 @@
   </p>
 
   <div class="toolbar">
+    <label>
+      Preset
+      <select bind:value={presetChoice} onchange={() => applyPreset(presetChoice)}>
+        <option value="" disabled>Choose…</option>
+        {#each VERB_PRESETS as p}<option value={p.id}>{p.name}</option>{/each}
+      </select>
+    </label>
     <label>
       Sort by
       <select bind:value={sortChoice}>
@@ -99,6 +131,13 @@
     </div>
   </div>
 
+  {#if presetMessage}
+    <p class="preset-message">
+      {presetMessage}
+      {#if undoSnapshot}<button class="link" onclick={undoPreset}>Undo</button>{/if}
+    </p>
+  {/if}
+
   {#if visible.length === 0}
     <p class="help">No verbs match.</p>
   {:else}
@@ -115,6 +154,7 @@
                     <span class="tag">{t.tags.join('/')}</span>{/if}
                 {/each}
               {/if}
+              {#if v.reflexive}<span class="tag refl" title="Reflexive in Portuguese">reflexive</span>{/if}
               {#if v.sense}<span class="sense">{v.sense}</span>{/if}
             </span>
           </label>
@@ -214,6 +254,24 @@
     background: #e5e7eb;
     color: #4b5563;
     vertical-align: 1px;
+  }
+  .tag.refl {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+  .preset-message {
+    margin: 0.25rem 0 0.75rem;
+    padding: 0.4rem 0.75rem;
+    background: #ecfdf5;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  .link {
+    border: 0;
+    background: none;
+    color: #2563eb;
+    padding: 0 0.25rem;
+    text-decoration: underline;
   }
   .sense {
     display: block;

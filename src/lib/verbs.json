@@ -1,1113 +1,1113 @@
 {
   "be": [
-    {"en": "be", "pt-br": "ser", "pt-pt": "ser", "sense": "identity or permanent quality (she is tall)", "common-index": 1},
-    {"en": "be", "pt-br": "estar", "pt-pt": "estar", "sense": "temporary state or location (she is tired)", "common-index": 1}
+    {"en": "be", "pt-br": "ser", "pt-pt": "ser", "sense": "identity or permanent quality (she is tall)", "common-index": 1, "reflexive": false},
+    {"en": "be", "pt-br": "estar", "pt-pt": "estar", "sense": "temporary state or location (she is tired)", "common-index": 1, "reflexive": false}
   ],
   "have": [
-    {"en": "have", "pt-br": "ter", "pt-pt": "ter", "sense": "possess or own (I have a car)", "common-index": 2},
-    {"en": "have", "pt-br": "haver", "pt-pt": "haver", "sense": "auxiliary or existential use (there has been)", "common-index": 2}
+    {"en": "have", "pt-br": "ter", "pt-pt": "ter", "sense": "possess or own (I have a car)", "common-index": 2, "reflexive": false},
+    {"en": "have", "pt-br": "haver", "pt-pt": "haver", "sense": "auxiliary or existential use (there has been)", "common-index": 2, "reflexive": false}
   ],
   "do": [
-    {"en": "do", "pt-br": "fazer", "pt-pt": "fazer", "sense": null, "common-index": 3}
+    {"en": "do", "pt-br": "fazer", "pt-pt": "fazer", "sense": null, "common-index": 3, "reflexive": false}
   ],
   "say": [
-    {"en": "say", "pt-br": "dizer", "pt-pt": "dizer", "sense": null, "common-index": 4}
+    {"en": "say", "pt-br": "dizer", "pt-pt": "dizer", "sense": null, "common-index": 4, "reflexive": false}
   ],
   "get": [
-    {"en": "get", "pt-br": "conseguir", "pt-pt": "conseguir", "sense": "manage to obtain (get a job)", "common-index": 5},
-    {"en": "get", "pt-br": "obter", "pt-pt": "obter", "sense": "obtain formally (get a result)", "common-index": 5},
-    {"en": "get", "pt-br": "receber", "pt-pt": "receber", "sense": "receive (get a letter)", "common-index": 5},
-    {"en": "get", "pt-br": "ficar", "pt-pt": "ficar", "sense": "become (get tired)", "common-index": 5},
-    {"en": "get", "pt-br": "buscar", "pt-pt": "ir buscar", "sense": "fetch or pick up (get the kids)", "common-index": 5}
+    {"en": "get", "pt-br": "conseguir", "pt-pt": "conseguir", "sense": "manage to obtain (get a job)", "common-index": 5, "reflexive": false},
+    {"en": "get", "pt-br": "obter", "pt-pt": "obter", "sense": "obtain formally (get a result)", "common-index": 5, "reflexive": false},
+    {"en": "get", "pt-br": "receber", "pt-pt": "receber", "sense": "receive (get a letter)", "common-index": 5, "reflexive": false},
+    {"en": "get", "pt-br": "ficar", "pt-pt": "ficar", "sense": "become (get tired)", "common-index": 5, "reflexive": false},
+    {"en": "get", "pt-br": "buscar", "pt-pt": "ir buscar", "sense": "fetch or pick up (get the kids)", "common-index": 5, "reflexive": false}
   ],
   "make": [
-    {"en": "make", "pt-br": "fazer", "pt-pt": "fazer", "sense": "create or produce (make a cake)", "common-index": 6},
-    {"en": "make", "pt-br": "fabricar", "pt-pt": "fabricar", "sense": "manufacture (make cars)", "common-index": 6}
+    {"en": "make", "pt-br": "fazer", "pt-pt": "fazer", "sense": "create or produce (make a cake)", "common-index": 6, "reflexive": false},
+    {"en": "make", "pt-br": "fabricar", "pt-pt": "fabricar", "sense": "manufacture (make cars)", "common-index": 6, "reflexive": false}
   ],
   "go": [
-    {"en": "go", "pt-br": "ir", "pt-pt": "ir", "sense": null, "common-index": 7}
+    {"en": "go", "pt-br": "ir", "pt-pt": "ir", "sense": null, "common-index": 7, "reflexive": false}
   ],
   "know": [
-    {"en": "know", "pt-br": "saber", "pt-pt": "saber", "sense": "be aware of a fact (know the answer)", "common-index": 8},
-    {"en": "know", "pt-br": "conhecer", "pt-pt": "conhecer", "sense": "be familiar with a person or place (know her)", "common-index": 8}
+    {"en": "know", "pt-br": "saber", "pt-pt": "saber", "sense": "be aware of a fact (know the answer)", "common-index": 8, "reflexive": false},
+    {"en": "know", "pt-br": "conhecer", "pt-pt": "conhecer", "sense": "be familiar with a person or place (know her)", "common-index": 8, "reflexive": false}
   ],
   "take": [
-    {"en": "take", "pt-br": "pegar", "pt-pt": "tomar", "sense": "grab or pick up (take the book)", "common-index": 9},
-    {"en": "take", "pt-br": "levar", "pt-pt": "levar", "sense": "carry along (take it with you)", "common-index": 9},
-    {"en": "take", "pt-br": "tomar", "pt-pt": "tomar", "sense": "consume or accept (take a pill, take a bath)", "common-index": 9}
+    {"en": "take", "pt-br": "pegar", "pt-pt": "tomar", "sense": "grab or pick up (take the book)", "common-index": 9, "reflexive": false},
+    {"en": "take", "pt-br": "levar", "pt-pt": "levar", "sense": "carry along (take it with you)", "common-index": 9, "reflexive": false},
+    {"en": "take", "pt-br": "tomar", "pt-pt": "tomar", "sense": "consume or accept (take a pill, take a bath)", "common-index": 9, "reflexive": false}
   ],
   "see": [
-    {"en": "see", "pt-br": "ver", "pt-pt": "ver", "sense": null, "common-index": 10}
+    {"en": "see", "pt-br": "ver", "pt-pt": "ver", "sense": null, "common-index": 10, "reflexive": false}
   ],
   "come": [
-    {"en": "come", "pt-br": "vir", "pt-pt": "vir", "sense": null, "common-index": 11}
+    {"en": "come", "pt-br": "vir", "pt-pt": "vir", "sense": null, "common-index": 11, "reflexive": false}
   ],
   "think": [
-    {"en": "think", "pt-br": "pensar", "pt-pt": "pensar", "sense": "use one's mind (think about it)", "common-index": 12},
-    {"en": "think", "pt-br": "achar", "pt-pt": "achar", "sense": "hold an opinion (I think so)", "common-index": 12}
+    {"en": "think", "pt-br": "pensar", "pt-pt": "pensar", "sense": "use one's mind (think about it)", "common-index": 12, "reflexive": false},
+    {"en": "think", "pt-br": "achar", "pt-pt": "achar", "sense": "hold an opinion (I think so)", "common-index": 12, "reflexive": false}
   ],
   "look": [
-    {"en": "look", "pt-br": "olhar", "pt-pt": "olhar", "sense": "direct one's eyes (look at me)", "common-index": 13},
-    {"en": "look", "pt-br": "parecer", "pt-pt": "parecer", "sense": "appear or seem (it looks good)", "common-index": 13}
+    {"en": "look", "pt-br": "olhar", "pt-pt": "olhar", "sense": "direct one's eyes (look at me)", "common-index": 13, "reflexive": false},
+    {"en": "look", "pt-br": "parecer", "pt-pt": "parecer", "sense": "appear or seem (it looks good)", "common-index": 13, "reflexive": false}
   ],
   "want": [
-    {"en": "want", "pt-br": "querer", "pt-pt": "querer", "sense": null, "common-index": 14}
+    {"en": "want", "pt-br": "querer", "pt-pt": "querer", "sense": null, "common-index": 14, "reflexive": false}
   ],
   "give": [
-    {"en": "give", "pt-br": "dar", "pt-pt": "dar", "sense": null, "common-index": 15}
+    {"en": "give", "pt-br": "dar", "pt-pt": "dar", "sense": null, "common-index": 15, "reflexive": false}
   ],
   "use": [
-    {"en": "use", "pt-br": "usar", "pt-pt": "usar", "sense": "employ (use a tool)", "common-index": 16},
-    {"en": "use", "pt-br": "utilizar", "pt-pt": "utilizar", "sense": "make use of, more formal (utilize a resource)", "common-index": 16}
+    {"en": "use", "pt-br": "usar", "pt-pt": "usar", "sense": "employ (use a tool)", "common-index": 16, "reflexive": false},
+    {"en": "use", "pt-br": "utilizar", "pt-pt": "utilizar", "sense": "make use of, more formal (utilize a resource)", "common-index": 16, "reflexive": false}
   ],
   "find": [
-    {"en": "find", "pt-br": "achar", "pt-pt": "encontrar", "sense": "come across (find my keys)", "common-index": 17},
-    {"en": "find", "pt-br": "encontrar", "pt-pt": "encontrar", "sense": "locate something sought (find the answer)", "common-index": 17},
-    {"en": "find", "pt-br": "descobrir", "pt-pt": "descobrir", "sense": "discover or learn (find out)", "common-index": 17}
+    {"en": "find", "pt-br": "achar", "pt-pt": "encontrar", "sense": "come across (find my keys)", "common-index": 17, "reflexive": false},
+    {"en": "find", "pt-br": "encontrar", "pt-pt": "encontrar", "sense": "locate something sought (find the answer)", "common-index": 17, "reflexive": false},
+    {"en": "find", "pt-br": "descobrir", "pt-pt": "descobrir", "sense": "discover or learn (find out)", "common-index": 17, "reflexive": false}
   ],
   "tell": [
-    {"en": "tell", "pt-br": "contar", "pt-pt": "contar", "sense": "narrate or recount (tell a story)", "common-index": 18},
-    {"en": "tell", "pt-br": "dizer", "pt-pt": "dizer", "sense": "say to someone (tell me the time)", "common-index": 18}
+    {"en": "tell", "pt-br": "contar", "pt-pt": "contar", "sense": "narrate or recount (tell a story)", "common-index": 18, "reflexive": false},
+    {"en": "tell", "pt-br": "dizer", "pt-pt": "dizer", "sense": "say to someone (tell me the time)", "common-index": 18, "reflexive": false}
   ],
   "ask": [
-    {"en": "ask", "pt-br": "perguntar", "pt-pt": "perguntar", "sense": "pose a question (ask why)", "common-index": 19},
-    {"en": "ask", "pt-br": "pedir", "pt-pt": "pedir", "sense": "make a request (ask for help)", "common-index": 19}
+    {"en": "ask", "pt-br": "perguntar", "pt-pt": "perguntar", "sense": "pose a question (ask why)", "common-index": 19, "reflexive": false},
+    {"en": "ask", "pt-br": "pedir", "pt-pt": "pedir", "sense": "make a request (ask for help)", "common-index": 19, "reflexive": false}
   ],
   "work": [
-    {"en": "work", "pt-br": "trabalhar", "pt-pt": "trabalhar", "sense": "do a job (work at a bank)", "common-index": 20},
-    {"en": "work", "pt-br": "funcionar", "pt-pt": "funcionar", "sense": "function properly (the phone works)", "common-index": 20}
+    {"en": "work", "pt-br": "trabalhar", "pt-pt": "trabalhar", "sense": "do a job (work at a bank)", "common-index": 20, "reflexive": false},
+    {"en": "work", "pt-br": "funcionar", "pt-pt": "funcionar", "sense": "function properly (the phone works)", "common-index": 20, "reflexive": false}
   ],
   "seem": [
-    {"en": "seem", "pt-br": "parecer", "pt-pt": "parecer", "sense": null, "common-index": 21}
+    {"en": "seem", "pt-br": "parecer", "pt-pt": "parecer", "sense": null, "common-index": 21, "reflexive": false}
   ],
   "feel": [
-    {"en": "feel", "pt-br": "sentir", "pt-pt": "sentir", "sense": "experience a sensation (feel pain)", "common-index": 22},
-    {"en": "feel", "pt-br": "sentir-se", "pt-pt": "sentir-se", "sense": "be in a state (feel tired)", "common-index": 22}
+    {"en": "feel", "pt-br": "sentir", "pt-pt": "sentir", "sense": "experience a sensation (feel pain)", "common-index": 22, "reflexive": false},
+    {"en": "feel", "pt-br": "sentir-se", "pt-pt": "sentir-se", "sense": "be in a state (feel tired)", "common-index": 22, "reflexive": true}
   ],
   "try": [
-    {"en": "try", "pt-br": "tentar", "pt-pt": "tentar", "sense": "attempt (try to win)", "common-index": 23},
-    {"en": "try", "pt-br": "experimentar", "pt-pt": "experimentar", "sense": "test out (try the soup)", "common-index": 23}
+    {"en": "try", "pt-br": "tentar", "pt-pt": "tentar", "sense": "attempt (try to win)", "common-index": 23, "reflexive": false},
+    {"en": "try", "pt-br": "experimentar", "pt-pt": "experimentar", "sense": "test out (try the soup)", "common-index": 23, "reflexive": false}
   ],
   "leave": [
-    {"en": "leave", "pt-br": "sair", "pt-pt": "sair", "sense": "go out of a place (leave the house)", "common-index": 24},
-    {"en": "leave", "pt-br": "deixar", "pt-pt": "deixar", "sense": "put down or abandon (leave it there)", "common-index": 24},
-    {"en": "leave", "pt-br": "partir", "pt-pt": "partir", "sense": "depart (leave for Rome)", "common-index": 24}
+    {"en": "leave", "pt-br": "sair", "pt-pt": "sair", "sense": "go out of a place (leave the house)", "common-index": 24, "reflexive": false},
+    {"en": "leave", "pt-br": "deixar", "pt-pt": "deixar", "sense": "put down or abandon (leave it there)", "common-index": 24, "reflexive": false},
+    {"en": "leave", "pt-br": "partir", "pt-pt": "partir", "sense": "depart (leave for Rome)", "common-index": 24, "reflexive": false}
   ],
   "call": [
-    {"en": "call", "pt-br": "chamar", "pt-pt": "chamar", "sense": "summon or name (call a taxi, call him John)", "common-index": 25},
-    {"en": "call", "pt-br": "ligar", "pt-pt": "telefonar", "sense": "phone (call me tomorrow)", "common-index": 25}
+    {"en": "call", "pt-br": "chamar", "pt-pt": "chamar", "sense": "summon or name (call a taxi, call him John)", "common-index": 25, "reflexive": false},
+    {"en": "call", "pt-br": "ligar", "pt-pt": "telefonar", "sense": "phone (call me tomorrow)", "common-index": 25, "reflexive": false}
   ],
   "need": [
-    {"en": "need", "pt-br": "precisar", "pt-pt": "precisar", "sense": null, "common-index": 26}
+    {"en": "need", "pt-br": "precisar", "pt-pt": "precisar", "sense": null, "common-index": 26, "reflexive": false}
   ],
   "become": [
-    {"en": "become", "pt-br": "tornar-se", "pt-pt": "tornar-se", "sense": "change into (become a doctor)", "common-index": 27},
-    {"en": "become", "pt-br": "ficar", "pt-pt": "ficar", "sense": "turn or get to be (become sad)", "common-index": 27}
+    {"en": "become", "pt-br": "tornar-se", "pt-pt": "tornar-se", "sense": "change into (become a doctor)", "common-index": 27, "reflexive": true},
+    {"en": "become", "pt-br": "ficar", "pt-pt": "ficar", "sense": "turn or get to be (become sad)", "common-index": 27, "reflexive": false}
   ],
   "mean": [
-    {"en": "mean", "pt-br": "significar", "pt-pt": "significar", "sense": "signify (what does it mean?)", "common-index": 28},
-    {"en": "mean", "pt-br": "querer dizer", "pt-pt": "querer dizer", "sense": "intend to say (I mean it)", "common-index": 28}
+    {"en": "mean", "pt-br": "significar", "pt-pt": "significar", "sense": "signify (what does it mean?)", "common-index": 28, "reflexive": false},
+    {"en": "mean", "pt-br": "querer dizer", "pt-pt": "querer dizer", "sense": "intend to say (I mean it)", "common-index": 28, "reflexive": false}
   ],
   "put": [
-    {"en": "put", "pt-br": "colocar", "pt-pt": "pôr", "sense": "place (put it on the table)", "common-index": 29},
-    {"en": "put", "pt-br": "pôr", "pt-pt": "colocar", "sense": "place, with the variant preference swapped", "common-index": 29}
+    {"en": "put", "pt-br": "colocar", "pt-pt": "pôr", "sense": "place (put it on the table)", "common-index": 29, "reflexive": false},
+    {"en": "put", "pt-br": "pôr", "pt-pt": "colocar", "sense": "place, with the variant preference swapped", "common-index": 29, "reflexive": false}
   ],
   "keep": [
-    {"en": "keep", "pt-br": "manter", "pt-pt": "manter", "sense": "maintain or continue to have (keep calm)", "common-index": 30},
-    {"en": "keep", "pt-br": "guardar", "pt-pt": "guardar", "sense": "store or hold on to (keep the receipt)", "common-index": 30}
+    {"en": "keep", "pt-br": "manter", "pt-pt": "manter", "sense": "maintain or continue to have (keep calm)", "common-index": 30, "reflexive": false},
+    {"en": "keep", "pt-br": "guardar", "pt-pt": "guardar", "sense": "store or hold on to (keep the receipt)", "common-index": 30, "reflexive": false}
   ],
   "let": [
-    {"en": "let", "pt-br": "deixar", "pt-pt": "deixar", "sense": "allow (let me go)", "common-index": 31},
-    {"en": "let", "pt-br": "permitir", "pt-pt": "permitir", "sense": "formally permit (let it be done)", "common-index": 31}
+    {"en": "let", "pt-br": "deixar", "pt-pt": "deixar", "sense": "allow (let me go)", "common-index": 31, "reflexive": false},
+    {"en": "let", "pt-br": "permitir", "pt-pt": "permitir", "sense": "formally permit (let it be done)", "common-index": 31, "reflexive": false}
   ],
   "begin": [
-    {"en": "begin", "pt-br": "começar", "pt-pt": "começar", "sense": null, "common-index": 32}
+    {"en": "begin", "pt-br": "começar", "pt-pt": "começar", "sense": null, "common-index": 32, "reflexive": false}
   ],
   "help": [
-    {"en": "help", "pt-br": "ajudar", "pt-pt": "ajudar", "sense": null, "common-index": 33}
+    {"en": "help", "pt-br": "ajudar", "pt-pt": "ajudar", "sense": null, "common-index": 33, "reflexive": false}
   ],
   "talk": [
-    {"en": "talk", "pt-br": "conversar", "pt-pt": "conversar", "sense": "chat (talk with a friend)", "common-index": 34},
-    {"en": "talk", "pt-br": "falar", "pt-pt": "falar", "sense": "speak about something (talk about it)", "common-index": 34}
+    {"en": "talk", "pt-br": "conversar", "pt-pt": "conversar", "sense": "chat (talk with a friend)", "common-index": 34, "reflexive": false},
+    {"en": "talk", "pt-br": "falar", "pt-pt": "falar", "sense": "speak about something (talk about it)", "common-index": 34, "reflexive": false}
   ],
   "turn": [
-    {"en": "turn", "pt-br": "virar", "pt-pt": "virar", "sense": "change direction (turn left)", "common-index": 35},
-    {"en": "turn", "pt-br": "girar", "pt-pt": "rodar", "sense": "rotate (turn the wheel)", "common-index": 35}
+    {"en": "turn", "pt-br": "virar", "pt-pt": "virar", "sense": "change direction (turn left)", "common-index": 35, "reflexive": false},
+    {"en": "turn", "pt-br": "girar", "pt-pt": "rodar", "sense": "rotate (turn the wheel)", "common-index": 35, "reflexive": false}
   ],
   "start": [
-    {"en": "start", "pt-br": "iniciar", "pt-pt": "iniciar", "sense": "begin formally (start a project)", "common-index": 36},
-    {"en": "start", "pt-br": "começar", "pt-pt": "começar", "sense": "begin (start to rain)", "common-index": 36},
-    {"en": "start", "pt-br": "ligar", "pt-pt": "ligar", "sense": "switch on (start the engine)", "common-index": 36}
+    {"en": "start", "pt-br": "iniciar", "pt-pt": "iniciar", "sense": "begin formally (start a project)", "common-index": 36, "reflexive": false},
+    {"en": "start", "pt-br": "começar", "pt-pt": "começar", "sense": "begin (start to rain)", "common-index": 36, "reflexive": false},
+    {"en": "start", "pt-br": "ligar", "pt-pt": "ligar", "sense": "switch on (start the engine)", "common-index": 36, "reflexive": false}
   ],
   "show": [
-    {"en": "show", "pt-br": "mostrar", "pt-pt": "mostrar", "sense": "let someone see (show me)", "common-index": 37},
-    {"en": "show", "pt-br": "exibir", "pt-pt": "exibir", "sense": "display publicly (show a film)", "common-index": 37},
-    {"en": "show", "pt-br": "demonstrar", "pt-pt": "demonstrar", "sense": "demonstrate or prove (show that it works)", "common-index": 37}
+    {"en": "show", "pt-br": "mostrar", "pt-pt": "mostrar", "sense": "let someone see (show me)", "common-index": 37, "reflexive": false},
+    {"en": "show", "pt-br": "exibir", "pt-pt": "exibir", "sense": "display publicly (show a film)", "common-index": 37, "reflexive": false},
+    {"en": "show", "pt-br": "demonstrar", "pt-pt": "demonstrar", "sense": "demonstrate or prove (show that it works)", "common-index": 37, "reflexive": false}
   ],
   "hear": [
-    {"en": "hear", "pt-br": "ouvir", "pt-pt": "ouvir", "sense": "perceive sound (hear a noise)", "common-index": 38},
-    {"en": "hear", "pt-br": "escutar", "pt-pt": "escutar", "sense": "listen to (hear music)", "common-index": 38}
+    {"en": "hear", "pt-br": "ouvir", "pt-pt": "ouvir", "sense": "perceive sound (hear a noise)", "common-index": 38, "reflexive": false},
+    {"en": "hear", "pt-br": "escutar", "pt-pt": "escutar", "sense": "listen to (hear music)", "common-index": 38, "reflexive": false}
   ],
   "play": [
-    {"en": "play", "pt-br": "jogar", "pt-pt": "jogar", "sense": "a game or sport (play football)", "common-index": 39},
-    {"en": "play", "pt-br": "tocar", "pt-pt": "tocar", "sense": "an instrument (play guitar)", "common-index": 39},
-    {"en": "play", "pt-br": "brincar", "pt-pt": "brincar", "sense": "have fun (children play)", "common-index": 39}
+    {"en": "play", "pt-br": "jogar", "pt-pt": "jogar", "sense": "a game or sport (play football)", "common-index": 39, "reflexive": false},
+    {"en": "play", "pt-br": "tocar", "pt-pt": "tocar", "sense": "an instrument (play guitar)", "common-index": 39, "reflexive": false},
+    {"en": "play", "pt-br": "brincar", "pt-pt": "brincar", "sense": "have fun (children play)", "common-index": 39, "reflexive": false}
   ],
   "run": [
-    {"en": "run", "pt-br": "correr", "pt-pt": "correr", "sense": "move fast on foot (run a mile)", "common-index": 40},
-    {"en": "run", "pt-br": "administrar", "pt-pt": "gerir", "sense": "operate or manage (run a company)", "common-index": 40}
+    {"en": "run", "pt-br": "correr", "pt-pt": "correr", "sense": "move fast on foot (run a mile)", "common-index": 40, "reflexive": false},
+    {"en": "run", "pt-br": "administrar", "pt-pt": "gerir", "sense": "operate or manage (run a company)", "common-index": 40, "reflexive": false}
   ],
   "move": [
-    {"en": "move", "pt-br": "mover", "pt-pt": "mover", "sense": "change position (move the chair)", "common-index": 41},
-    {"en": "move", "pt-br": "mexer", "pt-pt": "mexer", "sense": "stir or budge (don't move)", "common-index": 41},
-    {"en": "move", "pt-br": "mudar-se", "pt-pt": "mudar-se", "sense": "relocate to live elsewhere (move to Lisbon)", "common-index": 41}
+    {"en": "move", "pt-br": "mover", "pt-pt": "mover", "sense": "change position (move the chair)", "common-index": 41, "reflexive": false},
+    {"en": "move", "pt-br": "mexer", "pt-pt": "mexer", "sense": "stir or budge (don't move)", "common-index": 41, "reflexive": false},
+    {"en": "move", "pt-br": "mudar-se", "pt-pt": "mudar-se", "sense": "relocate to live elsewhere (move to Lisbon)", "common-index": 41, "reflexive": true}
   ],
   "like": [
-    {"en": "like", "pt-br": "gostar", "pt-pt": "gostar", "sense": null, "common-index": 42}
+    {"en": "like", "pt-br": "gostar", "pt-pt": "gostar", "sense": null, "common-index": 42, "reflexive": false}
   ],
   "live": [
-    {"en": "live", "pt-br": "viver", "pt-pt": "viver", "sense": "be alive or lead a life (live a long life)", "common-index": 43},
-    {"en": "live", "pt-br": "morar", "pt-pt": "morar", "sense": "reside (live in Rio)", "common-index": 43}
+    {"en": "live", "pt-br": "viver", "pt-pt": "viver", "sense": "be alive or lead a life (live a long life)", "common-index": 43, "reflexive": false},
+    {"en": "live", "pt-br": "morar", "pt-pt": "morar", "sense": "reside (live in Rio)", "common-index": 43, "reflexive": false}
   ],
   "believe": [
-    {"en": "believe", "pt-br": "acreditar", "pt-pt": "acreditar", "sense": "trust or have faith in (believe in you)", "common-index": 44},
-    {"en": "believe", "pt-br": "crer", "pt-pt": "crer", "sense": "hold a belief (believe in God)", "common-index": 44}
+    {"en": "believe", "pt-br": "acreditar", "pt-pt": "acreditar", "sense": "trust or have faith in (believe in you)", "common-index": 44, "reflexive": false},
+    {"en": "believe", "pt-br": "crer", "pt-pt": "crer", "sense": "hold a belief (believe in God)", "common-index": 44, "reflexive": false}
   ],
   "hold": [
-    {"en": "hold", "pt-br": "segurar", "pt-pt": "segurar", "sense": "grip (hold my hand)", "common-index": 45},
-    {"en": "hold", "pt-br": "realizar", "pt-pt": "realizar", "sense": "conduct an event (hold a meeting)", "common-index": 45}
+    {"en": "hold", "pt-br": "segurar", "pt-pt": "segurar", "sense": "grip (hold my hand)", "common-index": 45, "reflexive": false},
+    {"en": "hold", "pt-br": "realizar", "pt-pt": "realizar", "sense": "conduct an event (hold a meeting)", "common-index": 45, "reflexive": false}
   ],
   "bring": [
-    {"en": "bring", "pt-br": "trazer", "pt-pt": "trazer", "sense": null, "common-index": 46}
+    {"en": "bring", "pt-br": "trazer", "pt-pt": "trazer", "sense": null, "common-index": 46, "reflexive": false}
   ],
   "happen": [
-    {"en": "happen", "pt-br": "acontecer", "pt-pt": "acontecer", "sense": null, "common-index": 47}
+    {"en": "happen", "pt-br": "acontecer", "pt-pt": "acontecer", "sense": null, "common-index": 47, "reflexive": false}
   ],
   "write": [
-    {"en": "write", "pt-br": "escrever", "pt-pt": "escrever", "sense": null, "common-index": 48}
+    {"en": "write", "pt-br": "escrever", "pt-pt": "escrever", "sense": null, "common-index": 48, "reflexive": false}
   ],
   "provide": [
-    {"en": "provide", "pt-br": "fornecer", "pt-pt": "fornecer", "sense": null, "common-index": 49}
+    {"en": "provide", "pt-br": "fornecer", "pt-pt": "fornecer", "sense": null, "common-index": 49, "reflexive": false}
   ],
   "sit": [
-    {"en": "sit", "pt-br": "sentar-se", "pt-pt": "sentar-se", "sense": null, "common-index": 50}
+    {"en": "sit", "pt-br": "sentar-se", "pt-pt": "sentar-se", "sense": null, "common-index": 50, "reflexive": true}
   ],
   "stand": [
-    {"en": "stand", "pt-br": "ficar em pé", "pt-pt": "ficar de pé", "sense": "be upright (stand there)", "common-index": 51},
-    {"en": "stand", "pt-br": "suportar", "pt-pt": "suportar", "sense": "tolerate (can't stand it)", "common-index": 51},
-    {"en": "stand", "pt-br": "aguentar", "pt-pt": "aguentar", "sense": "endure (stand the pain)", "common-index": 51}
+    {"en": "stand", "pt-br": "ficar em pé", "pt-pt": "ficar de pé", "sense": "be upright (stand there)", "common-index": 51, "reflexive": false},
+    {"en": "stand", "pt-br": "suportar", "pt-pt": "suportar", "sense": "tolerate (can't stand it)", "common-index": 51, "reflexive": false},
+    {"en": "stand", "pt-br": "aguentar", "pt-pt": "aguentar", "sense": "endure (stand the pain)", "common-index": 51, "reflexive": false}
   ],
   "lose": [
-    {"en": "lose", "pt-br": "perder", "pt-pt": "perder", "sense": null, "common-index": 52}
+    {"en": "lose", "pt-br": "perder", "pt-pt": "perder", "sense": null, "common-index": 52, "reflexive": false}
   ],
   "pay": [
-    {"en": "pay", "pt-br": "pagar", "pt-pt": "pagar", "sense": null, "common-index": 53}
+    {"en": "pay", "pt-br": "pagar", "pt-pt": "pagar", "sense": null, "common-index": 53, "reflexive": false}
   ],
   "meet": [
-    {"en": "meet", "pt-br": "conhecer", "pt-pt": "conhecer", "sense": "meet someone for the first time (meet her)", "common-index": 54},
-    {"en": "meet", "pt-br": "encontrar", "pt-pt": "encontrar", "sense": "encounter or get together (meet at noon)", "common-index": 54}
+    {"en": "meet", "pt-br": "conhecer", "pt-pt": "conhecer", "sense": "meet someone for the first time (meet her)", "common-index": 54, "reflexive": false},
+    {"en": "meet", "pt-br": "encontrar", "pt-pt": "encontrar", "sense": "encounter or get together (meet at noon)", "common-index": 54, "reflexive": false}
   ],
   "include": [
-    {"en": "include", "pt-br": "incluir", "pt-pt": "incluir", "sense": null, "common-index": 55}
+    {"en": "include", "pt-br": "incluir", "pt-pt": "incluir", "sense": null, "common-index": 55, "reflexive": false}
   ],
   "continue": [
-    {"en": "continue", "pt-br": "continuar", "pt-pt": "continuar", "sense": null, "common-index": 56}
+    {"en": "continue", "pt-br": "continuar", "pt-pt": "continuar", "sense": null, "common-index": 56, "reflexive": false}
   ],
   "set": [
-    {"en": "set", "pt-br": "definir", "pt-pt": "definir", "sense": "establish (set a rule)", "common-index": 57},
-    {"en": "set", "pt-br": "ajustar", "pt-pt": "ajustar", "sense": "adjust (set the clock)", "common-index": 57}
+    {"en": "set", "pt-br": "definir", "pt-pt": "definir", "sense": "establish (set a rule)", "common-index": 57, "reflexive": false},
+    {"en": "set", "pt-br": "ajustar", "pt-pt": "ajustar", "sense": "adjust (set the clock)", "common-index": 57, "reflexive": false}
   ],
   "learn": [
-    {"en": "learn", "pt-br": "aprender", "pt-pt": "aprender", "sense": null, "common-index": 58}
+    {"en": "learn", "pt-br": "aprender", "pt-pt": "aprender", "sense": null, "common-index": 58, "reflexive": false}
   ],
   "change": [
-    {"en": "change", "pt-br": "mudar", "pt-pt": "mudar", "sense": "become or make different (change my mind)", "common-index": 59},
-    {"en": "change", "pt-br": "trocar", "pt-pt": "trocar", "sense": "swap or replace (change clothes)", "common-index": 59},
-    {"en": "change", "pt-br": "alterar", "pt-pt": "alterar", "sense": "modify (change the settings)", "common-index": 59}
+    {"en": "change", "pt-br": "mudar", "pt-pt": "mudar", "sense": "become or make different (change my mind)", "common-index": 59, "reflexive": false},
+    {"en": "change", "pt-br": "trocar", "pt-pt": "trocar", "sense": "swap or replace (change clothes)", "common-index": 59, "reflexive": false},
+    {"en": "change", "pt-br": "alterar", "pt-pt": "alterar", "sense": "modify (change the settings)", "common-index": 59, "reflexive": false}
   ],
   "lead": [
-    {"en": "lead", "pt-br": "liderar", "pt-pt": "liderar", "sense": "guide a group (lead the team)", "common-index": 60},
-    {"en": "lead", "pt-br": "conduzir", "pt-pt": "conduzir", "sense": "guide physically (lead the way)", "common-index": 60}
+    {"en": "lead", "pt-br": "liderar", "pt-pt": "liderar", "sense": "guide a group (lead the team)", "common-index": 60, "reflexive": false},
+    {"en": "lead", "pt-br": "conduzir", "pt-pt": "conduzir", "sense": "guide physically (lead the way)", "common-index": 60, "reflexive": false}
   ],
   "understand": [
-    {"en": "understand", "pt-br": "entender", "pt-pt": "entender", "sense": "grasp the meaning (understand the question)", "common-index": 61},
-    {"en": "understand", "pt-br": "compreender", "pt-pt": "compreender", "sense": "comprehend, more formal", "common-index": 61}
+    {"en": "understand", "pt-br": "entender", "pt-pt": "entender", "sense": "grasp the meaning (understand the question)", "common-index": 61, "reflexive": false},
+    {"en": "understand", "pt-br": "compreender", "pt-pt": "compreender", "sense": "comprehend, more formal", "common-index": 61, "reflexive": false}
   ],
   "watch": [
-    {"en": "watch", "pt-br": "assistir", "pt-pt": "ver", "sense": "view a show or match (watch TV)", "common-index": 62},
-    {"en": "watch", "pt-br": "observar", "pt-pt": "observar", "sense": "observe closely (watch the birds)", "common-index": 62},
-    {"en": "watch", "pt-br": "vigiar", "pt-pt": "vigiar", "sense": "guard or monitor (watch the house)", "common-index": 62}
+    {"en": "watch", "pt-br": "assistir", "pt-pt": "ver", "sense": "view a show or match (watch TV)", "common-index": 62, "reflexive": false},
+    {"en": "watch", "pt-br": "observar", "pt-pt": "observar", "sense": "observe closely (watch the birds)", "common-index": 62, "reflexive": false},
+    {"en": "watch", "pt-br": "vigiar", "pt-pt": "vigiar", "sense": "guard or monitor (watch the house)", "common-index": 62, "reflexive": false}
   ],
   "follow": [
-    {"en": "follow", "pt-br": "seguir", "pt-pt": "seguir", "sense": "go after (follow me)", "common-index": 63},
-    {"en": "follow", "pt-br": "acompanhar", "pt-pt": "acompanhar", "sense": "accompany or keep up with (follow the news)", "common-index": 63}
+    {"en": "follow", "pt-br": "seguir", "pt-pt": "seguir", "sense": "go after (follow me)", "common-index": 63, "reflexive": false},
+    {"en": "follow", "pt-br": "acompanhar", "pt-pt": "acompanhar", "sense": "accompany or keep up with (follow the news)", "common-index": 63, "reflexive": false}
   ],
   "stop": [
-    {"en": "stop", "pt-br": "parar", "pt-pt": "parar", "sense": null, "common-index": 64}
+    {"en": "stop", "pt-br": "parar", "pt-pt": "parar", "sense": null, "common-index": 64, "reflexive": false}
   ],
   "create": [
-    {"en": "create", "pt-br": "criar", "pt-pt": "criar", "sense": null, "common-index": 65}
+    {"en": "create", "pt-br": "criar", "pt-pt": "criar", "sense": null, "common-index": 65, "reflexive": false}
   ],
   "speak": [
-    {"en": "speak", "pt-br": "falar", "pt-pt": "falar", "sense": null, "common-index": 66}
+    {"en": "speak", "pt-br": "falar", "pt-pt": "falar", "sense": null, "common-index": 66, "reflexive": false}
   ],
   "read": [
-    {"en": "read", "pt-br": "ler", "pt-pt": "ler", "sense": null, "common-index": 67}
+    {"en": "read", "pt-br": "ler", "pt-pt": "ler", "sense": null, "common-index": 67, "reflexive": false}
   ],
   "allow": [
-    {"en": "allow", "pt-br": "permitir", "pt-pt": "permitir", "sense": null, "common-index": 68}
+    {"en": "allow", "pt-br": "permitir", "pt-pt": "permitir", "sense": null, "common-index": 68, "reflexive": false}
   ],
   "add": [
-    {"en": "add", "pt-br": "adicionar", "pt-pt": "adicionar", "sense": "put in addition (add salt)", "common-index": 69},
-    {"en": "add", "pt-br": "somar", "pt-pt": "somar", "sense": "sum numbers (add 2 and 3)", "common-index": 69}
+    {"en": "add", "pt-br": "adicionar", "pt-pt": "adicionar", "sense": "put in addition (add salt)", "common-index": 69, "reflexive": false},
+    {"en": "add", "pt-br": "somar", "pt-pt": "somar", "sense": "sum numbers (add 2 and 3)", "common-index": 69, "reflexive": false}
   ],
   "spend": [
-    {"en": "spend", "pt-br": "gastar", "pt-pt": "gastar", "sense": "use money (spend ten dollars)", "common-index": 70},
-    {"en": "spend", "pt-br": "passar", "pt-pt": "passar", "sense": "pass time (spend a day)", "common-index": 70}
+    {"en": "spend", "pt-br": "gastar", "pt-pt": "gastar", "sense": "use money (spend ten dollars)", "common-index": 70, "reflexive": false},
+    {"en": "spend", "pt-br": "passar", "pt-pt": "passar", "sense": "pass time (spend a day)", "common-index": 70, "reflexive": false}
   ],
   "grow": [
-    {"en": "grow", "pt-br": "crescer", "pt-pt": "crescer", "sense": "increase in size (grow tall)", "common-index": 71},
-    {"en": "grow", "pt-br": "cultivar", "pt-pt": "cultivar", "sense": "raise plants (grow tomatoes)", "common-index": 71}
+    {"en": "grow", "pt-br": "crescer", "pt-pt": "crescer", "sense": "increase in size (grow tall)", "common-index": 71, "reflexive": false},
+    {"en": "grow", "pt-br": "cultivar", "pt-pt": "cultivar", "sense": "raise plants (grow tomatoes)", "common-index": 71, "reflexive": false}
   ],
   "open": [
-    {"en": "open", "pt-br": "abrir", "pt-pt": "abrir", "sense": null, "common-index": 72}
+    {"en": "open", "pt-br": "abrir", "pt-pt": "abrir", "sense": null, "common-index": 72, "reflexive": false}
   ],
   "walk": [
-    {"en": "walk", "pt-br": "andar", "pt-pt": "andar", "sense": "move on foot (walk to school)", "common-index": 73},
-    {"en": "walk", "pt-br": "caminhar", "pt-pt": "caminhar", "sense": "stroll or hike (walk by the sea)", "common-index": 73},
-    {"en": "walk", "pt-br": "passear", "pt-pt": "passear", "sense": "go for a walk (walk the dog)", "common-index": 73}
+    {"en": "walk", "pt-br": "andar", "pt-pt": "andar", "sense": "move on foot (walk to school)", "common-index": 73, "reflexive": false},
+    {"en": "walk", "pt-br": "caminhar", "pt-pt": "caminhar", "sense": "stroll or hike (walk by the sea)", "common-index": 73, "reflexive": false},
+    {"en": "walk", "pt-br": "passear", "pt-pt": "passear", "sense": "go for a walk (walk the dog)", "common-index": 73, "reflexive": false}
   ],
   "win": [
-    {"en": "win", "pt-br": "ganhar", "pt-pt": "ganhar", "sense": "be victorious or earn (win a prize)", "common-index": 74},
-    {"en": "win", "pt-br": "vencer", "pt-pt": "vencer", "sense": "defeat opponents (win the race)", "common-index": 74}
+    {"en": "win", "pt-br": "ganhar", "pt-pt": "ganhar", "sense": "be victorious or earn (win a prize)", "common-index": 74, "reflexive": false},
+    {"en": "win", "pt-br": "vencer", "pt-pt": "vencer", "sense": "defeat opponents (win the race)", "common-index": 74, "reflexive": false}
   ],
   "offer": [
-    {"en": "offer", "pt-br": "oferecer", "pt-pt": "oferecer", "sense": null, "common-index": 75}
+    {"en": "offer", "pt-br": "oferecer", "pt-pt": "oferecer", "sense": null, "common-index": 75, "reflexive": false}
   ],
   "remember": [
-    {"en": "remember", "pt-br": "lembrar", "pt-pt": "lembrar-se", "sense": "bring to mind (remember her name)", "common-index": 76},
-    {"en": "remember", "pt-br": "lembrar-se", "pt-pt": "lembrar-se", "sense": "bring to mind, reflexive form in both variants", "common-index": 76},
-    {"en": "remember", "pt-br": "recordar", "pt-pt": "recordar", "sense": "recall the past (remember the old days)", "common-index": 76}
+    {"en": "remember", "pt-br": "lembrar", "pt-pt": "lembrar-se", "sense": "bring to mind (remember her name)", "common-index": 76, "reflexive": true},
+    {"en": "remember", "pt-br": "lembrar-se", "pt-pt": "lembrar-se", "sense": "bring to mind, reflexive form in both variants", "common-index": 76, "reflexive": true},
+    {"en": "remember", "pt-br": "recordar", "pt-pt": "recordar", "sense": "recall the past (remember the old days)", "common-index": 76, "reflexive": false}
   ],
   "love": [
-    {"en": "love", "pt-br": "amar", "pt-pt": "amar", "sense": "feel deep affection (love her)", "common-index": 77},
-    {"en": "love", "pt-br": "adorar", "pt-pt": "adorar", "sense": "adore or really like (love pizza)", "common-index": 77}
+    {"en": "love", "pt-br": "amar", "pt-pt": "amar", "sense": "feel deep affection (love her)", "common-index": 77, "reflexive": false},
+    {"en": "love", "pt-br": "adorar", "pt-pt": "adorar", "sense": "adore or really like (love pizza)", "common-index": 77, "reflexive": false}
   ],
   "consider": [
-    {"en": "consider", "pt-br": "considerar", "pt-pt": "considerar", "sense": null, "common-index": 78}
+    {"en": "consider", "pt-br": "considerar", "pt-pt": "considerar", "sense": null, "common-index": 78, "reflexive": false}
   ],
   "appear": [
-    {"en": "appear", "pt-br": "aparecer", "pt-pt": "aparecer", "sense": null, "common-index": 79}
+    {"en": "appear", "pt-br": "aparecer", "pt-pt": "aparecer", "sense": null, "common-index": 79, "reflexive": false}
   ],
   "buy": [
-    {"en": "buy", "pt-br": "comprar", "pt-pt": "comprar", "sense": null, "common-index": 80}
+    {"en": "buy", "pt-br": "comprar", "pt-pt": "comprar", "sense": null, "common-index": 80, "reflexive": false}
   ],
   "wait": [
-    {"en": "wait", "pt-br": "esperar", "pt-pt": "esperar", "sense": "stay until something happens (wait here)", "common-index": 81},
-    {"en": "wait", "pt-br": "aguardar", "pt-pt": "aguardar", "sense": "await, more formal (wait for a reply)", "common-index": 81}
+    {"en": "wait", "pt-br": "esperar", "pt-pt": "esperar", "sense": "stay until something happens (wait here)", "common-index": 81, "reflexive": false},
+    {"en": "wait", "pt-br": "aguardar", "pt-pt": "aguardar", "sense": "await, more formal (wait for a reply)", "common-index": 81, "reflexive": false}
   ],
   "serve": [
-    {"en": "serve", "pt-br": "servir", "pt-pt": "servir", "sense": null, "common-index": 82}
+    {"en": "serve", "pt-br": "servir", "pt-pt": "servir", "sense": null, "common-index": 82, "reflexive": false}
   ],
   "die": [
-    {"en": "die", "pt-br": "morrer", "pt-pt": "morrer", "sense": "stop living (the plant died)", "common-index": 83},
-    {"en": "die", "pt-br": "falecer", "pt-pt": "falecer", "sense": "pass away, formal (he died last year)", "common-index": 83}
+    {"en": "die", "pt-br": "morrer", "pt-pt": "morrer", "sense": "stop living (the plant died)", "common-index": 83, "reflexive": false},
+    {"en": "die", "pt-br": "falecer", "pt-pt": "falecer", "sense": "pass away, formal (he died last year)", "common-index": 83, "reflexive": false}
   ],
   "send": [
-    {"en": "send", "pt-br": "enviar", "pt-pt": "enviar", "sense": "dispatch electronically (send an email)", "common-index": 84},
-    {"en": "send", "pt-br": "mandar", "pt-pt": "mandar", "sense": "send or order (send a letter)", "common-index": 84}
+    {"en": "send", "pt-br": "enviar", "pt-pt": "enviar", "sense": "dispatch electronically (send an email)", "common-index": 84, "reflexive": false},
+    {"en": "send", "pt-br": "mandar", "pt-pt": "mandar", "sense": "send or order (send a letter)", "common-index": 84, "reflexive": false}
   ],
   "expect": [
-    {"en": "expect", "pt-br": "esperar", "pt-pt": "esperar", "sense": null, "common-index": 85}
+    {"en": "expect", "pt-br": "esperar", "pt-pt": "esperar", "sense": null, "common-index": 85, "reflexive": false}
   ],
   "build": [
-    {"en": "build", "pt-br": "construir", "pt-pt": "construir", "sense": null, "common-index": 86}
+    {"en": "build", "pt-br": "construir", "pt-pt": "construir", "sense": null, "common-index": 86, "reflexive": false}
   ],
   "stay": [
-    {"en": "stay", "pt-br": "ficar", "pt-pt": "ficar", "sense": "remain in place (stay home)", "common-index": 87},
-    {"en": "stay", "pt-br": "permanecer", "pt-pt": "permanecer", "sense": "remain in a state (stay calm)", "common-index": 87},
-    {"en": "stay", "pt-br": "hospedar-se", "pt-pt": "hospedar-se", "sense": "lodge somewhere (stay at a hotel)", "common-index": 87}
+    {"en": "stay", "pt-br": "ficar", "pt-pt": "ficar", "sense": "remain in place (stay home)", "common-index": 87, "reflexive": false},
+    {"en": "stay", "pt-br": "permanecer", "pt-pt": "permanecer", "sense": "remain in a state (stay calm)", "common-index": 87, "reflexive": false},
+    {"en": "stay", "pt-br": "hospedar-se", "pt-pt": "hospedar-se", "sense": "lodge somewhere (stay at a hotel)", "common-index": 87, "reflexive": true}
   ],
   "fall": [
-    {"en": "fall", "pt-br": "cair", "pt-pt": "cair", "sense": null, "common-index": 88}
+    {"en": "fall", "pt-br": "cair", "pt-pt": "cair", "sense": null, "common-index": 88, "reflexive": false}
   ],
   "cut": [
-    {"en": "cut", "pt-br": "cortar", "pt-pt": "cortar", "sense": null, "common-index": 89}
+    {"en": "cut", "pt-br": "cortar", "pt-pt": "cortar", "sense": null, "common-index": 89, "reflexive": false}
   ],
   "reach": [
-    {"en": "reach", "pt-br": "alcançar", "pt-pt": "alcançar", "sense": "attain or touch (reach the top)", "common-index": 90},
-    {"en": "reach", "pt-br": "chegar", "pt-pt": "chegar", "sense": "arrive at (reach the station)", "common-index": 90}
+    {"en": "reach", "pt-br": "alcançar", "pt-pt": "alcançar", "sense": "attain or touch (reach the top)", "common-index": 90, "reflexive": false},
+    {"en": "reach", "pt-br": "chegar", "pt-pt": "chegar", "sense": "arrive at (reach the station)", "common-index": 90, "reflexive": false}
   ],
   "kill": [
-    {"en": "kill", "pt-br": "matar", "pt-pt": "matar", "sense": null, "common-index": 91}
+    {"en": "kill", "pt-br": "matar", "pt-pt": "matar", "sense": null, "common-index": 91, "reflexive": false}
   ],
   "remain": [
-    {"en": "remain", "pt-br": "permanecer", "pt-pt": "permanecer", "sense": null, "common-index": 92}
+    {"en": "remain", "pt-br": "permanecer", "pt-pt": "permanecer", "sense": null, "common-index": 92, "reflexive": false}
   ],
   "suggest": [
-    {"en": "suggest", "pt-br": "sugerir", "pt-pt": "sugerir", "sense": "put forward gently (suggest an idea)", "common-index": 93},
-    {"en": "suggest", "pt-br": "propor", "pt-pt": "propor", "sense": "propose formally (suggest a plan)", "common-index": 93}
+    {"en": "suggest", "pt-br": "sugerir", "pt-pt": "sugerir", "sense": "put forward gently (suggest an idea)", "common-index": 93, "reflexive": false},
+    {"en": "suggest", "pt-br": "propor", "pt-pt": "propor", "sense": "propose formally (suggest a plan)", "common-index": 93, "reflexive": false}
   ],
   "raise": [
-    {"en": "raise", "pt-br": "levantar", "pt-pt": "levantar", "sense": "lift up (raise your hand)", "common-index": 94},
-    {"en": "raise", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": "increase (raise prices)", "common-index": 94},
-    {"en": "raise", "pt-br": "criar", "pt-pt": "criar", "sense": "bring up (raise children)", "common-index": 94}
+    {"en": "raise", "pt-br": "levantar", "pt-pt": "levantar", "sense": "lift up (raise your hand)", "common-index": 94, "reflexive": false},
+    {"en": "raise", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": "increase (raise prices)", "common-index": 94, "reflexive": false},
+    {"en": "raise", "pt-br": "criar", "pt-pt": "criar", "sense": "bring up (raise children)", "common-index": 94, "reflexive": false}
   ],
   "pass": [
-    {"en": "pass", "pt-br": "passar", "pt-pt": "passar", "sense": null, "common-index": 95}
+    {"en": "pass", "pt-br": "passar", "pt-pt": "passar", "sense": null, "common-index": 95, "reflexive": false}
   ],
   "sell": [
-    {"en": "sell", "pt-br": "vender", "pt-pt": "vender", "sense": null, "common-index": 96}
+    {"en": "sell", "pt-br": "vender", "pt-pt": "vender", "sense": null, "common-index": 96, "reflexive": false}
   ],
   "require": [
-    {"en": "require", "pt-br": "exigir", "pt-pt": "exigir", "sense": null, "common-index": 97}
+    {"en": "require", "pt-br": "exigir", "pt-pt": "exigir", "sense": null, "common-index": 97, "reflexive": false}
   ],
   "report": [
-    {"en": "report", "pt-br": "relatar", "pt-pt": "relatar", "sense": null, "common-index": 98}
+    {"en": "report", "pt-br": "relatar", "pt-pt": "relatar", "sense": null, "common-index": 98, "reflexive": false}
   ],
   "decide": [
-    {"en": "decide", "pt-br": "decidir", "pt-pt": "decidir", "sense": "make up one's mind (decide to go)", "common-index": 99},
-    {"en": "decide", "pt-br": "resolver", "pt-pt": "resolver", "sense": "settle or resolve (decide a case)", "common-index": 99}
+    {"en": "decide", "pt-br": "decidir", "pt-pt": "decidir", "sense": "make up one's mind (decide to go)", "common-index": 99, "reflexive": false},
+    {"en": "decide", "pt-br": "resolver", "pt-pt": "resolver", "sense": "settle or resolve (decide a case)", "common-index": 99, "reflexive": false}
   ],
   "pull": [
-    {"en": "pull", "pt-br": "puxar", "pt-pt": "puxar", "sense": null, "common-index": 100}
+    {"en": "pull", "pt-br": "puxar", "pt-pt": "puxar", "sense": null, "common-index": 100, "reflexive": false}
   ],
   "return": [
-    {"en": "return", "pt-br": "voltar", "pt-pt": "voltar", "sense": "go back (return home)", "common-index": 101},
-    {"en": "return", "pt-br": "devolver", "pt-pt": "devolver", "sense": "give back (return the book)", "common-index": 101}
+    {"en": "return", "pt-br": "voltar", "pt-pt": "voltar", "sense": "go back (return home)", "common-index": 101, "reflexive": false},
+    {"en": "return", "pt-br": "devolver", "pt-pt": "devolver", "sense": "give back (return the book)", "common-index": 101, "reflexive": false}
   ],
   "explain": [
-    {"en": "explain", "pt-br": "explicar", "pt-pt": "explicar", "sense": null, "common-index": 102}
+    {"en": "explain", "pt-br": "explicar", "pt-pt": "explicar", "sense": null, "common-index": 102, "reflexive": false}
   ],
   "hope": [
-    {"en": "hope", "pt-br": "esperar", "pt-pt": "esperar", "sense": null, "common-index": 103}
+    {"en": "hope", "pt-br": "esperar", "pt-pt": "esperar", "sense": null, "common-index": 103, "reflexive": false}
   ],
   "develop": [
-    {"en": "develop", "pt-br": "desenvolver", "pt-pt": "desenvolver", "sense": null, "common-index": 104}
+    {"en": "develop", "pt-br": "desenvolver", "pt-pt": "desenvolver", "sense": null, "common-index": 104, "reflexive": false}
   ],
   "carry": [
-    {"en": "carry", "pt-br": "carregar", "pt-pt": "carregar", "sense": "bear weight (carry a bag)", "common-index": 105},
-    {"en": "carry", "pt-br": "transportar", "pt-pt": "transportar", "sense": "convey goods (carry cargo)", "common-index": 105}
+    {"en": "carry", "pt-br": "carregar", "pt-pt": "carregar", "sense": "bear weight (carry a bag)", "common-index": 105, "reflexive": false},
+    {"en": "carry", "pt-br": "transportar", "pt-pt": "transportar", "sense": "convey goods (carry cargo)", "common-index": 105, "reflexive": false}
   ],
   "break": [
-    {"en": "break", "pt-br": "quebrar", "pt-pt": "partir", "sense": null, "common-index": 106}
+    {"en": "break", "pt-br": "quebrar", "pt-pt": "partir", "sense": null, "common-index": 106, "reflexive": false}
   ],
   "receive": [
-    {"en": "receive", "pt-br": "receber", "pt-pt": "receber", "sense": null, "common-index": 107}
+    {"en": "receive", "pt-br": "receber", "pt-pt": "receber", "sense": null, "common-index": 107, "reflexive": false}
   ],
   "agree": [
-    {"en": "agree", "pt-br": "concordar", "pt-pt": "concordar", "sense": null, "common-index": 108}
+    {"en": "agree", "pt-br": "concordar", "pt-pt": "concordar", "sense": null, "common-index": 108, "reflexive": false}
   ],
   "support": [
-    {"en": "support", "pt-br": "apoiar", "pt-pt": "apoiar", "sense": "back or help (support a friend)", "common-index": 109},
-    {"en": "support", "pt-br": "sustentar", "pt-pt": "sustentar", "sense": "hold up or provide for (support a family)", "common-index": 109}
+    {"en": "support", "pt-br": "apoiar", "pt-pt": "apoiar", "sense": "back or help (support a friend)", "common-index": 109, "reflexive": false},
+    {"en": "support", "pt-br": "sustentar", "pt-pt": "sustentar", "sense": "hold up or provide for (support a family)", "common-index": 109, "reflexive": false}
   ],
   "hit": [
-    {"en": "hit", "pt-br": "bater", "pt-pt": "bater", "sense": "strike (hit the ball)", "common-index": 110},
-    {"en": "hit", "pt-br": "atingir", "pt-pt": "atingir", "sense": "reach a target (hit the target)", "common-index": 110}
+    {"en": "hit", "pt-br": "bater", "pt-pt": "bater", "sense": "strike (hit the ball)", "common-index": 110, "reflexive": false},
+    {"en": "hit", "pt-br": "atingir", "pt-pt": "atingir", "sense": "reach a target (hit the target)", "common-index": 110, "reflexive": false}
   ],
   "produce": [
-    {"en": "produce", "pt-br": "produzir", "pt-pt": "produzir", "sense": null, "common-index": 111}
+    {"en": "produce", "pt-br": "produzir", "pt-pt": "produzir", "sense": null, "common-index": 111, "reflexive": false}
   ],
   "eat": [
-    {"en": "eat", "pt-br": "comer", "pt-pt": "comer", "sense": null, "common-index": 112}
+    {"en": "eat", "pt-br": "comer", "pt-pt": "comer", "sense": null, "common-index": 112, "reflexive": false}
   ],
   "cover": [
-    {"en": "cover", "pt-br": "cobrir", "pt-pt": "cobrir", "sense": null, "common-index": 113}
+    {"en": "cover", "pt-br": "cobrir", "pt-pt": "cobrir", "sense": null, "common-index": 113, "reflexive": false}
   ],
   "catch": [
-    {"en": "catch", "pt-br": "pegar", "pt-pt": "apanhar", "sense": "grab (catch the ball)", "common-index": 114},
-    {"en": "catch", "pt-br": "capturar", "pt-pt": "capturar", "sense": "capture or trap (catch a thief)", "common-index": 114}
+    {"en": "catch", "pt-br": "pegar", "pt-pt": "apanhar", "sense": "grab (catch the ball)", "common-index": 114, "reflexive": false},
+    {"en": "catch", "pt-br": "capturar", "pt-pt": "capturar", "sense": "capture or trap (catch a thief)", "common-index": 114, "reflexive": false}
   ],
   "draw": [
-    {"en": "draw", "pt-br": "desenhar", "pt-pt": "desenhar", "sense": null, "common-index": 115}
+    {"en": "draw", "pt-br": "desenhar", "pt-pt": "desenhar", "sense": null, "common-index": 115, "reflexive": false}
   ],
   "choose": [
-    {"en": "choose", "pt-br": "escolher", "pt-pt": "escolher", "sense": null, "common-index": 116}
+    {"en": "choose", "pt-br": "escolher", "pt-pt": "escolher", "sense": null, "common-index": 116, "reflexive": false}
   ],
   "cause": [
-    {"en": "cause", "pt-br": "causar", "pt-pt": "causar", "sense": null, "common-index": 117}
+    {"en": "cause", "pt-br": "causar", "pt-pt": "causar", "sense": null, "common-index": 117, "reflexive": false}
   ],
   "point": [
-    {"en": "point", "pt-br": "apontar", "pt-pt": "apontar", "sense": null, "common-index": 118}
+    {"en": "point", "pt-br": "apontar", "pt-pt": "apontar", "sense": null, "common-index": 118, "reflexive": false}
   ],
   "listen": [
-    {"en": "listen", "pt-br": "escutar", "pt-pt": "escutar", "sense": "pay attention to sound (listen to music)", "common-index": 119},
-    {"en": "listen", "pt-br": "ouvir", "pt-pt": "ouvir", "sense": "hear or listen to (hear a song)", "common-index": 119}
+    {"en": "listen", "pt-br": "escutar", "pt-pt": "escutar", "sense": "pay attention to sound (listen to music)", "common-index": 119, "reflexive": false},
+    {"en": "listen", "pt-br": "ouvir", "pt-pt": "ouvir", "sense": "hear or listen to (hear a song)", "common-index": 119, "reflexive": false}
   ],
   "realize": [
-    {"en": "realize", "pt-br": "perceber", "pt-pt": "perceber", "sense": null, "common-index": 120}
+    {"en": "realize", "pt-br": "perceber", "pt-pt": "perceber", "sense": null, "common-index": 120, "reflexive": false}
   ],
   "close": [
-    {"en": "close", "pt-br": "fechar", "pt-pt": "fechar", "sense": null, "common-index": 121}
+    {"en": "close", "pt-br": "fechar", "pt-pt": "fechar", "sense": null, "common-index": 121, "reflexive": false}
   ],
   "involve": [
-    {"en": "involve", "pt-br": "envolver", "pt-pt": "envolver", "sense": null, "common-index": 122}
+    {"en": "involve", "pt-br": "envolver", "pt-pt": "envolver", "sense": null, "common-index": 122, "reflexive": false}
   ],
   "increase": [
-    {"en": "increase", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": null, "common-index": 123}
+    {"en": "increase", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": null, "common-index": 123, "reflexive": false}
   ],
   "reduce": [
-    {"en": "reduce", "pt-br": "reduzir", "pt-pt": "reduzir", "sense": null, "common-index": 124}
+    {"en": "reduce", "pt-br": "reduzir", "pt-pt": "reduzir", "sense": null, "common-index": 124, "reflexive": false}
   ],
   "improve": [
-    {"en": "improve", "pt-br": "melhorar", "pt-pt": "melhorar", "sense": null, "common-index": 125}
+    {"en": "improve", "pt-br": "melhorar", "pt-pt": "melhorar", "sense": null, "common-index": 125, "reflexive": false}
   ],
   "prepare": [
-    {"en": "prepare", "pt-br": "preparar", "pt-pt": "preparar", "sense": null, "common-index": 126}
+    {"en": "prepare", "pt-br": "preparar", "pt-pt": "preparar", "sense": null, "common-index": 126, "reflexive": false}
   ],
   "apply": [
-    {"en": "apply", "pt-br": "aplicar", "pt-pt": "aplicar", "sense": "put into use (apply a rule)", "common-index": 127},
-    {"en": "apply", "pt-br": "candidatar-se", "pt-pt": "candidatar-se", "sense": "apply for a job or place (apply to a university)", "common-index": 127}
+    {"en": "apply", "pt-br": "aplicar", "pt-pt": "aplicar", "sense": "put into use (apply a rule)", "common-index": 127, "reflexive": false},
+    {"en": "apply", "pt-br": "candidatar-se", "pt-pt": "candidatar-se", "sense": "apply for a job or place (apply to a university)", "common-index": 127, "reflexive": true}
   ],
   "join": [
-    {"en": "join", "pt-br": "juntar-se", "pt-pt": "juntar-se", "sense": "become part of (join us)", "common-index": 128},
-    {"en": "join", "pt-br": "unir", "pt-pt": "unir", "sense": "connect or combine (join two pieces)", "common-index": 128}
+    {"en": "join", "pt-br": "juntar-se", "pt-pt": "juntar-se", "sense": "become part of (join us)", "common-index": 128, "reflexive": true},
+    {"en": "join", "pt-br": "unir", "pt-pt": "unir", "sense": "connect or combine (join two pieces)", "common-index": 128, "reflexive": false}
   ],
   "accept": [
-    {"en": "accept", "pt-br": "aceitar", "pt-pt": "aceitar", "sense": null, "common-index": 129}
+    {"en": "accept", "pt-br": "aceitar", "pt-pt": "aceitar", "sense": null, "common-index": 129, "reflexive": false}
   ],
   "discuss": [
-    {"en": "discuss", "pt-br": "discutir", "pt-pt": "discutir", "sense": null, "common-index": 130}
+    {"en": "discuss", "pt-br": "discutir", "pt-pt": "discutir", "sense": null, "common-index": 130, "reflexive": false}
   ],
   "manage": [
-    {"en": "manage", "pt-br": "gerenciar", "pt-pt": "gerir", "sense": "supervise or run (manage a team)", "common-index": 131},
-    {"en": "manage", "pt-br": "administrar", "pt-pt": "administrar", "sense": "administer (manage a budget)", "common-index": 131}
+    {"en": "manage", "pt-br": "gerenciar", "pt-pt": "gerir", "sense": "supervise or run (manage a team)", "common-index": 131, "reflexive": false},
+    {"en": "manage", "pt-br": "administrar", "pt-pt": "administrar", "sense": "administer (manage a budget)", "common-index": 131, "reflexive": false}
   ],
   "ensure": [
-    {"en": "ensure", "pt-br": "garantir", "pt-pt": "garantir", "sense": null, "common-index": 132}
+    {"en": "ensure", "pt-br": "garantir", "pt-pt": "garantir", "sense": null, "common-index": 132, "reflexive": false}
   ],
   "fail": [
-    {"en": "fail", "pt-br": "falhar", "pt-pt": "falhar", "sense": "not succeed (fail to do it)", "common-index": 133},
-    {"en": "fail", "pt-br": "reprovar", "pt-pt": "reprovar", "sense": "not pass an exam (fail a class)", "common-index": 133}
+    {"en": "fail", "pt-br": "falhar", "pt-pt": "falhar", "sense": "not succeed (fail to do it)", "common-index": 133, "reflexive": false},
+    {"en": "fail", "pt-br": "reprovar", "pt-pt": "reprovar", "sense": "not pass an exam (fail a class)", "common-index": 133, "reflexive": false}
   ],
   "imagine": [
-    {"en": "imagine", "pt-br": "imaginar", "pt-pt": "imaginar", "sense": null, "common-index": 134}
+    {"en": "imagine", "pt-br": "imaginar", "pt-pt": "imaginar", "sense": null, "common-index": 134, "reflexive": false}
   ],
   "occur": [
-    {"en": "occur", "pt-br": "ocorrer", "pt-pt": "ocorrer", "sense": null, "common-index": 135}
+    {"en": "occur", "pt-br": "ocorrer", "pt-pt": "ocorrer", "sense": null, "common-index": 135, "reflexive": false}
   ],
   "enjoy": [
-    {"en": "enjoy", "pt-br": "aproveitar", "pt-pt": "aproveitar", "sense": "make good use of the moment (enjoy the day)", "common-index": 136},
-    {"en": "enjoy", "pt-br": "gostar", "pt-pt": "gostar", "sense": "like (enjoy music)", "common-index": 136},
-    {"en": "enjoy", "pt-br": "desfrutar", "pt-pt": "desfrutar", "sense": "take pleasure in (enjoy the view)", "common-index": 136}
+    {"en": "enjoy", "pt-br": "aproveitar", "pt-pt": "aproveitar", "sense": "make good use of the moment (enjoy the day)", "common-index": 136, "reflexive": false},
+    {"en": "enjoy", "pt-br": "gostar", "pt-pt": "gostar", "sense": "like (enjoy music)", "common-index": 136, "reflexive": false},
+    {"en": "enjoy", "pt-br": "desfrutar", "pt-pt": "desfrutar", "sense": "take pleasure in (enjoy the view)", "common-index": 136, "reflexive": false}
   ],
   "laugh": [
-    {"en": "laugh", "pt-br": "rir", "pt-pt": "rir", "sense": null, "common-index": 137}
+    {"en": "laugh", "pt-br": "rir", "pt-pt": "rir", "sense": null, "common-index": 137, "reflexive": false}
   ],
   "smile": [
-    {"en": "smile", "pt-br": "sorrir", "pt-pt": "sorrir", "sense": null, "common-index": 138}
+    {"en": "smile", "pt-br": "sorrir", "pt-pt": "sorrir", "sense": null, "common-index": 138, "reflexive": false}
   ],
   "cry": [
-    {"en": "cry", "pt-br": "chorar", "pt-pt": "chorar", "sense": null, "common-index": 139}
+    {"en": "cry", "pt-br": "chorar", "pt-pt": "chorar", "sense": null, "common-index": 139, "reflexive": false}
   ],
   "jump": [
-    {"en": "jump", "pt-br": "pular", "pt-pt": "saltar", "sense": null, "common-index": 140}
+    {"en": "jump", "pt-br": "pular", "pt-pt": "saltar", "sense": null, "common-index": 140, "reflexive": false}
   ],
   "push": [
-    {"en": "push", "pt-br": "empurrar", "pt-pt": "empurrar", "sense": null, "common-index": 141}
+    {"en": "push", "pt-br": "empurrar", "pt-pt": "empurrar", "sense": null, "common-index": 141, "reflexive": false}
   ],
   "throw": [
-    {"en": "throw", "pt-br": "jogar", "pt-pt": "atirar", "sense": "toss or hurl (throw a ball)", "common-index": 142},
-    {"en": "throw", "pt-br": "lançar", "pt-pt": "lançar", "sense": "launch or cast (throw a javelin)", "common-index": 142}
+    {"en": "throw", "pt-br": "jogar", "pt-pt": "atirar", "sense": "toss or hurl (throw a ball)", "common-index": 142, "reflexive": false},
+    {"en": "throw", "pt-br": "lançar", "pt-pt": "lançar", "sense": "launch or cast (throw a javelin)", "common-index": 142, "reflexive": false}
   ],
   "fly": [
-    {"en": "fly", "pt-br": "voar", "pt-pt": "voar", "sense": null, "common-index": 143}
+    {"en": "fly", "pt-br": "voar", "pt-pt": "voar", "sense": null, "common-index": 143, "reflexive": false}
   ],
   "swim": [
-    {"en": "swim", "pt-br": "nadar", "pt-pt": "nadar", "sense": null, "common-index": 144}
+    {"en": "swim", "pt-br": "nadar", "pt-pt": "nadar", "sense": null, "common-index": 144, "reflexive": false}
   ],
   "sleep": [
-    {"en": "sleep", "pt-br": "dormir", "pt-pt": "dormir", "sense": null, "common-index": 145}
+    {"en": "sleep", "pt-br": "dormir", "pt-pt": "dormir", "sense": null, "common-index": 145, "reflexive": false}
   ],
   "dream": [
-    {"en": "dream", "pt-br": "sonhar", "pt-pt": "sonhar", "sense": null, "common-index": 146}
+    {"en": "dream", "pt-br": "sonhar", "pt-pt": "sonhar", "sense": null, "common-index": 146, "reflexive": false}
   ],
   "drive": [
-    {"en": "drive", "pt-br": "dirigir", "pt-pt": "conduzir", "sense": null, "common-index": 147}
+    {"en": "drive", "pt-br": "dirigir", "pt-pt": "conduzir", "sense": null, "common-index": 147, "reflexive": false}
   ],
   "sing": [
-    {"en": "sing", "pt-br": "cantar", "pt-pt": "cantar", "sense": null, "common-index": 148}
+    {"en": "sing", "pt-br": "cantar", "pt-pt": "cantar", "sense": null, "common-index": 148, "reflexive": false}
   ],
   "dance": [
-    {"en": "dance", "pt-br": "dançar", "pt-pt": "dançar", "sense": null, "common-index": 149}
+    {"en": "dance", "pt-br": "dançar", "pt-pt": "dançar", "sense": null, "common-index": 149, "reflexive": false}
   ],
   "cook": [
-    {"en": "cook", "pt-br": "cozinhar", "pt-pt": "cozinhar", "sense": null, "common-index": 150}
+    {"en": "cook", "pt-br": "cozinhar", "pt-pt": "cozinhar", "sense": null, "common-index": 150, "reflexive": false}
   ],
   "clean": [
-    {"en": "clean", "pt-br": "limpar", "pt-pt": "limpar", "sense": null, "common-index": 151}
+    {"en": "clean", "pt-br": "limpar", "pt-pt": "limpar", "sense": null, "common-index": 151, "reflexive": false}
   ],
   "wash": [
-    {"en": "wash", "pt-br": "lavar", "pt-pt": "lavar", "sense": null, "common-index": 152}
+    {"en": "wash", "pt-br": "lavar", "pt-pt": "lavar", "sense": null, "common-index": 152, "reflexive": false}
   ],
   "wear": [
-    {"en": "wear", "pt-br": "usar", "pt-pt": "vestir", "sense": "have on (wear a hat)", "common-index": 153},
-    {"en": "wear", "pt-br": "vestir", "pt-pt": "vestir", "sense": "dress in (wear a suit)", "common-index": 153},
-    {"en": "wear", "pt-br": "usar", "pt-pt": "usar", "sense": "use or have on (wear glasses)", "common-index": 153}
+    {"en": "wear", "pt-br": "usar", "pt-pt": "vestir", "sense": "have on (wear a hat)", "common-index": 153, "reflexive": false},
+    {"en": "wear", "pt-br": "vestir", "pt-pt": "vestir", "sense": "dress in (wear a suit)", "common-index": 153, "reflexive": false},
+    {"en": "wear", "pt-br": "usar", "pt-pt": "usar", "sense": "use or have on (wear glasses)", "common-index": 153, "reflexive": false}
   ],
   "cost": [
-    {"en": "cost", "pt-br": "custar", "pt-pt": "custar", "sense": null, "common-index": 154}
+    {"en": "cost", "pt-br": "custar", "pt-pt": "custar", "sense": null, "common-index": 154, "reflexive": false}
   ],
   "teach": [
-    {"en": "teach", "pt-br": "ensinar", "pt-pt": "ensinar", "sense": null, "common-index": 155}
+    {"en": "teach", "pt-br": "ensinar", "pt-pt": "ensinar", "sense": null, "common-index": 155, "reflexive": false}
   ],
   "study": [
-    {"en": "study", "pt-br": "estudar", "pt-pt": "estudar", "sense": null, "common-index": 156}
+    {"en": "study", "pt-br": "estudar", "pt-pt": "estudar", "sense": null, "common-index": 156, "reflexive": false}
   ],
   "travel": [
-    {"en": "travel", "pt-br": "viajar", "pt-pt": "viajar", "sense": null, "common-index": 157}
+    {"en": "travel", "pt-br": "viajar", "pt-pt": "viajar", "sense": null, "common-index": 157, "reflexive": false}
   ],
   "visit": [
-    {"en": "visit", "pt-br": "visitar", "pt-pt": "visitar", "sense": null, "common-index": 158}
+    {"en": "visit", "pt-br": "visitar", "pt-pt": "visitar", "sense": null, "common-index": 158, "reflexive": false}
   ],
   "marry": [
-    {"en": "marry", "pt-br": "casar", "pt-pt": "casar", "sense": "wed someone (marry her)", "common-index": 159},
-    {"en": "marry", "pt-br": "casar-se", "pt-pt": "casar-se", "sense": "get married, reflexive (marry in June)", "common-index": 159}
+    {"en": "marry", "pt-br": "casar", "pt-pt": "casar", "sense": "wed someone (marry her)", "common-index": 159, "reflexive": false},
+    {"en": "marry", "pt-br": "casar-se", "pt-pt": "casar-se", "sense": "get married, reflexive (marry in June)", "common-index": 159, "reflexive": true}
   ],
   "share": [
-    {"en": "share", "pt-br": "compartilhar", "pt-pt": "partilhar", "sense": null, "common-index": 160}
+    {"en": "share", "pt-br": "compartilhar", "pt-pt": "partilhar", "sense": null, "common-index": 160, "reflexive": false}
   ],
   "hate": [
-    {"en": "hate", "pt-br": "odiar", "pt-pt": "odiar", "sense": "feel hatred (hate war)", "common-index": 161},
-    {"en": "hate", "pt-br": "detestar", "pt-pt": "detestar", "sense": "dislike strongly (hate waiting)", "common-index": 161}
+    {"en": "hate", "pt-br": "odiar", "pt-pt": "odiar", "sense": "feel hatred (hate war)", "common-index": 161, "reflexive": false},
+    {"en": "hate", "pt-br": "detestar", "pt-pt": "detestar", "sense": "dislike strongly (hate waiting)", "common-index": 161, "reflexive": false}
   ],
   "forget": [
-    {"en": "forget", "pt-br": "esquecer", "pt-pt": "esquecer", "sense": null, "common-index": 162}
+    {"en": "forget", "pt-br": "esquecer", "pt-pt": "esquecer", "sense": null, "common-index": 162, "reflexive": false}
   ],
   "save": [
-    {"en": "save", "pt-br": "salvar", "pt-pt": "salvar", "sense": "rescue or store data (save a file)", "common-index": 163},
-    {"en": "save", "pt-br": "poupar", "pt-pt": "poupar", "sense": "put money aside (save money)", "common-index": 163},
-    {"en": "save", "pt-br": "guardar", "pt-pt": "guardar", "sense": "keep for later (save a seat)", "common-index": 163}
+    {"en": "save", "pt-br": "salvar", "pt-pt": "salvar", "sense": "rescue or store data (save a file)", "common-index": 163, "reflexive": false},
+    {"en": "save", "pt-br": "poupar", "pt-pt": "poupar", "sense": "put money aside (save money)", "common-index": 163, "reflexive": false},
+    {"en": "save", "pt-br": "guardar", "pt-pt": "guardar", "sense": "keep for later (save a seat)", "common-index": 163, "reflexive": false}
   ],
   "fix": [
-    {"en": "fix", "pt-br": "consertar", "pt-pt": "arranjar", "sense": "repair (fix the car)", "common-index": 164},
-    {"en": "fix", "pt-br": "fixar", "pt-pt": "fixar", "sense": "attach or set (fix a date)", "common-index": 164}
+    {"en": "fix", "pt-br": "consertar", "pt-pt": "arranjar", "sense": "repair (fix the car)", "common-index": 164, "reflexive": false},
+    {"en": "fix", "pt-br": "fixar", "pt-pt": "fixar", "sense": "attach or set (fix a date)", "common-index": 164, "reflexive": false}
   ],
   "check": [
-    {"en": "check", "pt-br": "verificar", "pt-pt": "verificar", "sense": "examine (check the oil)", "common-index": 165},
-    {"en": "check", "pt-br": "conferir", "pt-pt": "conferir", "sense": "compare for accuracy (check the list)", "common-index": 165}
+    {"en": "check", "pt-br": "verificar", "pt-pt": "verificar", "sense": "examine (check the oil)", "common-index": 165, "reflexive": false},
+    {"en": "check", "pt-br": "conferir", "pt-pt": "conferir", "sense": "compare for accuracy (check the list)", "common-index": 165, "reflexive": false}
   ],
   "test": [
-    {"en": "test", "pt-br": "testar", "pt-pt": "testar", "sense": null, "common-index": 166}
+    {"en": "test", "pt-br": "testar", "pt-pt": "testar", "sense": null, "common-index": 166, "reflexive": false}
   ],
   "fight": [
-    {"en": "fight", "pt-br": "lutar", "pt-pt": "lutar", "sense": "struggle for something (fight for rights)", "common-index": 167},
-    {"en": "fight", "pt-br": "brigar", "pt-pt": "brigar", "sense": "quarrel (fight with a sibling)", "common-index": 167},
-    {"en": "fight", "pt-br": "combater", "pt-pt": "combater", "sense": "combat (fight crime)", "common-index": 167}
+    {"en": "fight", "pt-br": "lutar", "pt-pt": "lutar", "sense": "struggle for something (fight for rights)", "common-index": 167, "reflexive": false},
+    {"en": "fight", "pt-br": "brigar", "pt-pt": "brigar", "sense": "quarrel (fight with a sibling)", "common-index": 167, "reflexive": false},
+    {"en": "fight", "pt-br": "combater", "pt-pt": "combater", "sense": "combat (fight crime)", "common-index": 167, "reflexive": false}
   ],
   "protect": [
-    {"en": "protect", "pt-br": "proteger", "pt-pt": "proteger", "sense": null, "common-index": 168}
+    {"en": "protect", "pt-br": "proteger", "pt-pt": "proteger", "sense": null, "common-index": 168, "reflexive": false}
   ],
   "plan": [
-    {"en": "plan", "pt-br": "planejar", "pt-pt": "planear", "sense": null, "common-index": 169}
+    {"en": "plan", "pt-br": "planejar", "pt-pt": "planear", "sense": null, "common-index": 169, "reflexive": false}
   ],
   "notice": [
-    {"en": "notice", "pt-br": "notar", "pt-pt": "notar", "sense": null, "common-index": 170}
+    {"en": "notice", "pt-br": "notar", "pt-pt": "notar", "sense": null, "common-index": 170, "reflexive": false}
   ],
   "invite": [
-    {"en": "invite", "pt-br": "convidar", "pt-pt": "convidar", "sense": null, "common-index": 171}
+    {"en": "invite", "pt-br": "convidar", "pt-pt": "convidar", "sense": null, "common-index": 171, "reflexive": false}
   ],
   "mention": [
-    {"en": "mention", "pt-br": "mencionar", "pt-pt": "mencionar", "sense": null, "common-index": 172}
+    {"en": "mention", "pt-br": "mencionar", "pt-pt": "mencionar", "sense": null, "common-index": 172, "reflexive": false}
   ],
   "treat": [
-    {"en": "treat", "pt-br": "tratar", "pt-pt": "tratar", "sense": null, "common-index": 173}
+    {"en": "treat", "pt-br": "tratar", "pt-pt": "tratar", "sense": null, "common-index": 173, "reflexive": false}
   ],
   "design": [
-    {"en": "design", "pt-br": "projetar", "pt-pt": "projetar", "sense": "plan or engineer (design a bridge)", "common-index": 174},
-    {"en": "design", "pt-br": "desenhar", "pt-pt": "desenhar", "sense": "draw or style (design a logo)", "common-index": 174}
+    {"en": "design", "pt-br": "projetar", "pt-pt": "projetar", "sense": "plan or engineer (design a bridge)", "common-index": 174, "reflexive": false},
+    {"en": "design", "pt-br": "desenhar", "pt-pt": "desenhar", "sense": "draw or style (design a logo)", "common-index": 174, "reflexive": false}
   ],
   "wish": [
-    {"en": "wish", "pt-br": "desejar", "pt-pt": "desejar", "sense": null, "common-index": 175}
+    {"en": "wish", "pt-br": "desejar", "pt-pt": "desejar", "sense": null, "common-index": 175, "reflexive": false}
   ],
   "answer": [
-    {"en": "answer", "pt-br": "responder", "pt-pt": "responder", "sense": null, "common-index": 176}
+    {"en": "answer", "pt-br": "responder", "pt-pt": "responder", "sense": null, "common-index": 176, "reflexive": false}
   ],
   "hang": [
-    {"en": "hang", "pt-br": "pendurar", "pt-pt": "pendurar", "sense": null, "common-index": 177}
+    {"en": "hang", "pt-br": "pendurar", "pt-pt": "pendurar", "sense": null, "common-index": 177, "reflexive": false}
   ],
   "cross": [
-    {"en": "cross", "pt-br": "cruzar", "pt-pt": "cruzar", "sense": null, "common-index": 178}
+    {"en": "cross", "pt-br": "cruzar", "pt-pt": "cruzar", "sense": null, "common-index": 178, "reflexive": false}
   ],
   "fill": [
-    {"en": "fill", "pt-br": "encher", "pt-pt": "encher", "sense": "make full (fill the glass)", "common-index": 179},
-    {"en": "fill", "pt-br": "preencher", "pt-pt": "preencher", "sense": "complete a form (fill out)", "common-index": 179}
+    {"en": "fill", "pt-br": "encher", "pt-pt": "encher", "sense": "make full (fill the glass)", "common-index": 179, "reflexive": false},
+    {"en": "fill", "pt-br": "preencher", "pt-pt": "preencher", "sense": "complete a form (fill out)", "common-index": 179, "reflexive": false}
   ],
   "drop": [
-    {"en": "drop", "pt-br": "deixar cair", "pt-pt": "deixar cair", "sense": "let fall by accident (drop a glass)", "common-index": 180},
-    {"en": "drop", "pt-br": "largar", "pt-pt": "largar", "sense": "let go or abandon (drop it)", "common-index": 180}
+    {"en": "drop", "pt-br": "deixar cair", "pt-pt": "deixar cair", "sense": "let fall by accident (drop a glass)", "common-index": 180, "reflexive": false},
+    {"en": "drop", "pt-br": "largar", "pt-pt": "largar", "sense": "let go or abandon (drop it)", "common-index": 180, "reflexive": false}
   ],
   "burn": [
-    {"en": "burn", "pt-br": "queimar", "pt-pt": "queimar", "sense": null, "common-index": 181}
+    {"en": "burn", "pt-br": "queimar", "pt-pt": "queimar", "sense": null, "common-index": 181, "reflexive": false}
   ],
   "drink": [
-    {"en": "drink", "pt-br": "beber", "pt-pt": "beber", "sense": null, "common-index": 182}
+    {"en": "drink", "pt-br": "beber", "pt-pt": "beber", "sense": null, "common-index": 182, "reflexive": false}
   ],
   "count": [
-    {"en": "count", "pt-br": "contar", "pt-pt": "contar", "sense": null, "common-index": 183}
+    {"en": "count", "pt-br": "contar", "pt-pt": "contar", "sense": null, "common-index": 183, "reflexive": false}
   ],
   "touch": [
-    {"en": "touch", "pt-br": "tocar", "pt-pt": "tocar", "sense": null, "common-index": 184}
+    {"en": "touch", "pt-br": "tocar", "pt-pt": "tocar", "sense": null, "common-index": 184, "reflexive": false}
   ],
   "wake": [
-    {"en": "wake", "pt-br": "acordar", "pt-pt": "acordar", "sense": "stop sleeping (wake at seven)", "common-index": 185},
-    {"en": "wake", "pt-br": "despertar", "pt-pt": "despertar", "sense": "rouse or awaken (wake the baby)", "common-index": 185}
+    {"en": "wake", "pt-br": "acordar", "pt-pt": "acordar", "sense": "stop sleeping (wake at seven)", "common-index": 185, "reflexive": false},
+    {"en": "wake", "pt-br": "despertar", "pt-pt": "despertar", "sense": "rouse or awaken (wake the baby)", "common-index": 185, "reflexive": false}
   ],
   "arrive": [
-    {"en": "arrive", "pt-br": "chegar", "pt-pt": "chegar", "sense": null, "common-index": 186}
+    {"en": "arrive", "pt-br": "chegar", "pt-pt": "chegar", "sense": null, "common-index": 186, "reflexive": false}
   ],
   "finish": [
-    {"en": "finish", "pt-br": "terminar", "pt-pt": "terminar", "sense": "bring to an end (finish work)", "common-index": 187},
-    {"en": "finish", "pt-br": "acabar", "pt-pt": "acabar", "sense": "end or run out (finish the milk)", "common-index": 187},
-    {"en": "finish", "pt-br": "concluir", "pt-pt": "concluir", "sense": "complete formally (finish a degree)", "common-index": 187}
+    {"en": "finish", "pt-br": "terminar", "pt-pt": "terminar", "sense": "bring to an end (finish work)", "common-index": 187, "reflexive": false},
+    {"en": "finish", "pt-br": "acabar", "pt-pt": "acabar", "sense": "end or run out (finish the milk)", "common-index": 187, "reflexive": false},
+    {"en": "finish", "pt-br": "concluir", "pt-pt": "concluir", "sense": "complete formally (finish a degree)", "common-index": 187, "reflexive": false}
   ],
   "repeat": [
-    {"en": "repeat", "pt-br": "repetir", "pt-pt": "repetir", "sense": null, "common-index": 188}
+    {"en": "repeat", "pt-br": "repetir", "pt-pt": "repetir", "sense": null, "common-index": 188, "reflexive": false}
   ],
   "complete": [
-    {"en": "complete", "pt-br": "completar", "pt-pt": "completar", "sense": "make whole (complete the set)", "common-index": 189},
-    {"en": "complete", "pt-br": "concluir", "pt-pt": "concluir", "sense": "conclude (complete a task)", "common-index": 189}
+    {"en": "complete", "pt-br": "completar", "pt-pt": "completar", "sense": "make whole (complete the set)", "common-index": 189, "reflexive": false},
+    {"en": "complete", "pt-br": "concluir", "pt-pt": "concluir", "sense": "conclude (complete a task)", "common-index": 189, "reflexive": false}
   ],
   "depend": [
-    {"en": "depend", "pt-br": "depender", "pt-pt": "depender", "sense": null, "common-index": 190}
+    {"en": "depend", "pt-br": "depender", "pt-pt": "depender", "sense": null, "common-index": 190, "reflexive": false}
   ],
   "belong": [
-    {"en": "belong", "pt-br": "pertencer", "pt-pt": "pertencer", "sense": null, "common-index": 191}
+    {"en": "belong", "pt-br": "pertencer", "pt-pt": "pertencer", "sense": null, "common-index": 191, "reflexive": false}
   ],
   "rise": [
-    {"en": "rise", "pt-br": "subir", "pt-pt": "subir", "sense": "go up (the sun rises)", "common-index": 192},
-    {"en": "rise", "pt-br": "levantar-se", "pt-pt": "levantar-se", "sense": "get up (rise from bed)", "common-index": 192},
-    {"en": "rise", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": "increase (prices rise)", "common-index": 192}
+    {"en": "rise", "pt-br": "subir", "pt-pt": "subir", "sense": "go up (the sun rises)", "common-index": 192, "reflexive": false},
+    {"en": "rise", "pt-br": "levantar-se", "pt-pt": "levantar-se", "sense": "get up (rise from bed)", "common-index": 192, "reflexive": true},
+    {"en": "rise", "pt-br": "aumentar", "pt-pt": "aumentar", "sense": "increase (prices rise)", "common-index": 192, "reflexive": false}
   ],
   "observe": [
-    {"en": "observe", "pt-br": "observar", "pt-pt": "observar", "sense": null, "common-index": 193}
+    {"en": "observe", "pt-br": "observar", "pt-pt": "observar", "sense": null, "common-index": 193, "reflexive": false}
   ],
   "exist": [
-    {"en": "exist", "pt-br": "existir", "pt-pt": "existir", "sense": null, "common-index": 194}
+    {"en": "exist", "pt-br": "existir", "pt-pt": "existir", "sense": null, "common-index": 194, "reflexive": false}
   ],
   "express": [
-    {"en": "express", "pt-br": "expressar", "pt-pt": "expressar", "sense": null, "common-index": 195}
+    {"en": "express", "pt-br": "expressar", "pt-pt": "expressar", "sense": null, "common-index": 195, "reflexive": false}
   ],
   "identify": [
-    {"en": "identify", "pt-br": "identificar", "pt-pt": "identificar", "sense": null, "common-index": 196}
+    {"en": "identify", "pt-br": "identificar", "pt-pt": "identificar", "sense": null, "common-index": 196, "reflexive": false}
   ],
   "publish": [
-    {"en": "publish", "pt-br": "publicar", "pt-pt": "publicar", "sense": null, "common-index": 197}
+    {"en": "publish", "pt-br": "publicar", "pt-pt": "publicar", "sense": null, "common-index": 197, "reflexive": false}
   ],
   "recognize": [
-    {"en": "recognize", "pt-br": "reconhecer", "pt-pt": "reconhecer", "sense": null, "common-index": 198}
+    {"en": "recognize", "pt-br": "reconhecer", "pt-pt": "reconhecer", "sense": null, "common-index": 198, "reflexive": false}
   ],
   "refer": [
-    {"en": "refer", "pt-br": "referir", "pt-pt": "referir", "sense": null, "common-index": 199}
+    {"en": "refer", "pt-br": "referir", "pt-pt": "referir", "sense": null, "common-index": 199, "reflexive": false}
   ],
   "remove": [
-    {"en": "remove", "pt-br": "remover", "pt-pt": "remover", "sense": "take away (remove a stain)", "common-index": 200},
-    {"en": "remove", "pt-br": "retirar", "pt-pt": "retirar", "sense": "withdraw (remove from the list)", "common-index": 200}
+    {"en": "remove", "pt-br": "remover", "pt-pt": "remover", "sense": "take away (remove a stain)", "common-index": 200, "reflexive": false},
+    {"en": "remove", "pt-br": "retirar", "pt-pt": "retirar", "sense": "withdraw (remove from the list)", "common-index": 200, "reflexive": false}
   ],
   "replace": [
-    {"en": "replace", "pt-br": "substituir", "pt-pt": "substituir", "sense": null, "common-index": 201}
+    {"en": "replace", "pt-br": "substituir", "pt-pt": "substituir", "sense": null, "common-index": 201, "reflexive": false}
   ],
   "represent": [
-    {"en": "represent", "pt-br": "representar", "pt-pt": "representar", "sense": null, "common-index": 202}
+    {"en": "represent", "pt-br": "representar", "pt-pt": "representar", "sense": null, "common-index": 202, "reflexive": false}
   ],
   "reveal": [
-    {"en": "reveal", "pt-br": "revelar", "pt-pt": "revelar", "sense": null, "common-index": 203}
+    {"en": "reveal", "pt-br": "revelar", "pt-pt": "revelar", "sense": null, "common-index": 203, "reflexive": false}
   ],
   "review": [
-    {"en": "review", "pt-br": "revisar", "pt-pt": "rever", "sense": "go over again (review notes)", "common-index": 204},
-    {"en": "review", "pt-br": "rever", "pt-pt": "rever", "sense": "look at again (review the footage)", "common-index": 204},
-    {"en": "review", "pt-br": "avaliar", "pt-pt": "avaliar", "sense": "assess or critique (review a product)", "common-index": 204}
+    {"en": "review", "pt-br": "revisar", "pt-pt": "rever", "sense": "go over again (review notes)", "common-index": 204, "reflexive": false},
+    {"en": "review", "pt-br": "rever", "pt-pt": "rever", "sense": "look at again (review the footage)", "common-index": 204, "reflexive": false},
+    {"en": "review", "pt-br": "avaliar", "pt-pt": "avaliar", "sense": "assess or critique (review a product)", "common-index": 204, "reflexive": false}
   ],
   "select": [
-    {"en": "select", "pt-br": "selecionar", "pt-pt": "selecionar", "sense": "pick from options (select a file)", "common-index": 205},
-    {"en": "select", "pt-br": "escolher", "pt-pt": "escolher", "sense": "choose (select a gift)", "common-index": 205}
+    {"en": "select", "pt-br": "selecionar", "pt-pt": "selecionar", "sense": "pick from options (select a file)", "common-index": 205, "reflexive": false},
+    {"en": "select", "pt-br": "escolher", "pt-pt": "escolher", "sense": "choose (select a gift)", "common-index": 205, "reflexive": false}
   ],
   "sign": [
-    {"en": "sign", "pt-br": "assinar", "pt-pt": "assinar", "sense": null, "common-index": 206}
+    {"en": "sign", "pt-br": "assinar", "pt-pt": "assinar", "sense": null, "common-index": 206, "reflexive": false}
   ],
   "solve": [
-    {"en": "solve", "pt-br": "resolver", "pt-pt": "resolver", "sense": null, "common-index": 207}
+    {"en": "solve", "pt-br": "resolver", "pt-pt": "resolver", "sense": null, "common-index": 207, "reflexive": false}
   ],
   "suffer": [
-    {"en": "suffer", "pt-br": "sofrer", "pt-pt": "sofrer", "sense": null, "common-index": 208}
+    {"en": "suffer", "pt-br": "sofrer", "pt-pt": "sofrer", "sense": null, "common-index": 208, "reflexive": false}
   ],
   "suppose": [
-    {"en": "suppose", "pt-br": "supor", "pt-pt": "supor", "sense": null, "common-index": 209}
+    {"en": "suppose", "pt-br": "supor", "pt-pt": "supor", "sense": null, "common-index": 209, "reflexive": false}
   ],
   "surprise": [
-    {"en": "surprise", "pt-br": "surpreender", "pt-pt": "surpreender", "sense": null, "common-index": 210}
+    {"en": "surprise", "pt-br": "surpreender", "pt-pt": "surpreender", "sense": null, "common-index": 210, "reflexive": false}
   ],
   "thank": [
-    {"en": "thank", "pt-br": "agradecer", "pt-pt": "agradecer", "sense": null, "common-index": 211}
+    {"en": "thank", "pt-br": "agradecer", "pt-pt": "agradecer", "sense": null, "common-index": 211, "reflexive": false}
   ],
   "train": [
-    {"en": "train", "pt-br": "treinar", "pt-pt": "treinar", "sense": null, "common-index": 212}
+    {"en": "train", "pt-br": "treinar", "pt-pt": "treinar", "sense": null, "common-index": 212, "reflexive": false}
   ],
   "trust": [
-    {"en": "trust", "pt-br": "confiar", "pt-pt": "confiar", "sense": null, "common-index": 213}
+    {"en": "trust", "pt-br": "confiar", "pt-pt": "confiar", "sense": null, "common-index": 213, "reflexive": false}
   ],
   "vote": [
-    {"en": "vote", "pt-br": "votar", "pt-pt": "votar", "sense": null, "common-index": 214}
+    {"en": "vote", "pt-br": "votar", "pt-pt": "votar", "sense": null, "common-index": 214, "reflexive": false}
   ],
   "warn": [
-    {"en": "warn", "pt-br": "avisar", "pt-pt": "avisar", "sense": null, "common-index": 215}
+    {"en": "warn", "pt-br": "avisar", "pt-pt": "avisar", "sense": null, "common-index": 215, "reflexive": false}
   ],
   "waste": [
-    {"en": "waste", "pt-br": "desperdiçar", "pt-pt": "desperdiçar", "sense": null, "common-index": 216}
+    {"en": "waste", "pt-br": "desperdiçar", "pt-pt": "desperdiçar", "sense": null, "common-index": 216, "reflexive": false}
   ],
   "worry": [
-    {"en": "worry", "pt-br": "preocupar-se", "pt-pt": "preocupar-se", "sense": null, "common-index": 217}
+    {"en": "worry", "pt-br": "preocupar-se", "pt-pt": "preocupar-se", "sense": null, "common-index": 217, "reflexive": true}
   ],
   "act": [
-    {"en": "act", "pt-br": "atuar", "pt-pt": "atuar", "sense": "perform a role or function (act as manager)", "common-index": 218},
-    {"en": "act", "pt-br": "agir", "pt-pt": "agir", "sense": "take action (act quickly)", "common-index": 218}
+    {"en": "act", "pt-br": "atuar", "pt-pt": "atuar", "sense": "perform a role or function (act as manager)", "common-index": 218, "reflexive": false},
+    {"en": "act", "pt-br": "agir", "pt-pt": "agir", "sense": "take action (act quickly)", "common-index": 218, "reflexive": false}
   ],
   "admit": [
-    {"en": "admit", "pt-br": "admitir", "pt-pt": "admitir", "sense": null, "common-index": 219}
+    {"en": "admit", "pt-br": "admitir", "pt-pt": "admitir", "sense": null, "common-index": 219, "reflexive": false}
   ],
   "affect": [
-    {"en": "affect", "pt-br": "afetar", "pt-pt": "afetar", "sense": null, "common-index": 220}
+    {"en": "affect", "pt-br": "afetar", "pt-pt": "afetar", "sense": null, "common-index": 220, "reflexive": false}
   ],
   "argue": [
-    {"en": "argue", "pt-br": "argumentar", "pt-pt": "argumentar", "sense": null, "common-index": 221}
+    {"en": "argue", "pt-br": "argumentar", "pt-pt": "argumentar", "sense": null, "common-index": 221, "reflexive": false}
   ],
   "attack": [
-    {"en": "attack", "pt-br": "atacar", "pt-pt": "atacar", "sense": null, "common-index": 222}
+    {"en": "attack", "pt-br": "atacar", "pt-pt": "atacar", "sense": null, "common-index": 222, "reflexive": false}
   ],
   "avoid": [
-    {"en": "avoid", "pt-br": "evitar", "pt-pt": "evitar", "sense": null, "common-index": 223}
+    {"en": "avoid", "pt-br": "evitar", "pt-pt": "evitar", "sense": null, "common-index": 223, "reflexive": false}
   ],
   "beat": [
-    {"en": "beat", "pt-br": "vencer", "pt-pt": "vencer", "sense": "defeat (beat the champion)", "common-index": 224},
-    {"en": "beat", "pt-br": "bater", "pt-pt": "bater", "sense": "strike repeatedly (beat the drum)", "common-index": 224},
-    {"en": "beat", "pt-br": "derrotar", "pt-pt": "derrotar", "sense": "defeat decisively (beat the rival)", "common-index": 224}
+    {"en": "beat", "pt-br": "vencer", "pt-pt": "vencer", "sense": "defeat (beat the champion)", "common-index": 224, "reflexive": false},
+    {"en": "beat", "pt-br": "bater", "pt-pt": "bater", "sense": "strike repeatedly (beat the drum)", "common-index": 224, "reflexive": false},
+    {"en": "beat", "pt-br": "derrotar", "pt-pt": "derrotar", "sense": "defeat decisively (beat the rival)", "common-index": 224, "reflexive": false}
   ],
   "behave": [
-    {"en": "behave", "pt-br": "comportar-se", "pt-pt": "comportar-se", "sense": null, "common-index": 225}
+    {"en": "behave", "pt-br": "comportar-se", "pt-pt": "comportar-se", "sense": null, "common-index": 225, "reflexive": true}
   ],
   "bite": [
-    {"en": "bite", "pt-br": "morder", "pt-pt": "morder", "sense": null, "common-index": 226}
+    {"en": "bite", "pt-br": "morder", "pt-pt": "morder", "sense": null, "common-index": 226, "reflexive": false}
   ],
   "blow": [
-    {"en": "blow", "pt-br": "soprar", "pt-pt": "soprar", "sense": null, "common-index": 227}
+    {"en": "blow", "pt-br": "soprar", "pt-pt": "soprar", "sense": null, "common-index": 227, "reflexive": false}
   ],
   "borrow": [
-    {"en": "borrow", "pt-br": "pedir emprestado", "pt-pt": "pedir emprestado", "sense": null, "common-index": 228}
+    {"en": "borrow", "pt-br": "pedir emprestado", "pt-pt": "pedir emprestado", "sense": null, "common-index": 228, "reflexive": false}
   ],
   "breathe": [
-    {"en": "breathe", "pt-br": "respirar", "pt-pt": "respirar", "sense": null, "common-index": 229}
+    {"en": "breathe", "pt-br": "respirar", "pt-pt": "respirar", "sense": null, "common-index": 229, "reflexive": false}
   ],
   "celebrate": [
-    {"en": "celebrate", "pt-br": "celebrar", "pt-pt": "celebrar", "sense": null, "common-index": 230}
+    {"en": "celebrate", "pt-br": "celebrar", "pt-pt": "celebrar", "sense": null, "common-index": 230, "reflexive": false}
   ],
   "collect": [
-    {"en": "collect", "pt-br": "coletar", "pt-pt": "recolher", "sense": "gather (collect samples)", "common-index": 231},
-    {"en": "collect", "pt-br": "colecionar", "pt-pt": "colecionar", "sense": "gather as a hobby (collect stamps)", "common-index": 231}
+    {"en": "collect", "pt-br": "coletar", "pt-pt": "recolher", "sense": "gather (collect samples)", "common-index": 231, "reflexive": false},
+    {"en": "collect", "pt-br": "colecionar", "pt-pt": "colecionar", "sense": "gather as a hobby (collect stamps)", "common-index": 231, "reflexive": false}
   ],
   "compare": [
-    {"en": "compare", "pt-br": "comparar", "pt-pt": "comparar", "sense": null, "common-index": 232}
+    {"en": "compare", "pt-br": "comparar", "pt-pt": "comparar", "sense": null, "common-index": 232, "reflexive": false}
   ],
   "compete": [
-    {"en": "compete", "pt-br": "competir", "pt-pt": "competir", "sense": null, "common-index": 233}
+    {"en": "compete", "pt-br": "competir", "pt-pt": "competir", "sense": null, "common-index": 233, "reflexive": false}
   ],
   "complain": [
-    {"en": "complain", "pt-br": "reclamar", "pt-pt": "queixar-se", "sense": null, "common-index": 234}
+    {"en": "complain", "pt-br": "reclamar", "pt-pt": "queixar-se", "sense": null, "common-index": 234, "reflexive": true}
   ],
   "connect": [
-    {"en": "connect", "pt-br": "conectar", "pt-pt": "ligar", "sense": "join (connect two devices)", "common-index": 235},
-    {"en": "connect", "pt-br": "ligar", "pt-pt": "ligar", "sense": "link or switch on (connect the lamp)", "common-index": 235}
+    {"en": "connect", "pt-br": "conectar", "pt-pt": "ligar", "sense": "join (connect two devices)", "common-index": 235, "reflexive": false},
+    {"en": "connect", "pt-br": "ligar", "pt-pt": "ligar", "sense": "link or switch on (connect the lamp)", "common-index": 235, "reflexive": false}
   ],
   "contain": [
-    {"en": "contain", "pt-br": "conter", "pt-pt": "conter", "sense": null, "common-index": 236}
+    {"en": "contain", "pt-br": "conter", "pt-pt": "conter", "sense": null, "common-index": 236, "reflexive": false}
   ],
   "contribute": [
-    {"en": "contribute", "pt-br": "contribuir", "pt-pt": "contribuir", "sense": null, "common-index": 237}
+    {"en": "contribute", "pt-br": "contribuir", "pt-pt": "contribuir", "sense": null, "common-index": 237, "reflexive": false}
   ],
   "control": [
-    {"en": "control", "pt-br": "controlar", "pt-pt": "controlar", "sense": null, "common-index": 238}
+    {"en": "control", "pt-br": "controlar", "pt-pt": "controlar", "sense": null, "common-index": 238, "reflexive": false}
   ],
   "copy": [
-    {"en": "copy", "pt-br": "copiar", "pt-pt": "copiar", "sense": null, "common-index": 239}
+    {"en": "copy", "pt-br": "copiar", "pt-pt": "copiar", "sense": null, "common-index": 239, "reflexive": false}
   ],
   "correct": [
-    {"en": "correct", "pt-br": "corrigir", "pt-pt": "corrigir", "sense": null, "common-index": 240}
+    {"en": "correct", "pt-br": "corrigir", "pt-pt": "corrigir", "sense": null, "common-index": 240, "reflexive": false}
   ],
   "deal": [
-    {"en": "deal", "pt-br": "lidar", "pt-pt": "lidar", "sense": "cope with (deal with it)", "common-index": 241},
-    {"en": "deal", "pt-br": "tratar", "pt-pt": "tratar", "sense": "treat or address a topic (deal with an issue)", "common-index": 241}
+    {"en": "deal", "pt-br": "lidar", "pt-pt": "lidar", "sense": "cope with (deal with it)", "common-index": 241, "reflexive": false},
+    {"en": "deal", "pt-br": "tratar", "pt-pt": "tratar", "sense": "treat or address a topic (deal with an issue)", "common-index": 241, "reflexive": false}
   ],
   "deliver": [
-    {"en": "deliver", "pt-br": "entregar", "pt-pt": "entregar", "sense": null, "common-index": 242}
+    {"en": "deliver", "pt-br": "entregar", "pt-pt": "entregar", "sense": null, "common-index": 242, "reflexive": false}
   ],
   "deny": [
-    {"en": "deny", "pt-br": "negar", "pt-pt": "negar", "sense": null, "common-index": 243}
+    {"en": "deny", "pt-br": "negar", "pt-pt": "negar", "sense": null, "common-index": 243, "reflexive": false}
   ],
   "describe": [
-    {"en": "describe", "pt-br": "descrever", "pt-pt": "descrever", "sense": null, "common-index": 244}
+    {"en": "describe", "pt-br": "descrever", "pt-pt": "descrever", "sense": null, "common-index": 244, "reflexive": false}
   ],
   "deserve": [
-    {"en": "deserve", "pt-br": "merecer", "pt-pt": "merecer", "sense": null, "common-index": 245}
+    {"en": "deserve", "pt-br": "merecer", "pt-pt": "merecer", "sense": null, "common-index": 245, "reflexive": false}
   ],
   "destroy": [
-    {"en": "destroy", "pt-br": "destruir", "pt-pt": "destruir", "sense": null, "common-index": 246}
+    {"en": "destroy", "pt-br": "destruir", "pt-pt": "destruir", "sense": null, "common-index": 246, "reflexive": false}
   ],
   "determine": [
-    {"en": "determine", "pt-br": "determinar", "pt-pt": "determinar", "sense": null, "common-index": 247}
+    {"en": "determine", "pt-br": "determinar", "pt-pt": "determinar", "sense": null, "common-index": 247, "reflexive": false}
   ],
   "disappear": [
-    {"en": "disappear", "pt-br": "desaparecer", "pt-pt": "desaparecer", "sense": null, "common-index": 248}
+    {"en": "disappear", "pt-br": "desaparecer", "pt-pt": "desaparecer", "sense": null, "common-index": 248, "reflexive": false}
   ],
   "discover": [
-    {"en": "discover", "pt-br": "descobrir", "pt-pt": "descobrir", "sense": null, "common-index": 249}
+    {"en": "discover", "pt-br": "descobrir", "pt-pt": "descobrir", "sense": null, "common-index": 249, "reflexive": false}
   ],
   "divide": [
-    {"en": "divide", "pt-br": "dividir", "pt-pt": "dividir", "sense": null, "common-index": 250}
+    {"en": "divide", "pt-br": "dividir", "pt-pt": "dividir", "sense": null, "common-index": 250, "reflexive": false}
   ],
   "doubt": [
-    {"en": "doubt", "pt-br": "duvidar", "pt-pt": "duvidar", "sense": null, "common-index": 251}
+    {"en": "doubt", "pt-br": "duvidar", "pt-pt": "duvidar", "sense": null, "common-index": 251, "reflexive": false}
   ],
   "dress": [
-    {"en": "dress", "pt-br": "vestir-se", "pt-pt": "vestir-se", "sense": null, "common-index": 252}
+    {"en": "dress", "pt-br": "vestir-se", "pt-pt": "vestir-se", "sense": null, "common-index": 252, "reflexive": true}
   ],
   "earn": [
-    {"en": "earn", "pt-br": "ganhar", "pt-pt": "ganhar", "sense": null, "common-index": 253}
+    {"en": "earn", "pt-br": "ganhar", "pt-pt": "ganhar", "sense": null, "common-index": 253, "reflexive": false}
   ],
   "enter": [
-    {"en": "enter", "pt-br": "entrar", "pt-pt": "entrar", "sense": null, "common-index": 254}
+    {"en": "enter", "pt-br": "entrar", "pt-pt": "entrar", "sense": null, "common-index": 254, "reflexive": false}
   ],
   "escape": [
-    {"en": "escape", "pt-br": "escapar", "pt-pt": "escapar", "sense": "get away (escape from jail)", "common-index": 255},
-    {"en": "escape", "pt-br": "fugir", "pt-pt": "fugir", "sense": "flee (escape the city)", "common-index": 255}
+    {"en": "escape", "pt-br": "escapar", "pt-pt": "escapar", "sense": "get away (escape from jail)", "common-index": 255, "reflexive": false},
+    {"en": "escape", "pt-br": "fugir", "pt-pt": "fugir", "sense": "flee (escape the city)", "common-index": 255, "reflexive": false}
   ],
   "establish": [
-    {"en": "establish", "pt-br": "estabelecer", "pt-pt": "estabelecer", "sense": null, "common-index": 256}
+    {"en": "establish", "pt-br": "estabelecer", "pt-pt": "estabelecer", "sense": null, "common-index": 256, "reflexive": false}
   ],
   "examine": [
-    {"en": "examine", "pt-br": "examinar", "pt-pt": "examinar", "sense": null, "common-index": 257}
+    {"en": "examine", "pt-br": "examinar", "pt-pt": "examinar", "sense": null, "common-index": 257, "reflexive": false}
   ],
   "exchange": [
-    {"en": "exchange", "pt-br": "trocar", "pt-pt": "trocar", "sense": null, "common-index": 258}
+    {"en": "exchange", "pt-br": "trocar", "pt-pt": "trocar", "sense": null, "common-index": 258, "reflexive": false}
   ],
   "explore": [
-    {"en": "explore", "pt-br": "explorar", "pt-pt": "explorar", "sense": null, "common-index": 259}
+    {"en": "explore", "pt-br": "explorar", "pt-pt": "explorar", "sense": null, "common-index": 259, "reflexive": false}
   ],
   "face": [
-    {"en": "face", "pt-br": "enfrentar", "pt-pt": "enfrentar", "sense": "confront (face the problem)", "common-index": 260},
-    {"en": "face", "pt-br": "encarar", "pt-pt": "encarar", "sense": "look straight at (face the facts)", "common-index": 260}
+    {"en": "face", "pt-br": "enfrentar", "pt-pt": "enfrentar", "sense": "confront (face the problem)", "common-index": 260, "reflexive": false},
+    {"en": "face", "pt-br": "encarar", "pt-pt": "encarar", "sense": "look straight at (face the facts)", "common-index": 260, "reflexive": false}
   ],
   "force": [
-    {"en": "force", "pt-br": "forçar", "pt-pt": "forçar", "sense": null, "common-index": 261}
+    {"en": "force", "pt-br": "forçar", "pt-pt": "forçar", "sense": null, "common-index": 261, "reflexive": false}
   ],
   "guess": [
-    {"en": "guess", "pt-br": "adivinhar", "pt-pt": "adivinhar", "sense": null, "common-index": 262}
+    {"en": "guess", "pt-br": "adivinhar", "pt-pt": "adivinhar", "sense": null, "common-index": 262, "reflexive": false}
   ],
   "handle": [
-    {"en": "handle", "pt-br": "manusear", "pt-pt": "manusear", "sense": "touch or manipulate (handle with care)", "common-index": 263},
-    {"en": "handle", "pt-br": "lidar", "pt-pt": "lidar", "sense": "cope with (handle stress)", "common-index": 263}
+    {"en": "handle", "pt-br": "manusear", "pt-pt": "manusear", "sense": "touch or manipulate (handle with care)", "common-index": 263, "reflexive": false},
+    {"en": "handle", "pt-br": "lidar", "pt-pt": "lidar", "sense": "cope with (handle stress)", "common-index": 263, "reflexive": false}
   ],
   "hide": [
-    {"en": "hide", "pt-br": "esconder", "pt-pt": "esconder", "sense": null, "common-index": 264}
+    {"en": "hide", "pt-br": "esconder", "pt-pt": "esconder", "sense": null, "common-index": 264, "reflexive": false}
   ],
   "hurt": [
-    {"en": "hurt", "pt-br": "machucar", "pt-pt": "magoar", "sense": null, "common-index": 265}
+    {"en": "hurt", "pt-br": "machucar", "pt-pt": "magoar", "sense": null, "common-index": 265, "reflexive": false}
   ],
   "ignore": [
-    {"en": "ignore", "pt-br": "ignorar", "pt-pt": "ignorar", "sense": null, "common-index": 266}
+    {"en": "ignore", "pt-br": "ignorar", "pt-pt": "ignorar", "sense": null, "common-index": 266, "reflexive": false}
   ],
   "influence": [
-    {"en": "influence", "pt-br": "influenciar", "pt-pt": "influenciar", "sense": null, "common-index": 267}
+    {"en": "influence", "pt-br": "influenciar", "pt-pt": "influenciar", "sense": null, "common-index": 267, "reflexive": false}
   ],
   "inform": [
-    {"en": "inform", "pt-br": "informar", "pt-pt": "informar", "sense": null, "common-index": 268}
+    {"en": "inform", "pt-br": "informar", "pt-pt": "informar", "sense": null, "common-index": 268, "reflexive": false}
   ],
   "intend": [
-    {"en": "intend", "pt-br": "pretender", "pt-pt": "pretender", "sense": null, "common-index": 269}
+    {"en": "intend", "pt-br": "pretender", "pt-pt": "pretender", "sense": null, "common-index": 269, "reflexive": false}
   ],
   "introduce": [
-    {"en": "introduce", "pt-br": "apresentar", "pt-pt": "apresentar", "sense": "present a person (introduce her)", "common-index": 270},
-    {"en": "introduce", "pt-br": "introduzir", "pt-pt": "introduzir", "sense": "bring in something new (introduce a rule)", "common-index": 270}
+    {"en": "introduce", "pt-br": "apresentar", "pt-pt": "apresentar", "sense": "present a person (introduce her)", "common-index": 270, "reflexive": false},
+    {"en": "introduce", "pt-br": "introduzir", "pt-pt": "introduzir", "sense": "bring in something new (introduce a rule)", "common-index": 270, "reflexive": false}
   ],
   "judge": [
-    {"en": "judge", "pt-br": "julgar", "pt-pt": "julgar", "sense": null, "common-index": 271}
+    {"en": "judge", "pt-br": "julgar", "pt-pt": "julgar", "sense": null, "common-index": 271, "reflexive": false}
   ],
   "kick": [
-    {"en": "kick", "pt-br": "chutar", "pt-pt": "pontapear", "sense": null, "common-index": 272}
+    {"en": "kick", "pt-br": "chutar", "pt-pt": "pontapear", "sense": null, "common-index": 272, "reflexive": false}
   ],
   "lend": [
-    {"en": "lend", "pt-br": "emprestar", "pt-pt": "emprestar", "sense": null, "common-index": 273}
+    {"en": "lend", "pt-br": "emprestar", "pt-pt": "emprestar", "sense": null, "common-index": 273, "reflexive": false}
   ],
   "limit": [
-    {"en": "limit", "pt-br": "limitar", "pt-pt": "limitar", "sense": null, "common-index": 274}
+    {"en": "limit", "pt-br": "limitar", "pt-pt": "limitar", "sense": null, "common-index": 274, "reflexive": false}
   ],
   "mark": [
-    {"en": "mark", "pt-br": "marcar", "pt-pt": "marcar", "sense": null, "common-index": 275}
+    {"en": "mark", "pt-br": "marcar", "pt-pt": "marcar", "sense": null, "common-index": 275, "reflexive": false}
   ],
   "measure": [
-    {"en": "measure", "pt-br": "medir", "pt-pt": "medir", "sense": null, "common-index": 276}
+    {"en": "measure", "pt-br": "medir", "pt-pt": "medir", "sense": null, "common-index": 276, "reflexive": false}
   ],
   "obtain": [
-    {"en": "obtain", "pt-br": "obter", "pt-pt": "obter", "sense": null, "common-index": 277}
+    {"en": "obtain", "pt-br": "obter", "pt-pt": "obter", "sense": null, "common-index": 277, "reflexive": false}
   ],
   "operate": [
-    {"en": "operate", "pt-br": "operar", "pt-pt": "operar", "sense": "perform surgery or run machinery (operate on a patient)", "common-index": 278},
-    {"en": "operate", "pt-br": "funcionar", "pt-pt": "funcionar", "sense": "function (the machine operates)", "common-index": 278}
+    {"en": "operate", "pt-br": "operar", "pt-pt": "operar", "sense": "perform surgery or run machinery (operate on a patient)", "common-index": 278, "reflexive": false},
+    {"en": "operate", "pt-br": "funcionar", "pt-pt": "funcionar", "sense": "function (the machine operates)", "common-index": 278, "reflexive": false}
   ],
   "order": [
-    {"en": "order", "pt-br": "pedir", "pt-pt": "pedir", "sense": "request food or a drink (order a pizza)", "common-index": 279},
-    {"en": "order", "pt-br": "ordenar", "pt-pt": "ordenar", "sense": "command or sort (order to leave)", "common-index": 279},
-    {"en": "order", "pt-br": "encomendar", "pt-pt": "encomendar", "sense": "request goods (order online)", "common-index": 279}
+    {"en": "order", "pt-br": "pedir", "pt-pt": "pedir", "sense": "request food or a drink (order a pizza)", "common-index": 279, "reflexive": false},
+    {"en": "order", "pt-br": "ordenar", "pt-pt": "ordenar", "sense": "command or sort (order to leave)", "common-index": 279, "reflexive": false},
+    {"en": "order", "pt-br": "encomendar", "pt-pt": "encomendar", "sense": "request goods (order online)", "common-index": 279, "reflexive": false}
   ],
   "own": [
-    {"en": "own", "pt-br": "possuir", "pt-pt": "possuir", "sense": null, "common-index": 280}
+    {"en": "own", "pt-br": "possuir", "pt-pt": "possuir", "sense": null, "common-index": 280, "reflexive": false}
   ],
   "paint": [
-    {"en": "paint", "pt-br": "pintar", "pt-pt": "pintar", "sense": null, "common-index": 281}
+    {"en": "paint", "pt-br": "pintar", "pt-pt": "pintar", "sense": null, "common-index": 281, "reflexive": false}
   ],
   "perform": [
-    {"en": "perform", "pt-br": "executar", "pt-pt": "executar", "sense": "carry out (perform a task)", "common-index": 282},
-    {"en": "perform", "pt-br": "atuar", "pt-pt": "atuar", "sense": "act on stage (perform a play)", "common-index": 282},
-    {"en": "perform", "pt-br": "realizar", "pt-pt": "realizar", "sense": "accomplish (perform a test)", "common-index": 282}
+    {"en": "perform", "pt-br": "executar", "pt-pt": "executar", "sense": "carry out (perform a task)", "common-index": 282, "reflexive": false},
+    {"en": "perform", "pt-br": "atuar", "pt-pt": "atuar", "sense": "act on stage (perform a play)", "common-index": 282, "reflexive": false},
+    {"en": "perform", "pt-br": "realizar", "pt-pt": "realizar", "sense": "accomplish (perform a test)", "common-index": 282, "reflexive": false}
   ],
   "persuade": [
-    {"en": "persuade", "pt-br": "persuadir", "pt-pt": "persuadir", "sense": "urge to do something (persuade me to go)", "common-index": 283},
-    {"en": "persuade", "pt-br": "convencer", "pt-pt": "convencer", "sense": "convince (persuade someone)", "common-index": 283}
+    {"en": "persuade", "pt-br": "persuadir", "pt-pt": "persuadir", "sense": "urge to do something (persuade me to go)", "common-index": 283, "reflexive": false},
+    {"en": "persuade", "pt-br": "convencer", "pt-pt": "convencer", "sense": "convince (persuade someone)", "common-index": 283, "reflexive": false}
   ],
   "pray": [
-    {"en": "pray", "pt-br": "rezar", "pt-pt": "rezar", "sense": null, "common-index": 284}
+    {"en": "pray", "pt-br": "rezar", "pt-pt": "rezar", "sense": null, "common-index": 284, "reflexive": false}
   ],
   "prefer": [
-    {"en": "prefer", "pt-br": "preferir", "pt-pt": "preferir", "sense": null, "common-index": 285}
+    {"en": "prefer", "pt-br": "preferir", "pt-pt": "preferir", "sense": null, "common-index": 285, "reflexive": false}
   ],
   "press": [
-    {"en": "press", "pt-br": "pressionar", "pt-pt": "pressionar", "sense": "push with force or pressure (press the issue)", "common-index": 286},
-    {"en": "press", "pt-br": "apertar", "pt-pt": "apertar", "sense": "squeeze or push a button (press the button)", "common-index": 286}
+    {"en": "press", "pt-br": "pressionar", "pt-pt": "pressionar", "sense": "push with force or pressure (press the issue)", "common-index": 286, "reflexive": false},
+    {"en": "press", "pt-br": "apertar", "pt-pt": "apertar", "sense": "squeeze or push a button (press the button)", "common-index": 286, "reflexive": false}
   ],
   "prevent": [
-    {"en": "prevent", "pt-br": "prevenir", "pt-pt": "prevenir", "sense": null, "common-index": 287}
+    {"en": "prevent", "pt-br": "prevenir", "pt-pt": "prevenir", "sense": null, "common-index": 287, "reflexive": false}
   ],
   "promise": [
-    {"en": "promise", "pt-br": "prometer", "pt-pt": "prometer", "sense": null, "common-index": 288}
+    {"en": "promise", "pt-br": "prometer", "pt-pt": "prometer", "sense": null, "common-index": 288, "reflexive": false}
   ],
   "prove": [
-    {"en": "prove", "pt-br": "provar", "pt-pt": "provar", "sense": null, "common-index": 289}
+    {"en": "prove", "pt-br": "provar", "pt-pt": "provar", "sense": null, "common-index": 289, "reflexive": false}
   ],
   "quit": [
-    {"en": "quit", "pt-br": "desistir", "pt-pt": "desistir", "sense": null, "common-index": 290}
+    {"en": "quit", "pt-br": "desistir", "pt-pt": "desistir", "sense": null, "common-index": 290, "reflexive": false}
   ],
   "reflect": [
-    {"en": "reflect", "pt-br": "refletir", "pt-pt": "refletir", "sense": null, "common-index": 291}
+    {"en": "reflect", "pt-br": "refletir", "pt-pt": "refletir", "sense": null, "common-index": 291, "reflexive": false}
   ],
   "refuse": [
-    {"en": "refuse", "pt-br": "recusar", "pt-pt": "recusar", "sense": null, "common-index": 292}
+    {"en": "refuse", "pt-br": "recusar", "pt-pt": "recusar", "sense": null, "common-index": 292, "reflexive": false}
   ],
   "regret": [
-    {"en": "regret", "pt-br": "lamentar", "pt-pt": "lamentar", "sense": null, "common-index": 293}
+    {"en": "regret", "pt-br": "lamentar", "pt-pt": "lamentar", "sense": null, "common-index": 293, "reflexive": false}
   ],
   "release": [
-    {"en": "release", "pt-br": "liberar", "pt-pt": "liberar", "sense": "set free (release the prisoners)", "common-index": 294},
-    {"en": "release", "pt-br": "lançar", "pt-pt": "lançar", "sense": "launch (release an album)", "common-index": 294},
-    {"en": "release", "pt-br": "soltar", "pt-pt": "soltar", "sense": "let go (release the rope)", "common-index": 294}
+    {"en": "release", "pt-br": "liberar", "pt-pt": "liberar", "sense": "set free (release the prisoners)", "common-index": 294, "reflexive": false},
+    {"en": "release", "pt-br": "lançar", "pt-pt": "lançar", "sense": "launch (release an album)", "common-index": 294, "reflexive": false},
+    {"en": "release", "pt-br": "soltar", "pt-pt": "soltar", "sense": "let go (release the rope)", "common-index": 294, "reflexive": false}
   ],
   "rent": [
-    {"en": "rent", "pt-br": "alugar", "pt-pt": "alugar", "sense": null, "common-index": 295}
+    {"en": "rent", "pt-br": "alugar", "pt-pt": "alugar", "sense": null, "common-index": 295, "reflexive": false}
   ],
   "repair": [
-    {"en": "repair", "pt-br": "reparar", "pt-pt": "reparar", "sense": "restore to working order (repair a machine)", "common-index": 296},
-    {"en": "repair", "pt-br": "consertar", "pt-pt": "consertar", "sense": "mend something broken (repair a shoe)", "common-index": 296}
+    {"en": "repair", "pt-br": "reparar", "pt-pt": "reparar", "sense": "restore to working order (repair a machine)", "common-index": 296, "reflexive": false},
+    {"en": "repair", "pt-br": "consertar", "pt-pt": "consertar", "sense": "mend something broken (repair a shoe)", "common-index": 296, "reflexive": false}
   ],
   "request": [
-    {"en": "request", "pt-br": "solicitar", "pt-pt": "solicitar", "sense": null, "common-index": 297}
+    {"en": "request", "pt-br": "solicitar", "pt-pt": "solicitar", "sense": null, "common-index": 297, "reflexive": false}
   ],
   "rest": [
-    {"en": "rest", "pt-br": "descansar", "pt-pt": "descansar", "sense": "relax (rest after work)", "common-index": 298},
-    {"en": "rest", "pt-br": "repousar", "pt-pt": "repousar", "sense": "lie still (rest in bed)", "common-index": 298}
+    {"en": "rest", "pt-br": "descansar", "pt-pt": "descansar", "sense": "relax (rest after work)", "common-index": 298, "reflexive": false},
+    {"en": "rest", "pt-br": "repousar", "pt-pt": "repousar", "sense": "lie still (rest in bed)", "common-index": 298, "reflexive": false}
   ],
   "retire": [
-    {"en": "retire", "pt-br": "aposentar-se", "pt-pt": "reformar-se", "sense": null, "common-index": 299}
+    {"en": "retire", "pt-br": "aposentar-se", "pt-pt": "reformar-se", "sense": null, "common-index": 299, "reflexive": true}
   ],
   "roll": [
-    {"en": "roll", "pt-br": "rolar", "pt-pt": "rolar", "sense": null, "common-index": 300}
+    {"en": "roll", "pt-br": "rolar", "pt-pt": "rolar", "sense": null, "common-index": 300, "reflexive": false}
   ],
   "satisfy": [
-    {"en": "satisfy", "pt-br": "satisfazer", "pt-pt": "satisfazer", "sense": null, "common-index": 301}
+    {"en": "satisfy", "pt-br": "satisfazer", "pt-pt": "satisfazer", "sense": null, "common-index": 301, "reflexive": false}
   ],
   "scare": [
-    {"en": "scare", "pt-br": "assustar", "pt-pt": "assustar", "sense": null, "common-index": 302}
+    {"en": "scare", "pt-br": "assustar", "pt-pt": "assustar", "sense": null, "common-index": 302, "reflexive": false}
   ],
   "search": [
-    {"en": "search", "pt-br": "procurar", "pt-pt": "procurar", "sense": "look for (search for keys)", "common-index": 303},
-    {"en": "search", "pt-br": "buscar", "pt-pt": "buscar", "sense": "seek online (search the web)", "common-index": 303}
+    {"en": "search", "pt-br": "procurar", "pt-pt": "procurar", "sense": "look for (search for keys)", "common-index": 303, "reflexive": false},
+    {"en": "search", "pt-br": "buscar", "pt-pt": "buscar", "sense": "seek online (search the web)", "common-index": 303, "reflexive": false}
   ],
   "shake": [
-    {"en": "shake", "pt-br": "sacudir", "pt-pt": "sacudir", "sense": "move back and forth (shake the bottle)", "common-index": 304},
-    {"en": "shake", "pt-br": "agitar", "pt-pt": "agitar", "sense": "stir up (shake well)", "common-index": 304}
+    {"en": "shake", "pt-br": "sacudir", "pt-pt": "sacudir", "sense": "move back and forth (shake the bottle)", "common-index": 304, "reflexive": false},
+    {"en": "shake", "pt-br": "agitar", "pt-pt": "agitar", "sense": "stir up (shake well)", "common-index": 304, "reflexive": false}
   ],
   "shine": [
-    {"en": "shine", "pt-br": "brilhar", "pt-pt": "brilhar", "sense": null, "common-index": 305}
+    {"en": "shine", "pt-br": "brilhar", "pt-pt": "brilhar", "sense": null, "common-index": 305, "reflexive": false}
   ],
   "shoot": [
-    {"en": "shoot", "pt-br": "atirar", "pt-pt": "atirar", "sense": "fire a weapon (shoot a gun)", "common-index": 306},
-    {"en": "shoot", "pt-br": "disparar", "pt-pt": "disparar", "sense": "fire a projectile (shoot an arrow)", "common-index": 306},
-    {"en": "shoot", "pt-br": "filmar", "pt-pt": "filmar", "sense": "film or photograph (shoot a movie)", "common-index": 306}
+    {"en": "shoot", "pt-br": "atirar", "pt-pt": "atirar", "sense": "fire a weapon (shoot a gun)", "common-index": 306, "reflexive": false},
+    {"en": "shoot", "pt-br": "disparar", "pt-pt": "disparar", "sense": "fire a projectile (shoot an arrow)", "common-index": 306, "reflexive": false},
+    {"en": "shoot", "pt-br": "filmar", "pt-pt": "filmar", "sense": "film or photograph (shoot a movie)", "common-index": 306, "reflexive": false}
   ],
   "sink": [
-    {"en": "sink", "pt-br": "afundar", "pt-pt": "afundar", "sense": null, "common-index": 307}
+    {"en": "sink", "pt-br": "afundar", "pt-pt": "afundar", "sense": null, "common-index": 307, "reflexive": false}
   ],
   "sound": [
-    {"en": "sound", "pt-br": "soar", "pt-pt": "soar", "sense": null, "common-index": 308}
+    {"en": "sound", "pt-br": "soar", "pt-pt": "soar", "sense": null, "common-index": 308, "reflexive": false}
   ],
   "spread": [
-    {"en": "spread", "pt-br": "espalhar", "pt-pt": "espalhar", "sense": null, "common-index": 309}
+    {"en": "spread", "pt-br": "espalhar", "pt-pt": "espalhar", "sense": null, "common-index": 309, "reflexive": false}
   ],
   "steal": [
-    {"en": "steal", "pt-br": "roubar", "pt-pt": "roubar", "sense": null, "common-index": 310}
+    {"en": "steal", "pt-br": "roubar", "pt-pt": "roubar", "sense": null, "common-index": 310, "reflexive": false}
   ],
   "surround": [
-    {"en": "surround", "pt-br": "cercar", "pt-pt": "cercar", "sense": null, "common-index": 311}
+    {"en": "surround", "pt-br": "cercar", "pt-pt": "cercar", "sense": null, "common-index": 311, "reflexive": false}
   ],
   "survive": [
-    {"en": "survive", "pt-br": "sobreviver", "pt-pt": "sobreviver", "sense": null, "common-index": 312}
+    {"en": "survive", "pt-br": "sobreviver", "pt-pt": "sobreviver", "sense": null, "common-index": 312, "reflexive": false}
   ],
   "suspect": [
-    {"en": "suspect", "pt-br": "suspeitar", "pt-pt": "suspeitar", "sense": null, "common-index": 313}
+    {"en": "suspect", "pt-br": "suspeitar", "pt-pt": "suspeitar", "sense": null, "common-index": 313, "reflexive": false}
   ],
   "taste": [
-    {"en": "taste", "pt-br": "saborear", "pt-pt": "saborear", "sense": null, "common-index": 314}
+    {"en": "taste", "pt-br": "saborear", "pt-pt": "saborear", "sense": null, "common-index": 314, "reflexive": false}
   ],
   "tear": [
-    {"en": "tear", "pt-br": "rasgar", "pt-pt": "rasgar", "sense": null, "common-index": 315}
+    {"en": "tear", "pt-br": "rasgar", "pt-pt": "rasgar", "sense": null, "common-index": 315, "reflexive": false}
   ],
   "tie": [
-    {"en": "tie", "pt-br": "amarrar", "pt-pt": "atar", "sense": "fasten (tie a knot)", "common-index": 316},
-    {"en": "tie", "pt-br": "atar", "pt-pt": "atar", "sense": "bind (tie up the dog)", "common-index": 316},
-    {"en": "tie", "pt-br": "empatar", "pt-pt": "empatar", "sense": "draw level (tie the game)", "common-index": 316}
+    {"en": "tie", "pt-br": "amarrar", "pt-pt": "atar", "sense": "fasten (tie a knot)", "common-index": 316, "reflexive": false},
+    {"en": "tie", "pt-br": "atar", "pt-pt": "atar", "sense": "bind (tie up the dog)", "common-index": 316, "reflexive": false},
+    {"en": "tie", "pt-br": "empatar", "pt-pt": "empatar", "sense": "draw level (tie the game)", "common-index": 316, "reflexive": false}
   ],
   "trade": [
-    {"en": "trade", "pt-br": "negociar", "pt-pt": "negociar", "sense": "deal in goods (trade stocks)", "common-index": 317},
-    {"en": "trade", "pt-br": "trocar", "pt-pt": "trocar", "sense": "swap (trade cards)", "common-index": 317},
-    {"en": "trade", "pt-br": "comercializar", "pt-pt": "comercializar", "sense": "sell commercially (trade products)", "common-index": 317}
+    {"en": "trade", "pt-br": "negociar", "pt-pt": "negociar", "sense": "deal in goods (trade stocks)", "common-index": 317, "reflexive": false},
+    {"en": "trade", "pt-br": "trocar", "pt-pt": "trocar", "sense": "swap (trade cards)", "common-index": 317, "reflexive": false},
+    {"en": "trade", "pt-br": "comercializar", "pt-pt": "comercializar", "sense": "sell commercially (trade products)", "common-index": 317, "reflexive": false}
   ],
   "translate": [
-    {"en": "translate", "pt-br": "traduzir", "pt-pt": "traduzir", "sense": null, "common-index": 318}
+    {"en": "translate", "pt-br": "traduzir", "pt-pt": "traduzir", "sense": null, "common-index": 318, "reflexive": false}
   ],
   "unite": [
-    {"en": "unite", "pt-br": "unir", "pt-pt": "unir", "sense": null, "common-index": 319}
+    {"en": "unite", "pt-br": "unir", "pt-pt": "unir", "sense": null, "common-index": 319, "reflexive": false}
   ],
   "update": [
-    {"en": "update", "pt-br": "atualizar", "pt-pt": "atualizar", "sense": null, "common-index": 320}
+    {"en": "update", "pt-br": "atualizar", "pt-pt": "atualizar", "sense": null, "common-index": 320, "reflexive": false}
   ],
   "welcome": [
-    {"en": "welcome", "pt-br": "acolher", "pt-pt": "acolher", "sense": "greet warmly (welcome guests)", "common-index": 321},
-    {"en": "welcome", "pt-br": "receber", "pt-pt": "receber", "sense": "receive guests (welcome visitors)", "common-index": 321}
+    {"en": "welcome", "pt-br": "acolher", "pt-pt": "acolher", "sense": "greet warmly (welcome guests)", "common-index": 321, "reflexive": false},
+    {"en": "welcome", "pt-br": "receber", "pt-pt": "receber", "sense": "receive guests (welcome visitors)", "common-index": 321, "reflexive": false}
   ],
   "whisper": [
-    {"en": "whisper", "pt-br": "sussurrar", "pt-pt": "sussurrar", "sense": null, "common-index": 322}
+    {"en": "whisper", "pt-br": "sussurrar", "pt-pt": "sussurrar", "sense": null, "common-index": 322, "reflexive": false}
   ],
   "wrap": [
-    {"en": "wrap", "pt-br": "embrulhar", "pt-pt": "embrulhar", "sense": null, "common-index": 323}
+    {"en": "wrap", "pt-br": "embrulhar", "pt-pt": "embrulhar", "sense": null, "common-index": 323, "reflexive": false}
   ],
   "yell": [
-    {"en": "yell", "pt-br": "gritar", "pt-pt": "gritar", "sense": null, "common-index": 324}
+    {"en": "yell", "pt-br": "gritar", "pt-pt": "gritar", "sense": null, "common-index": 324, "reflexive": false}
   ]
 }

@@ -28,6 +28,7 @@ interface RawSense {
   "pt-pt": string;
   sense: string | null;
   "common-index": number;
+  reflexive: boolean;
 }
 
 export interface VerbSense {
@@ -37,7 +38,10 @@ export interface VerbSense {
   "pt-br": string;
   "pt-pt": string;
   sense: string | null;
+  /** frequency rank of the English verb (1 = most common); shared by all its senses */
   commonIndex: number;
+  /** reflexive in Portuguese (-se) in either variant */
+  reflexive: boolean;
 }
 
 export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, RawSense[]>).flatMap(
@@ -49,8 +53,24 @@ export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, Raw
       "pt-pt": s["pt-pt"],
       sense: s.sense,
       commonIndex: s["common-index"],
+      reflexive: !!s.reflexive,
     }))
 );
+
+/* ---------------- dictionary presets ---------------- */
+
+export interface VerbPreset {
+  id: string;
+  name: string;
+  /** which verbs the preset turns on; every other verb is turned off */
+  includes: (v: VerbSense) => boolean;
+}
+
+export const VERB_PRESETS: VerbPreset[] = [
+  { id: "all", name: "All verbs", includes: () => true },
+  { id: "top100", name: "100 most common verbs", includes: (v) => v.commonIndex <= 100 },
+  { id: "reflexive", name: "Reflexive verbs", includes: (v) => v.reflexive },
+];
 
 /* ---------------- subjects ---------------- */
 
