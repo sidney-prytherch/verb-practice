@@ -51,6 +51,45 @@ export interface CrosswordOptions {
   timeLimitMs?: number;
   /** RNG seed for reproducible output */
   seed?: number;
+  /**
+   * How hard to aim for as many down words as across words (default 5).
+   * Each word of difference costs this many letters when grids are compared,
+   * and placement also favours the direction that is behind. 0 = only density.
+   */
+  balance?: number;
+}
+
+const DEFAULT_BALANCE = 5;
+
+/** Number of across and down words (runs of 2+ letters) in a grid. */
+function countWords(grid: Grid): { across: number; down: number } {
+  const N = grid.length;
+  let across = 0;
+  let down = 0;
+  for (let i = 0; i < N; i++) {
+    let runA = 0;
+    let runD = 0;
+    for (let j = 0; j <= N; j++) {
+      if (j < N && grid[i][j]) runA++;
+      else {
+        if (runA >= 2) across++;
+        runA = 0;
+      }
+      if (j < N && grid[j][i]) runD++;
+      else {
+        if (runD >= 2) down++;
+        runD = 0;
+      }
+    }
+  }
+  return { across, down };
+}
+
+/** Grid quality: letters filled, minus a penalty for uneven across/down counts. */
+function gridScore(grid: Grid, balance: number): number {
+  const letters = grid.flat().filter(Boolean).length;
+  const { across, down } = countWords(grid);
+  return letters - balance * Math.abs(across - down);
 }
 
 type Grid = (string | null)[][];
@@ -125,6 +164,7 @@ export function generateCrossword(
 ): CrosswordResult {
   const N = size;
   const timeLimitMs = opts.timeLimitMs ?? 3000;
+  const balance = opts.balance ?? DEFAULT_BALANCE;
   const rnd = mulberry32(opts.seed ?? Math.floor(Math.random() * 2 ** 32));
 
   const entryByAnswer = normalizeEntries(entries, N);
@@ -282,6 +322,15 @@ export function generateCrossword(
         }
       }
       shuffle(cands, rnd);
+      // try the direction with fewer words first (pairs keep their direction,
+      // so this is what keeps across and down even)
+      if (balance > 0) {
+        const { across, down } = countWords(state.grid);
+        if (across !== down) {
+          const behind: Dir = across > down ? 1 : 0;
+          cands.sort((x, y) => (x[3] === behind ? 0 : 1) - (y[3] === behind ? 0 : 1));
+        }
+      }
       let progressed = false;
       for (const [word, r, c, d] of cands) {
         if (state.used.has(word)) continue;
@@ -295,8 +344,9 @@ export function generateCrossword(
     return state;
   }
 
-  // repeat random attempts, keep the grid with the most letters
-  const score = (s: State): number => s.grid.flat().filter(Boolean).length;
+  // repeat random attempts
+  // keep the best grid: most letters, with across and down words roughly even
+  const score = (s: State): number => gridScore(s.grid, balance);
   let best: State | null = null;
   let bestScore = -1;
   const start = Date.now();
@@ -320,8 +370,9 @@ export function generateCrossword(
  * Unlike the symmetric version, words may sit directly next to each other
  * as long as every extra run of letters they create is itself a valid,
  * unused word from the pool. Placements are chosen greedily by how many
- * extra words and letters they add (plus crossings), with some randomness, over repeated
- * attempts; the grid with the most letters wins.
+ * extra words and letters they add (plus crossings, and keeping across and down
+ * counts even), with some randomness, over repeated attempts; the grid with the
+ * most letters wins, with a penalty for uneven across/down counts.
  */
 export function generateDenseCrossword(
   entries: WordEntry[],
@@ -330,6 +381,7 @@ export function generateDenseCrossword(
 ): CrosswordResult {
   const N = size;
   const timeLimitMs = opts.timeLimitMs ?? 3000;
+  const balance = opts.balance ?? DEFAULT_BALANCE;
   const rnd = mulberry32(opts.seed ?? Math.floor(Math.random() * 2 ** 32));
   const MAX_CANDIDATES = 4000;
 
@@ -426,6 +478,7 @@ export function generateDenseCrossword(
     put(grid, first, r0, c0, d0);
     used.add(first);
     state.placed.push({ word: first, row: r0, col: c0, dir: d0 });
+    const count = { across: d0 === 0 ? 1 : 0, down: d0 === 1 ? 1 : 0 };
 
     for (;;) {
       // candidate placements that cross at least one existing letter
@@ -463,7 +516,13 @@ export function generateDenseCrossword(
       for (const [word, r, c, d] of cands) {
         const f = fit(grid, used, word, r, c, d);
         if (!f || f.crossings < 1) continue;
-        const score = f.crossings + 6 * f.newWords.length + word.length + rnd() * 2;
+        // reward placements that bring across and down closer together
+        // (extra words formed run the other way)
+        const a = count.across + (d === 0 ? 1 : f.newWords.length);
+        const dn = count.down + (d === 1 ? 1 : f.newWords.length);
+        const evenness = Math.abs(count.across - count.down) - Math.abs(a - dn);
+        const score =
+          f.crossings + 6 * f.newWords.length + word.length + balance * evenness + rnd() * 2;
         if (score > bestScore) {
           bestScore = score;
           best = { word, r, c, d, f };
@@ -475,11 +534,19 @@ export function generateDenseCrossword(
       used.add(best.word);
       for (const nw of best.f.newWords) used.add(nw);
       state.placed.push({ word: best.word, row: best.r, col: best.c, dir: best.d });
+      if (best.d === 0) {
+        count.across++;
+        count.down += best.f.newWords.length;
+      } else {
+        count.down++;
+        count.across += best.f.newWords.length;
+      }
     }
     return state;
   }
 
-  const score = (s: State): number => s.grid.flat().filter(Boolean).length;
+  // keep the best grid: most letters, with across and down words roughly even
+  const score = (s: State): number => gridScore(s.grid, balance);
   let best: State | null = null;
   let bestScore = -1;
   const start = Date.now();
