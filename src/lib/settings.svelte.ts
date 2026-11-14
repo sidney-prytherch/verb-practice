@@ -9,7 +9,24 @@ import { LANGUAGES, SUBJECTS, type Language, type SubjectId } from "./verbs";
 
 export { SUBJECTS, type SubjectId, type SubjectInfo } from "./verbs";
 
+/** symmetric: classic 180° rotational symmetry; dense: no symmetry, packed tighter */
+export type CrosswordLayout = "symmetric" | "dense";
+
+export const LAYOUTS: { id: CrosswordLayout; name: string; description: string }[] = [
+  {
+    id: "symmetric",
+    name: "Symmetrical",
+    description: "Classic look: the pattern of black squares is the same when the grid is turned upside down.",
+  },
+  {
+    id: "dense",
+    name: "Dense",
+    description: "No symmetry. Words can sit side by side when every run of letters they form is also a word.",
+  },
+];
+
 export interface Settings {
+  layout: CrosswordLayout;
   languages: Language[];
   subjects: SubjectId[];
   /** ids of verbs switched off in the dictionary (new verbs are on by default) */
@@ -20,6 +37,7 @@ const STORAGE_KEY = "verb-practice:settings";
 
 export function defaultSettings(): Settings {
   return {
+    layout: "symmetric",
     languages: ["en", "pt-br"],
     subjects: SUBJECTS.map((s) => s.id),
     disabledVerbs: [],
@@ -34,6 +52,7 @@ function load(): Settings {
     if (!saved) return defaults;
     const subjectIds = SUBJECTS.map((s) => s.id);
     return {
+      layout: LAYOUTS.some((l) => l.id === saved.layout) ? (saved.layout as CrosswordLayout) : defaults.layout,
       languages: Array.isArray(saved.languages)
         ? LANGUAGES.filter((l) => saved.languages!.includes(l))
         : defaults.languages,

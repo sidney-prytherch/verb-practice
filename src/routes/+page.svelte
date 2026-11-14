@@ -1,8 +1,13 @@
 <script lang="ts">
   import type { Tense, Aspect } from '#lib/conjugator.ts';
-  import { generateCrossword, type CrosswordResult, type PlacedWord } from '#lib/crossword.ts';
+  import {
+    generateCrossword,
+    generateDenseCrossword,
+    type CrosswordResult,
+    type PlacedWord
+  } from '#lib/crossword.ts';
   import { buildCrosswordEntries, languagePairs } from '#lib/crossword-clues.ts';
-  import { settings } from '#lib/settings.svelte.ts';
+  import { settings, LAYOUTS } from '#lib/settings.svelte.ts';
   import { resolve } from '$app/paths';
   import { VERBS, LANGUAGE_TAGS, type Language } from '#lib/verbs.ts';
 
@@ -169,7 +174,8 @@
           maxLength: size,
           count: 800
         });
-        const p = generateCrossword(entries, size, { timeLimitMs: 1500 });
+        const generate = settings.layout === 'dense' ? generateDenseCrossword : generateCrossword;
+        const p = generate(entries, size, { timeLimitMs: 1500 });
         if (p.words.length === 0) {
           message = "Couldn't fit any words — try again or pick a bigger grid.";
           puzzle = null;
@@ -406,6 +412,7 @@
       {/each}
     </fieldset>
     <p class="summary">
+      {LAYOUTS.find((l) => l.id === settings.layout)?.name} ·
       {settings.languages.map((l) => LANGUAGE_TAGS[l]).join(', ') || 'No languages'} ·
       {settings.subjects.length} subjects · {enabledVerbs.length} verbs —
       <a href={resolve('/settings')}>Settings</a>, <a href={resolve('/dictionary')}>Dictionary</a>

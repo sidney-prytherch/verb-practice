@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { settings, resetSettings, toggleIn, SUBJECTS } from '#lib/settings.svelte.ts';
+  import { settings, resetSettings, toggleIn, SUBJECTS, LAYOUTS } from '#lib/settings.svelte.ts';
   import { LANGUAGES, LANGUAGE_NAMES, type Language } from '#lib/verbs.ts';
   import { languagePairs } from '#lib/crossword-clues.ts';
 
@@ -26,6 +26,21 @@
 
 <main>
   <h1>Settings</h1>
+
+  <section>
+    <h2>Crossword layout</h2>
+    <div class="options layouts">
+      {#each LAYOUTS as l}
+        <label class="option layout" class:on={settings.layout === l.id}>
+          <input type="radio" name="layout" value={l.id} bind:group={settings.layout} />
+          <span>
+            <strong>{l.name}</strong>
+            <span class="desc">{l.description}</span>
+          </span>
+        </label>
+      {/each}
+    </div>
+  </section>
 
   <section>
     <h2>Languages</h2>
@@ -138,6 +153,19 @@
   .option.on {
     border-color: #2563eb;
     background: #eff6ff;
+  }
+  .layout {
+    align-items: flex-start;
+    max-width: 22rem;
+  }
+  .layout input {
+    margin-top: 0.2rem;
+  }
+  .desc {
+    display: block;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.15rem;
   }
   button {
     font: inherit;
