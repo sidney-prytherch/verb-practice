@@ -1,0 +1,73 @@
+/**
+ * App-wide settings, shared by every page and saved in localStorage.
+ *
+ *   import { settings } from '#lib/settings.svelte.ts';
+ *   settings.languages // ["en", "pt-br"]
+ */
+
+import { LANGUAGES, SUBJECTS, type Language, type SubjectId } from "./verbs";
+
+export { SUBJECTS, type SubjectId, type SubjectInfo } from "./verbs";
+
+export interface Settings {
+  languages: Language[];
+  subjects: SubjectId[];
+  /** ids of verbs switched off in the dictionary (new verbs are on by default) */
+  disabledVerbs: string[];
+}
+
+const STORAGE_KEY = "verb-practice:settings";
+
+export function defaultSettings(): Settings {
+  return {
+    languages: ["en", "pt-br"],
+    subjects: SUBJECTS.map((s) => s.id),
+    disabledVerbs: [],
+  };
+}
+
+function load(): Settings {
+  const defaults = defaultSettings();
+  if (typeof localStorage === "undefined") return defaults;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null") as Partial<Settings> | null;
+    if (!saved) return defaults;
+    const subjectIds = SUBJECTS.map((s) => s.id);
+    return {
+      languages: Array.isArray(saved.languages)
+        ? LANGUAGES.filter((l) => saved.languages!.includes(l))
+        : defaults.languages,
+      subjects: Array.isArray(saved.subjects)
+        ? subjectIds.filter((id) => saved.subjects!.includes(id))
+        : defaults.subjects,
+      disabledVerbs: Array.isArray(saved.disabledVerbs) ? saved.disabledVerbs.map(String) : [],
+    };
+  } catch {
+    return defaults;
+  }
+}
+
+export const settings = $state<Settings>(load());
+
+// save on every change (browser only)
+if (typeof localStorage !== "undefined") {
+  $effect.root(() => {
+    $effect(() => {
+      const json = JSON.stringify(settings);
+      try {
+        localStorage.setItem(STORAGE_KEY, json);
+      } catch {
+        /* storage full or blocked: settings still work for this visit */
+      }
+    });
+  });
+}
+
+export function resetSettings(): void {
+  Object.assign(settings, defaultSettings());
+}
+
+/** Toggle an item in a list, keeping the order of `all`. */
+export function toggleIn<T>(list: T[], item: T, all: readonly T[]): T[] {
+  return list.includes(item) ? list.filter((x) => x !== item) : all.filter((x) => x === item || list.includes(x));
+}
