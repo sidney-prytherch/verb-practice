@@ -326,12 +326,16 @@ const PRESENT_EU: Record<string, string> = {
   medir: "meço", ouvir: "ouço", perder: "perco", valer: "valho",
   equivaler: "equivalho", dormir: "durmo", cobrir: "cubro", descobrir: "descubro",
   encobrir: "encubro", recobrir: "recubro", engolir: "engulo", tossir: "tusso",
+  polir: "pulo",
 };
 
 /** Verbs whose stem vowel changes (u -> o) in tu/ele/eles: subir -> sobes. */
 const STRESSED_STEM: Record<string, string> = {
   subir: "sob", sumir: "som", consumir: "consom", fugir: "fog", sacudir: "sacod",
   acudir: "acod", cuspir: "cosp", bulir: "bol", escapulir: "escapol",
+  // e -> i / o -> u in every stressed form: prevines, agride, pulem
+  prevenir: "previn", agredir: "agrid", progredir: "progrid", regredir: "regrid",
+  transgredir: "transgrid", polir: "pul",
 };
 
 /** -iar verbs that take -ei- in stressed forms: odiar -> odeio. */

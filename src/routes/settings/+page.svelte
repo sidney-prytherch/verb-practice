@@ -10,6 +10,10 @@
     ASPECTS,
     ASPECT_LABELS
   } from '#lib/settings.svelte.ts';
+  import { WORD_TYPES } from '#lib/vocab.ts';
+
+  const wordTypeIds = WORD_TYPES.map((t) => t.id);
+  let verbsOn = $derived(settings.wordTypes.includes('verb'));
   import { LANGUAGES, LANGUAGE_NAMES, type Language } from '#lib/verbs.ts';
   import { languagePairs } from '#lib/crossword-clues.ts';
 
@@ -36,6 +40,34 @@
 
 <main>
   <h1>Settings</h1>
+
+  <section>
+    <h2>Word types</h2>
+    <p class="help">Crosswords mix whichever kinds of words are on.</p>
+    <div class="options">
+      {#each WORD_TYPES as t}
+        <label class="option layout" class:on={settings.wordTypes.includes(t.id)}>
+          <input
+            type="checkbox"
+            checked={settings.wordTypes.includes(t.id)}
+            onchange={() => (settings.wordTypes = toggleIn(settings.wordTypes, t.id, wordTypeIds))}
+          />
+          <span>
+            <strong>{t.name}</strong>
+            <span class="desc">{t.example}</span>
+          </span>
+        </label>
+      {/each}
+    </div>
+    {#if settings.wordTypes.length === 0}
+      <p class="warn">Choose at least one word type to make a crossword.</p>
+    {:else if !verbsOn}
+      <p class="help small">
+        Verbs are off, so the tense, aspect, subject, subjunctive and object pronoun settings
+        below have no effect.
+      </p>
+    {/if}
+  </section>
 
   <section>
     <h2>Grid size</h2>

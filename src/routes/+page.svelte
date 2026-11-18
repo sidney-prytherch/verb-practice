@@ -11,24 +11,35 @@
   import { session, type Mark } from '#lib/crossword-session.ts';
   import { resolve } from '$app/paths';
   import { VERBS, LANGUAGE_TAGS, type Language } from '#lib/verbs.ts';
+  import { VOCAB, WORD_TYPES } from '#lib/vocab.ts';
 
   let lenientAccents = $state(false);
 
   /* settings from the Settings and Dictionary pages */
-  let enabledVerbs = $derived.by(() => {
-    const off = new Set(settings.disabledVerbs);
-    return VERBS.filter((v) => !off.has(v.id));
-  });
+  let disabledIds = $derived(new Set(settings.disabledVerbs));
+  let verbsOn = $derived(settings.wordTypes.includes('verb'));
+  let enabledVerbs = $derived(verbsOn ? VERBS.filter((v) => !disabledIds.has(v.id)) : []);
+  let enabledVocab = $derived(
+    VOCAB.filter((e) => settings.wordTypes.includes(e.type) && !disabledIds.has(e.id))
+  );
   let setupProblem = $derived(
     languagePairs(settings.languages).length === 0
       ? 'Choose at least two languages in Settings.'
-      : settings.subjects.length === 0
-        ? 'Choose at least one subject in Settings.'
-        : settings.tenses.length === 0 || settings.aspects.length === 0
-          ? 'Choose at least one tense and one aspect in Settings.'
-          : enabledVerbs.length === 0
-            ? 'Turn on at least one verb in the Dictionary.'
-            : ''
+      : settings.wordTypes.length === 0
+        ? 'Choose at least one word type in Settings.'
+        : verbsOn && settings.subjects.length === 0
+          ? 'Choose at least one subject in Settings.'
+          : verbsOn && (settings.tenses.length === 0 || settings.aspects.length === 0)
+            ? 'Choose at least one tense and one aspect in Settings.'
+            : enabledVerbs.length + enabledVocab.length === 0
+              ? 'Turn on at least one word in the Dictionary.'
+              : ''
+  );
+  /** "Verbs, nouns, phrases" for the summary line */
+  let typeNames = $derived(
+    WORD_TYPES.filter((t) => settings.wordTypes.includes(t.id))
+      .map((t, i) => (i === 0 ? t.name : t.name.toLowerCase()))
+      .join(', ')
   );
 
   /* ---------------- crossword state ---------------- */
@@ -104,14 +115,15 @@
         pending = null;
         letters++;
       } else if (ch === '-') pending = '-';
-      else if (!pending) pending = ' ';
+      else if (/\s/.test(ch) && !pending) pending = ' '; // apostrophes, ?, ! etc. are not breaks
     }
     return out;
   }
 
   /** "(3,5)" for a space, "(6-2)" for a hyphen. */
   function enumeration(phrase: string): string {
-    const parts = phrase.normalize('NFC').match(/\p{L}+|-/gu) ?? [];
+    // "you're" counts as one word of 5 letters; ?, !, commas are ignored
+    const parts = phrase.normalize('NFC').replace(/['’]/g, '').match(/\p{L}+|-/gu) ?? [];
     let out = '';
     let prevWasWord = false;
     for (const p of parts) {
@@ -170,6 +182,7 @@
           languages: settings.languages,
           subjects: settings.subjects,
           verbs: enabledVerbs,
+          vocab: enabledVocab,
           objectPronouns: settings.objectPronouns,
           indirectObjectPronouns: settings.indirectObjectPronouns,
           subjunctive: settings.subjunctive,
@@ -360,11 +373,12 @@
 </script>
 
 <main class:has-puzzle={!!puzzle}>
-  <h1>Verb crossword</h1>
+  <h1>Crossword</h1>
   <p class="lede">
-    Each clue is a verb in one language — write its translation in the grid (the tag shows which
-    way, e.g. EN → BR). A subject in
-    brackets, like <em>(I) walked</em>, is left out of the answer: <em>andei</em>.
+    Each clue is a word or phrase in one language — write its translation in the grid (the tag
+    shows which way, e.g. EN → BR). Nouns include their article (<em>the house</em> →
+    <em>a casa</em>). A subject in brackets, like <em>(I) walked</em>, is left out of the answer:
+    <em>andei</em>.
   </p>
 
   <div class="toolbar">
@@ -374,10 +388,11 @@
     <p class="summary">
       {settings.size}×{settings.size} · {LAYOUTS.find((l) => l.id === settings.layout)?.name} ·
       {settings.languages.map((l) => LANGUAGE_TAGS[l]).join(', ') || 'no languages'} ·
-      {settings.tenses.length} tenses × {settings.aspects.length} aspects{settings.subjunctive
-        ? ' + subjunctive'
-        : ''} ·
-      {settings.subjects.length} subjects · {enabledVerbs.length} verbs ·
+      {typeNames || 'no word types'}{#if verbsOn}
+        · {settings.tenses.length} tenses × {settings.aspects.length} aspects{settings.subjunctive
+          ? ' + subjunctive'
+          : ''} · {settings.subjects.length} subjects{/if} ·
+      {enabledVerbs.length + enabledVocab.length} words ·
       <a href={resolve('/settings')}>change</a>
     </p>
   </div>

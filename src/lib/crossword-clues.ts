@@ -28,6 +28,13 @@
  *   hint "that I walk (subjunctive)"    -> answer "que eu ande"
  *   hint "if (we) had walked (subjunctive)" -> answer "se tivéssemos andado"
  *   hint "quando eu andar"              -> answer "when I walk"
+ *
+ * Other vocabulary (vocab.json) can be mixed in:
+ *
+ *   hint "the house"      -> answer "a casa"     (nouns with their article)
+ *   hint "tall (f.)"      -> answer "alta"       (adjectives, gender shown when it matters)
+ *   hint "sempre"         -> answer "always"
+ *   hint "good morning"   -> answer "bom dia"
  */
 
 import {
@@ -44,6 +51,7 @@ import {
   SUBJUNCTIVE_CONJUNCTIONS as PT_CONJUNCTIONS,
 } from "./conjugator-portuguese";
 import { toAnswer, type WordEntry } from "./crossword";
+import { VOCAB, withArticle, adjectiveForm, type VocabEntry } from "./vocab";
 import { VERBS, SUBJECTS, type Language, type VerbSense, type SubjectId, type SubjectInfo } from "./verbs";
 
 export type { Tense, Aspect };
@@ -53,8 +61,10 @@ export interface ClueOptions {
   languages: Language[];
   /** subjects to use (at least one) */
   subjects: SubjectId[];
-  /** verbs to use (defaults to all) */
+  /** verbs to use (defaults to all; pass [] for no verbs) */
   verbs?: VerbSense[];
+  /** other vocabulary to mix in (nouns, adjectives, words, phrases); default none */
+  vocab?: VocabEntry[];
   /** tense/aspect pairs to draw from */
   pairs: [Tense, Aspect][];
   /** longest answer allowed (letters only), normally the grid size */
@@ -232,6 +242,7 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     languages,
     subjects,
     verbs = VERBS,
+    vocab = [],
     pairs,
     maxLength,
     minLength = 3,
@@ -248,16 +259,36 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
   const langPairs = languagePairs(languages);
   if (langPairs.length === 0) throw new Error("Choose at least two languages in Settings.");
   const subjectList = SUBJECTS.filter((s) => subjects.includes(s.id));
-  if (subjectList.length === 0) throw new Error("Choose at least one subject in Settings.");
-  if (verbs.length === 0) throw new Error("Choose at least one verb in the Dictionary.");
-  if (pairs.length === 0) throw new Error("Pick at least one tense and one aspect.");
+  if (verbs.length === 0 && vocab.length === 0) {
+    throw new Error("Turn on at least one word in the Dictionary.");
+  }
+  if (verbs.length > 0) {
+    if (subjectList.length === 0) throw new Error("Choose at least one subject in Settings.");
+    if (pairs.length === 0) throw new Error("Pick at least one tense and one aspect.");
+  }
 
   const ambiguous = ambiguityMaps(verbs, langPairs);
+  const vocabAmbiguous = vocabAmbiguity(vocab, langPairs);
   const pick = <T>(arr: T[]): T => arr[Math.floor(rnd() * arr.length)];
   const entries: WordEntry[] = [];
   const seen = new Set<string>();
 
+  // keeps an entry if it fits the grid and isn't a repeat
+  const accept = (entry: WordEntry) => {
+    const answer = toAnswer(entry.word);
+    if (answer.length < minLength || answer.length > maxLength || seen.has(answer)) return;
+    seen.add(answer);
+    entries.push(entry);
+  };
+
   for (let tries = 0; entries.length < count && tries < count * 20; tries++) {
+    // pick verbs and other words in proportion to how many of each are on
+    if (vocab.length && rnd() * (verbs.length + vocab.length) < vocab.length) {
+      const entry = vocabClue(pick(vocab), pick(langPairs), rnd, vocabAmbiguous);
+      if (entry) accept(entry);
+      continue;
+    }
+
     const sense = pick(verbs);
     const pair = pick(pairs);
     const subject = pick(subjectList);
@@ -355,10 +386,7 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
       hint += answerLang === "en" ? ` — to ${sense.en}` : ` — ${sense.sense ?? sense[answerLang]}`;
     }
 
-    const answer = toAnswer(word);
-    if (answer.length < minLength || answer.length > maxLength || seen.has(answer)) continue;
-    seen.add(answer);
-    entries.push({
+    accept({
       word,
       hint,
       languageOrigin: answerLang,
@@ -369,4 +397,64 @@ export function buildCrosswordEntries(opts: ClueOptions): WordEntry[] {
     });
   }
   return entries;
+}
+
+/* ---------------- other vocabulary ---------------- */
+
+/** How a vocabulary entry reads in one language (nouns with their article). */
+function vocabText(entry: VocabEntry, lang: Language, gender: "m" | "f"): string {
+  if (entry.type === "adjective" && lang !== "en") return adjectiveForm(entry, lang, gender);
+  return withArticle(entry, lang);
+}
+
+/**
+ * For each hint -> answer language pair: clue text -> the different answers it could
+ * have. A clue with more than one answer gets the entry's sense note.
+ */
+function vocabAmbiguity(vocab: VocabEntry[], pairs: [Language, Language][]) {
+  const maps = new Map<string, Map<string, Set<string>>>();
+  for (const [from, to] of pairs) {
+    const map = new Map<string, Set<string>>();
+    for (const e of vocab) {
+      const key = `${e.type}|${e[from]}`;
+      const set = map.get(key) ?? new Set<string>();
+      set.add(e[to]);
+      map.set(key, set);
+    }
+    maps.set(`${from}>${to}`, map);
+  }
+  return maps;
+}
+
+function vocabClue(
+  entry: VocabEntry,
+  [hintLang, answerLang]: [Language, Language],
+  rnd: () => number,
+  ambiguous: Map<string, Map<string, Set<string>>>
+): WordEntry | null {
+  // adjectives come in either gender; English needs a note when the forms differ
+  let gender: "m" | "f" = "m";
+  let genderNote = "";
+  if (entry.type === "adjective" && entry.feminine) {
+    gender = rnd() < 0.5 ? "f" : "m";
+    const differs = (lang: Language) => lang !== "en" && entry.feminine![lang] !== entry[lang];
+    if (hintLang === "en" && differs(answerLang)) genderNote = ` (${gender}.)`;
+  }
+
+  const hintText = vocabText(entry, hintLang, gender);
+  const word = vocabText(entry, answerLang, gender);
+  if (toAnswer(hintText) === toAnswer(word)) return null; // same in both (e.g. BR and PT)
+
+  let hint = hintText + genderNote;
+  const answers = ambiguous.get(`${hintLang}>${answerLang}`)?.get(`${entry.type}|${entry[hintLang]}`);
+  if (answers && answers.size > 1 && entry.sense) hint += ` — ${entry.sense}`;
+
+  return {
+    word,
+    hint,
+    languageOrigin: answerLang,
+    hintLanguageOrigin: hintLang,
+    partOfSpeech: entry.type,
+    ...enumerate(word),
+  };
 }

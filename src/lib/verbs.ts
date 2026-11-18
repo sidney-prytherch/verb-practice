@@ -31,6 +31,7 @@ interface RawSense {
   reflexive: boolean;
   "direct-object": boolean;
   "indirect-object": boolean;
+  examples: Record<Language, string>;
 }
 
 export interface VerbSense {
@@ -48,6 +49,8 @@ export interface VerbSense {
   directObject: boolean;
   /** also takes an indirect object pronoun: I gave it to her / eu dei-lho */
   indirectObject: boolean;
+  /** the same everyday sentence in each language, using this verb */
+  examples: Record<Language, string>;
 }
 
 export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, RawSense[]>).flatMap(
@@ -62,6 +65,7 @@ export const VERBS: VerbSense[] = Object.entries(verbsJson as Record<string, Raw
       reflexive: !!s.reflexive,
       directObject: !!s["direct-object"],
       indirectObject: !!s["indirect-object"],
+      examples: s.examples,
     }))
 );
 

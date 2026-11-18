@@ -7,6 +7,7 @@
 
 import { LANGUAGES, SUBJECTS, type Language, type SubjectId } from "./verbs";
 import type { Tense, Aspect } from "./conjugator";
+import { WORD_TYPES, type WordType } from "./vocab";
 
 export { SUBJECTS, type SubjectId, type SubjectInfo } from "./verbs";
 
@@ -39,6 +40,8 @@ export const ASPECT_LABELS: Record<Aspect, string> = {
 };
 
 export interface Settings {
+  /** which kinds of words crosswords use: verbs, nouns, adjectives, words, phrases */
+  wordTypes: WordType[];
   layout: CrosswordLayout;
   size: GridSize;
   tenses: Tense[];
@@ -52,6 +55,7 @@ export interface Settings {
   languages: Language[];
   subjects: SubjectId[];
   /** ids of verbs switched off in the dictionary (new verbs are on by default) */
+  /** ids of dictionary entries switched off (verbs and other words; new ones are on) */
   disabledVerbs: string[];
 }
 
@@ -69,6 +73,7 @@ export function defaultSettings(): Settings {
     languages: ["en", "pt-br"],
     subjects: SUBJECTS.map((s) => s.id),
     disabledVerbs: [],
+    wordTypes: WORD_TYPES.map((t) => t.id),
   };
 }
 
@@ -97,6 +102,9 @@ function load(): Settings {
         ? subjectIds.filter((id) => saved.subjects!.includes(id))
         : defaults.subjects,
       disabledVerbs: Array.isArray(saved.disabledVerbs) ? saved.disabledVerbs.map(String) : [],
+      wordTypes: Array.isArray(saved.wordTypes)
+        ? WORD_TYPES.map((t) => t.id).filter((id) => saved.wordTypes!.includes(id))
+        : defaults.wordTypes,
     };
   } catch {
     return defaults;
